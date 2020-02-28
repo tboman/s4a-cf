@@ -25,4 +25,9 @@ export class GettingStartedGuide implements OnInit {
   resetControl(control: string) {
     this.form.get(control).reset('');
   }
+  account = {};
+
+  onSubmit() {
+    alert("Successfully submitted form.");
+  }
 }

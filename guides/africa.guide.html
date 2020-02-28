@@ -1,3 +1,54 @@
 <h1 class="mat-display-1">Scientist in Africa?</h1>
 <p>To enroll Your Academic or Research Institution tell us about your institution and its collaborative needs.</p>
 <p>After you answer the questions below, you will get furter instructions and more information about the program.  The email you provide will be used for all communications with you going forward.</p>
+<form #form="ngForm" (submit)="onSubmit()">
+<mat-card>
+  <mat-card-title>About You</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Academic Organization/Research Institution Name" name="accountName" required [(ngModel)]="account.name">
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="URL/Website for Institution" name="accountName" required [(ngModel)]="account.name">
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Your Name" name="accountName" required [(ngModel)]="account.name">
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+    <br/>
+        <mat-form-field>
+      <input matInput placeholder="Your Email" name="email" required [(ngModel)]="account.email">
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+    <br/>
+  
+    <mat-form-field>
+      <mat-select name="title" required [(ngModel)]="account.gender" placeholder="Your Title">
+        <mat-option value>Please Select</mat-option>
+        <mat-option value="admin">Academic / Research Administrator</mat-option>
+        <mat-option value="junior">Junior Faculty</mat-option>
+        <mat-option value="senior">Senior Faculty</mat-option>
+        <mat-option value="scientist">Scientist</mat-option>
+      </mat-select>
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+<br/>
+    <mat-form-field>
+      <mat-select name="interest" required [(ngModel)]="account.gender" placeholder="Interested In">
+        <mat-option value>Please Select</mat-option>
+        <mat-option value="admin">Collaborating with scientists in the U.S., EU or Canada on projects or publications</mat-option>
+      </mat-select>
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button type="reset" color="primary">Reset</button>
+    <button mat-button type="submit" color="primary" [disabled]="form.invalid">Submit</button>
+  </mat-card-actions>
+</mat-card>
+</form>
