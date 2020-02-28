@@ -1,0 +1,43 @@
+<mat-card>
+	<mat-card-title>Tooltip configuration</mat-card-title>
+	<mat-card-content>
+		<section class="example-section">
+			<mat-form-field>
+				<mat-label>Tooltip position</mat-label>
+				<mat-select [(ngModel)]="tooltipPosition" class="example-margin">
+					<mat-option *ngFor="let pos of positions" [value]="pos.val">{{pos.displayVal}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</section>
+		<section class="example-section">
+			<mat-form-field class="example-margin">
+				<input matInput [(ngModel)]="tooltipContent">
+				<mat-label>Tooltip content</mat-label>
+			</mat-form-field>
+		</section>
+		<section class="example-section">
+			<mat-checkbox [(ngModel)]="tooltipDisabled" class="example-margin">Disable Tooltip</mat-checkbox>
+		</section>
+		<section class="example-section">
+			<mat-form-field class="example-chip-list">
+				<mat-chip-list #chipList>
+					<mat-chip *ngFor="let class of classNames" [selectable]="selectable" [removable]="removable" (removed)="remove(class)">
+						{{class}}
+						<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					</mat-chip>
+					<input placeholder="New tooltip class..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+					 (matChipInputTokenEnd)="add($event)">
+				</mat-chip-list>
+			</mat-form-field>
+		</section>
+	</mat-card-content>
+</mat-card>
+<mat-card>
+	<mat-card-content>
+		<section class="example-section example-result">
+			<span [matTooltip]="tooltipContent" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="tooltipDisabled" [matTooltipClass]="classNames">
+                Content
+            </span>
+		</section>
+	</mat-card-content>
+</mat-card>

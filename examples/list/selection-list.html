@@ -1,0 +1,24 @@
+<mat-card>
+	<mat-card-title>Selection list</mat-card-title>
+  	<mat-card-content>
+		<mat-checkbox [(ngModel)]="stats">Show stats</mat-checkbox>
+		<mat-checkbox [(ngModel)]="disableItem2">Disable item 2 (<code>Grapefruit</code>)</mat-checkbox>
+    <mat-checkbox [(ngModel)]="selectedItem4">Select item 4(<code>Bananas</code>)</mat-checkbox>
+		<div *ngIf="stats">
+			<p>Options selected: {{fruits.selectedOptions.selected.length}}</p>
+		</div>
+    <br>
+    <button mat-button (click)="selectAll()">Select all</button>
+    <button mat-button (click)="deselectAll()">Deselect all</button>
+	</mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>Result</mat-card-title>
+	<mat-card-content>
+		<mat-selection-list #fruits>
+			<mat-list-option *ngFor="let fruit of typeOfFruits; let i = index" [disabled]="i == 2 && disableItem2" [selected]="i == 4 && selectedItem4">
+				{{fruit}}
+			</mat-list-option>
+		</mat-selection-list>
+	</mat-card-content>
+</mat-card>

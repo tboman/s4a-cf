@@ -1,0 +1,10 @@
+{
+  "apps": [{
+    "assets": [
+      "assets"
+    ],
+    "styles": [
+      "styles.scss"
+      ]
+  }]
+}

@@ -1,0 +1,30 @@
+<mat-card>
+	<mat-card-title>Pseudo checkboxes</mat-card-title>
+	<mat-card-content>
+		<mat-pseudo-checkbox></mat-pseudo-checkbox>
+		<mat-pseudo-checkbox state="checked"></mat-pseudo-checkbox>
+		<mat-pseudo-checkbox></mat-pseudo-checkbox>
+	</mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+	<mat-card-title>Pseudo checkbox configuration</mat-card-title>
+	<mat-card-content>
+		<h4>State of pseudo checkbox:</h4>
+		<mat-form-field>
+			<mat-select [(ngModel)]="state" style="width:200px">
+				<mat-option value="checked">Checked</mat-option>
+				<mat-option value="unchecked">Unchecked</mat-option>
+				<mat-option value="indeterminate">Indeterminate</mat-option>
+			</mat-select>
+		</mat-form-field>
+    <br>
+		<mat-checkbox [(ngModel)]="disabled">Disabled?</mat-checkbox>
+	</mat-card-content>
+</mat-card>
+<mat-card>
+	<mat-card-title>Result:</mat-card-title>
+	<mat-card-content>
+		<mat-pseudo-checkbox [state]="state" [disabled]="disabled"></mat-pseudo-checkbox>
+	</mat-card-content>
+</mat-card>

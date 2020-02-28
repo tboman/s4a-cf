@@ -1,0 +1,15 @@
+<mat-card>
+	<mat-form-field>
+		<input matInput placeholder="I'm an input" [(ngModel)]="input">
+	</mat-form-field>
+	<mat-form-field>
+		<textarea matInput placeholder="I'm a textarea" [(ngModel)]="textarea"></textarea>
+	</mat-form-field>
+	<mat-form-field>
+		<mat-select [(ngModel)]="select" placeholder="I'm a select">
+			<mat-option value="1">Option #1</mat-option>
+			<mat-option value="2">Option #2</mat-option>
+			<mat-option value="3">Option #3</mat-option>
+		</mat-select>
+	</mat-form-field>
+</mat-card>

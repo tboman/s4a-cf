@@ -1,0 +1,6 @@
+<p>Note: This will filter weekends, making them unselectable.</p>
+<mat-form-field class="example-full-width">
+	<input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date">
+	<mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+	<mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

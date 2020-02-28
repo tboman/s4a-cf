@@ -1,0 +1,30 @@
+<form #form="ngForm" (submit)="onSubmit()">
+<mat-card>
+  <mat-card-title>Account Settings</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Name" name="accountName" required [(ngModel)]="account.name">
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="gender" required [(ngModel)]="account.gender" placeholder="Gender">
+        <mat-option value>None</mat-option>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="other">Decline to state/ other</mat-option>
+      </mat-select>
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="birthday" [matDatepicker]="birthDatepicker" placeholder="Birthday" required>
+      <mat-datepicker-toggle matSuffix [for]="birthDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthDatepicker></mat-datepicker>
+      <mat-error>This is required.</mat-error>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button type="reset" color="primary">Reset</button>
+    <button mat-button type="submit" color="primary" [disabled]="form.invalid">Submit</button>
+  </mat-card-actions>
+</mat-card>
+</form>

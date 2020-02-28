@@ -1,0 +1,11 @@
+.demo-ripple-container {
+  box-shadow: rgba(0, 0, 0, 0.118) 0 10px 15px, rgba(0, 0, 0, 0.239) 0 5px 10px;
+  cursor: pointer;
+   font-size: 24px;
+  height: 150px;
+  line-height: 150px;
+  position: relative;
+  text-align: center;
+  transition: all 200ms linear;
+  width: 200px;
+}

@@ -1,0 +1,11 @@
+.example-uppercase-btn {
+    text-transform: uppercase;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+mat-radio-button {
+  padding: 4px;
+}

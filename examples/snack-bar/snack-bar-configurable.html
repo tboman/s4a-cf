@@ -1,0 +1,31 @@
+<mat-card>
+	<mat-card-title>Snack bar configuration</mat-card-title>
+	<mat-card-content>
+		<form #demoForm="ngForm">
+			<mat-form-field>
+				<input matInput placeholder="Message" [(ngModel)]="message" required name="message">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="Duration" [(ngModel)]="duration" name="duration" type="number">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Action" [(ngModel)]="action" name="action">
+			</mat-form-field>
+			<mat-form-field>
+				<mat-select [(ngModel)]="horOpt" name="horOpt" placeholder="Horizontal">
+					<mat-option *ngFor="let option of horOptions" [value]="option">{{option}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field>
+				<mat-select [(ngModel)]="vertOpt" name="vertOpt" placeholder="Vertical">
+					<mat-option *ngFor="let option of vertOptions" [value]="option">{{option}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<button mat-button (click)="openSnackBar()" [disabled]="demoForm.invalid">Show snack-bar</button>
+			<button mat-button (click)="closeAll()">Close all snack-bars</button>
+		</form>
+	</mat-card-content>
+</mat-card>

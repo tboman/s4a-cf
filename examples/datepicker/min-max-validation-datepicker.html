@@ -1,0 +1,6 @@
+<p>Note: In this example, there's a <code>min</code> and <code>max</code> filter on the <code>input</code>.</p>
+<mat-form-field class="example-full-width">
+	<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+	<mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+	<mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

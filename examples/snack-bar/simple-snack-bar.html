@@ -1,0 +1,12 @@
+<form #demoForm="ngForm">
+	<mat-form-field>
+		<input matInput placeholder="Message" [(ngModel)]="message" required name="message">
+		<mat-error>This is required.</mat-error>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput placeholder="Action" [(ngModel)]="action" name="action">
+	</mat-form-field>
+
+	<button mat-button (click)="openSnackBar()" [disabled]="demoForm.invalid">Show snack-bar</button>
+</form>
