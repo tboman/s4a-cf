@@ -5,6 +5,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { ExampleModule } from './example.module';
 import { GettingStartedGuide } from '../guides/africa';
+import { WestGuide } from '../guides/west';
 
 @NgModule({
   declarations: [
