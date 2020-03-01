@@ -115,8 +115,8 @@ const TOOLTIP_ROUTES: Route[] = [
   { path: 'tooltip-configurable', component: ConfigurableTooltipExample }
 ]
 const GUIDE_ROUTES: Route[] = [
-  { path: 'getting-started', component: AfricaGuide },
-  { path: 'west-signup', component: WestGuide }
+  { path: 'africa-guide', component: AfricaGuide },
+  { path: 'west-g', component: WestGuide }
 ]
 const CDK_ROUTES: Route[] = [
 

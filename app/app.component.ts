@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     }
     this.guideLinks = [
       { name: "Africa", url: "africa-guide"},
-      { name: "Europe/North America", url: "west-g"}
+      { name: "Europe/North America", url: "west-guide"}
     ];
     this.exampleLinks = [
       {
