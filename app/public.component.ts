@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'home-component',
-  templateUrl: './home.component.html'
+  selector: 'public-component',
+  templateUrl: './public.component.html'
 })
-export class HomeComponent {
+export class PublicComponent {
   constructor(private dialog: MatDialog){}
   confirmGoBack() {
     this.dialog.open(ConfirmGoBackDialog, {disableClose: true});

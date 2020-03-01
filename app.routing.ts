@@ -40,6 +40,7 @@ import { FormFieldInAFormExample } from './examples/form-field/form-field-in-a-f
 import { SimpleFormFieldExample } from './examples/form-field/simple-form-field';
 import { AfricaGuide } from './guides/africa';
 import { WestGuide } from './guides/west';
+import { PublicComponent } from './app/public.component';
 import { HomeComponent } from './app/home.component';
 import { AboutComponent } from './app/about.component';
 const BUTTON_ROUTES: Route[] = [
@@ -141,6 +142,7 @@ const EXAMPLE_ROUTES: Routes = [
 const ALL_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'public', component: PublicComponent },
   { path: 'components', children: EXAMPLE_ROUTES },
   { path: 'cdk', children: CDK_ROUTES },
   { path: 'guides', children: GUIDE_ROUTES },
