@@ -18,8 +18,8 @@ import {
   MatSliderModule,
   MatDatepickerModule } from '@angular/material';
 
-import { AppComponent } from '../app/app.component';
-import { InputComponent } from '../app/input/input.component';
+import { AppComponent } from '../../app/app.component';
+import { InputComponent } from '../../app/input/input.component';
 
 @NgModule({
   imports: [
