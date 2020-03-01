@@ -1,0 +1,106 @@
+<h1 class="mat-display-1">Africa</h1>
+<p>To enroll Your Academic Organization or Research Institution tell us about your institution and its collaborative
+	needs.</p>
+<p>Complete the profile survey below and validate that you can access the email address you provided (you will receive an
+	activation code after sign-up).  Once enrolled, you will get furter instructions and more information about the
+	program. You can change your profile, interest and requests at any time to be matched with parties in the regions
+	your choose.</p>
+<form #form="ngForm" (submit)="onSubmit()">
+	<mat-card>
+		<mat-card-title>About You</mat-card-title>
+		<mat-card-content>
+			<mat-form-field>
+				<input matInput placeholder="Your Email" name="email" required [(ngModel)]="account.email">
+				<mat-error>You will need to provide an email that we can verify by sending an activation code.
+				</mat-error>
+			</mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-form-field>
+				<input matInput placeholder="Academic Organization/Research Institution Name" name="orgName" required [(ngModel)]="account.orgname">
+				<mat-error>You have to provide the name of the organization that you are associated with.</mat-error>
+			</mat-form-field>
+			<br/>
+			<mat-form-field>
+				<input matInput placeholder="URL/Website for Institution" name="orgSite" required [(ngModel)]="account.orgSite">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-form-field>
+				<input matInput placeholder="Your Name" name="accountName" required [(ngModel)]="account.name">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
+				<mat-select name="title" required [(ngModel)]="account.title" placeholder="Your Title">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="admin">Academic / Research Administrator</mat-option>
+					<mat-option value="junior">Junior Faculty</mat-option>
+					<mat-option value="senior">Senior Faculty</mat-option>
+					<mat-option value="scientist">Scientist</mat-option>
+					<mat-option value="other">Other</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-card-title>Your Intentions</mat-card-title>
+			<mat-form-field>
+				<mat-select name="interest" required [(ngModel)]="account.interest" placeholder="Interested In">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="collaboration">Collaborating with scientists in the U.S., EU or Canada on projects or
+						publications</mat-option>
+					<mat-option value="residencyinvite">
+						Inviting U.S., Canadian, or EU scientists/researchers for a research collaboration residency at
+						your institution
+					</mat-option>
+					<mat-option value="lectureinvite">
+						Inviting U.S., Canadian, or EU scientists to deliver a lecture at your institution
+					</mat-option>
+					<mat-option value="funding">
+						Apply for research funding together with a U.S., Canadian, or EU research institution
+					</mat-option>
+					<mat-option value="other">
+						Other (please provide more information in the collaboration needs field below)
+					</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-select name="field" required [(ngModel)]="account.field" placeholder="Research Field">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="agritech">Agritech</mat-option>
+					<mat-option value="agritech">Applied science</mat-option>
+					<mat-option value="agritech">Biomedical</mat-option>
+					<mat-option value="agritech">Chemistry</mat-option>
+					<mat-option value="agritech">Computer science</mat-option>
+					<mat-option value="agritech">Energy</mat-option>
+					<mat-option value="agritech">Engineering</mat-option>
+					<mat-option value="agritech">Information technology</mat-option>
+					<mat-option value="agritech">Infrastructure</mat-option>
+					<mat-option value="agritech">Mathematics</mat-option>
+					<mat-option value="agritech">Physics</mat-option>
+					<mat-option value="agritech">Transportation</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="Collaboration Needs" name="need" required [(ngModel)]="account.need">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+		</mat-card-content>
+			<mat-card-actions align="end">
+				<button mat-button type="reset" color="primary">Reset</button>
+				<button mat-button type="submit" color="primary" [disabled]="form.invalid">Submit</button>
+			</mat-card-actions>
+	</mat-card>
+</form>
