@@ -3,7 +3,7 @@ import { MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'public-component',
-  templateUrl: './pub.component.html'
+  templateUrl: './publc.component.html'
 })
 export class PublicComponent {
   constructor(private dialog: MatDialog){}
