@@ -142,7 +142,7 @@ const EXAMPLE_ROUTES: Routes = [
 const ALL_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-/=  { path: 'public', component: PublicComponent },
+  { path: 'public', component: PublicComponent },
   { path: 'components', children: EXAMPLE_ROUTES },
   { path: 'cdk', children: CDK_ROUTES },
   { path: 'guides', children: GUIDE_ROUTES },
