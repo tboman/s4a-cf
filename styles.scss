@@ -15,7 +15,7 @@
   }
 }
 
-$app-primary: mat-palette($mat-blue);
+$app-primary: mat-palette($mat-brown);
 $app-accent: mat-palette($mat-red);
 $app-warn: mat-palette($mat-orange);
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
@@ -33,6 +33,9 @@ body {
 
 .right-image {
   text-align: right;
+  object-fit: fill;
+  width: 100%;
+  height: 150px;
 }
 
 .small-image {

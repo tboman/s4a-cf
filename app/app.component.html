@@ -8,8 +8,9 @@
 		<mat-nav-list style="z-index: 2">
 			<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">Home</a>
 			<a mat-list-item routerLink="/about" routerLinkActive="active-link" (click)="exampleSidenav.close()">About</a>
+			<a mat-list-item routerLink="/match" routerLinkActive="active-link" (click)="exampleSidenav.close()">Login</a>
 			<a mat-list-item (click)="toggleGuides()">
-				<p matLine>Guides by Location</p>
+				<p matLine>Signup</p>
 				<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon" [class.isUnToggled]="!hideGuides">keyboard_arrow_down</mat-icon>
 			</a>
 		</mat-nav-list>
@@ -35,8 +36,13 @@
 		</div>
 	</mat-sidenav>
 	<mat-toolbar color="primary" class="mat-elevation-z3">
-		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Science 4 Africa
+		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>S4AT - Collaboration Framework
+
 		<span fxFlex></span>
+    <button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>lock</mat-icon></button>
+
+		<span fxFlex></span>
+    
 
 	</mat-toolbar>
 	<div class="app-content">
