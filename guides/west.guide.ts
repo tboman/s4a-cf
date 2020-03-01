@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'west-signup',
+  selector: 'west-guide',
   templateUrl: 'west.guide.html'
 })
-export class WestSignup implements OnInit {
+export class WestGuide implements OnInit {
   form: FormGroup;
 
   constructor(

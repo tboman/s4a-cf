@@ -39,7 +39,7 @@ import { PseudoCheckboxExample } from './examples/checkbox/pseudo-checkbox';
 import { FormFieldInAFormExample } from './examples/form-field/form-field-in-a-form';
 import { SimpleFormFieldExample } from './examples/form-field/simple-form-field';
 import { GettingStartedGuide } from './guides/africa';
-import { WestGuide } from './guides/west';
+import { WestGuide } from './guides/signup-west';
 import { HomeComponent } from './app/home.component';
 import { AboutComponent } from './app/about.component';
 const BUTTON_ROUTES: Route[] = [
