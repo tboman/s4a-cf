@@ -4,11 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { ExampleModule } from './example.module';
-import { GettingStartedGuide } from '../guides/africa';
+import { WestGuide } from '../guides/west';
+import { AfricaGuide } from '../guides/africa';
 
 @NgModule({
   declarations: [
-    GettingStartedGuide
+    AfricaGuide, WestGuide
   ],
     imports: [
     BrowserModule,
@@ -18,7 +19,7 @@ import { GettingStartedGuide } from '../guides/africa';
     ExampleModule
   ],
   exports: [
-    GettingStartedGuide
+    AfricaGuide, WestGuide
   ]
 })
 export class GuidesModule {}

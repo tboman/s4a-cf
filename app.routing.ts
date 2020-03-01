@@ -38,8 +38,8 @@ import { SimpleIconExample } from './examples/icon/icon-overview';
 import { PseudoCheckboxExample } from './examples/checkbox/pseudo-checkbox';
 import { FormFieldInAFormExample } from './examples/form-field/form-field-in-a-form';
 import { SimpleFormFieldExample } from './examples/form-field/simple-form-field';
-import { GettingStartedGuide } from './guides/africa';
-import { WestGuide } from './guides/signup-west';
+import { AfricaGuide } from './guides/africa';
+import { WestGuide } from './guides/west';
 import { HomeComponent } from './app/home.component';
 import { AboutComponent } from './app/about.component';
 const BUTTON_ROUTES: Route[] = [
@@ -115,7 +115,8 @@ const TOOLTIP_ROUTES: Route[] = [
   { path: 'tooltip-configurable', component: ConfigurableTooltipExample }
 ]
 const GUIDE_ROUTES: Route[] = [
-  { path: 'getting-started', component: GettingStartedGuide }
+  { path: 'getting-started', component: AfricaGuide },
+  { path: 'west-signup', component: WestGuide }
 ]
 const CDK_ROUTES: Route[] = [
 
