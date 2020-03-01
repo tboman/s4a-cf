@@ -1,6 +1,7 @@
-<h1 class="mat-display-1">Africa</h1>
-<p>Complete the profile survey below and validate that you can access the email address you provided (you will receive an
-	activation code after sign-up).  Once enrolled, you will get furter instructions and more information about the
+<h1 class="mat-display-1">Europe and America</h1>
+<p>Complete the profile survey below and validate that you can access the email address you provided (you will receive
+	an
+	activation code after sign-up). Once enrolled, you will get furter instructions and more information about the
 	program. You can change your profile, interest and requests at any time to be matched with parties in the regions
 	your choose.</p>
 <form #form="ngForm" (submit)="onSubmit()">
@@ -16,12 +17,7 @@
 			<br/>
 
 			<mat-form-field>
-				<input matInput placeholder="Academic Organization/Research Institution Name" name="orgName" required [(ngModel)]="account.orgname">
-				<mat-error>You have to provide the name of the organization that you are associated with.</mat-error>
-			</mat-form-field>
-			<br/>
-			<mat-form-field>
-				<input matInput placeholder="URL/Website for Institution" name="orgSite" required [(ngModel)]="account.orgSite">
+				<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="account.work">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>
@@ -36,10 +32,24 @@
 			<mat-form-field>
 				<mat-select name="title" required [(ngModel)]="account.title" placeholder="Your Title">
 					<mat-option value>Please Select</mat-option>
-					<mat-option value="admin">Academic / Research Administrator</mat-option>
-					<mat-option value="junior">Junior Faculty</mat-option>
-					<mat-option value="senior">Senior Faculty</mat-option>
-					<mat-option value="scientist">Scientist</mat-option>
+					<mat-option value="researcher">Researcher at private institution</mat-option>
+					<mat-option value="junior">Junior faculty member at a university/research institution</mat-option>
+					<mat-option value="senior">Senior faculty member at a university/research institution</mat-option>
+					<mat-option value="fellow">Postdoctoral fellow</mat-option>
+					<mat-option value="lecturer">Lecturer</mat-option>
+					<mat-option value="other">Other</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
+				<mat-select name="location" required [(ngModel)]="account.location" placeholder="Your Location">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="europe">European Union Country</mat-option>
+					<mat-option value="us">United States of America</mat-option>
+					<mat-option value="canada">Canada</mat-option>
+					<mat-option value="southamerica">South America</mat-option>
 					<mat-option value="other">Other</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
@@ -51,17 +61,18 @@
 			<mat-form-field>
 				<mat-select name="interest" required [(ngModel)]="account.interest" placeholder="Interested In">
 					<mat-option value>Please Select</mat-option>
-					<mat-option value="collaboration">Collaborating with scientists in the U.S., EU or Canada on projects or
-						publications</mat-option>
-					<mat-option value="residencyinvite">
-						Inviting U.S., Canadian, or EU scientists/researchers for a research collaboration residency at
-						your institution
+					<mat-option value="collaboration">Collaborating with scientists in Africa on specific projects
 					</mat-option>
-					<mat-option value="lectureinvite">
-						Inviting U.S., Canadian, or EU scientists to deliver a lecture at your institution
+					<mat-option value="mentor">
+						Mentoring or advising young African scientists
 					</mat-option>
-					<mat-option value="funding">
-						Apply for research funding together with a U.S., Canadian, or EU research institution
+					<mat-option value="lecture">
+						Delivering (a) virtual lecture(s) at an African university
+					</mat-option>
+					<mat-option value="building">
+						Joining a capacity-building mission in Africa
+					</mat-option>
+					<mat-option value="researchinvite">Offering a research position in your laboratory/group
 					</mat-option>
 					<mat-option value="other">
 						Other (please provide more information in the collaboration needs field below)

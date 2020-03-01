@@ -116,7 +116,7 @@ const TOOLTIP_ROUTES: Route[] = [
 ]
 const GUIDE_ROUTES: Route[] = [
   { path: 'africa-guide', component: AfricaGuide },
-  { path: 'west-g', component: WestGuide }
+  { path: 'west-guide', component: WestGuide }
 ]
 const CDK_ROUTES: Route[] = [
 
