@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent, ConfirmGoBackDialog } from './home.component';
+import { PublicComponent } from './public.component';
 import { AboutComponent } from './about.component';
 import { AppRouting } from '../app.routing';
 import { ExampleModule } from './example.module';
@@ -34,6 +35,7 @@ import 'hammerjs';
   declarations: [
     AppComponent,
     AboutComponent,
+    PublicComponent,
     HomeComponent,
     ConfirmGoBackDialog
    ],
