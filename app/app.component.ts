@@ -61,8 +61,8 @@ export class AppComponent implements OnInit {
       this.isToggledUppercase = JSON.parse(window.localStorage.getItem('isToggledUppercase'));
     }
     this.guideLinks = [
-      { name: "Africa", url: "africa-guide"},
-      { name: "West", url: "west-guide"}
+      { name: "Requests", url: "africa-guide"},
+      { name: "Offers", url: "west-guide"}
     ];
     this.exampleLinks = [
       {
