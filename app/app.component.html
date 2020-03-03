@@ -27,13 +27,6 @@
 				<mat-icon [class.isToggled]="hideComponents" class="toggle-component-icon" [class.isUnToggled]="!hideComponents">keyboard_arrow_down</mat-icon>
 			</a>
 		</mat-nav-list>
-		<div *ngIf="hideComponents" class="component-examples-sect" @enterAnimation>
-			<mat-nav-list *ngFor="let exampleLink of exampleLinks">
-				<h3 matSubheader>{{exampleLink.category}}</h3>
-				<a mat-list-item *ngFor="let example of exampleLink.examples" [routerLink]="['/components', exampleLink.url, example.url]"
-				 routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(example.name)"><p matLine>{{example.name}}</p></a>
-			</mat-nav-list>
-		</div>
 	</mat-sidenav>
 	<mat-toolbar color="primary" class="mat-elevation-z3">
 		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration Framework

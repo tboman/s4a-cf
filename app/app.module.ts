@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
-import { PublicComponent, ConfirmGoBackDialog } from './public.component';
+import { PublicComponent } from './public.component';
 import { AboutComponent } from './about.component';
 import { AppRouting } from '../app.routing';
 import { ExampleModule } from './example.module';
@@ -36,12 +36,10 @@ import 'hammerjs';
     AppComponent,
     AboutComponent,
     PublicComponent,
-    HomeComponent,
-    ConfirmGoBackDialog
+    HomeComponent
    ],
   bootstrap: [AppComponent],
   entryComponents: [
-    ConfirmGoBackDialog
   ]
 })
 export class AppModule { }
