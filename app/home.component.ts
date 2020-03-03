@@ -1,28 +1,15 @@
-import { Component } from '@angular/core';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'home-component',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  constructor(private dialog: MatDialog){}
-  confirmGoBack() {
-    this.dialog.open(ConfirmGoBackDialog, {disableClose: true});
-  }
-}
+export class HomeComponent implements OnInit {
 
-@Component({
-  selector: 'confirm-go-back-dialog',
-  templateUrl: './confirm.dialog.html'
-})
-export class ConfirmGoBackDialog {
-  constructor(private dialogRef: MatDialogRef<ConfirmGoBackDialog>){}
-  cancel() {
-    this.dialogRef.close();
+  constructor() { }
+
+  ngOnInit() {
   }
-  goBack() {
-    this.dialogRef.close();
-    window.location.href = "https://chan4077-material2-docs.firebaseapp.com";
-  }
+
 }
