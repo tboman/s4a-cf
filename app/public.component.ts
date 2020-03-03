@@ -6,23 +6,9 @@ import { MatDialogRef, MatDialog } from '@angular/material';
   templateUrl: './public.component.html'
 })
 export class PublicComponent {
-  constructor(private dialog: MatDialog){}
-  confirmGoBack() {
-    this.dialog.open(ConfirmGoBackDialog, {disableClose: true});
-  }
-}
+  constructor() { }
 
-@Component({
-  selector: 'confirm-go-back-dialog',
-  templateUrl: './confirm.dialog.html'
-})
-export class ConfirmGoBackDialog {
-  constructor(private dialogRef: MatDialogRef<ConfirmGoBackDialog>){}
-  cancel() {
-    this.dialogRef.close();
+  ngOnInit() {
   }
-  goBack() {
-    this.dialogRef.close();
-    window.location.href = "https://chan4077-material2-docs.firebaseapp.com";
-  }
+
 }
