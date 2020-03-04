@@ -47,6 +47,10 @@ export class AuthService {
     }
   }
 
+  getUserdetails() {
+    return this.userDetails;
+  }
+
   logout() {
     this._firebaseAuth.auth.signOut().then(res => this.router.navigate(["/"]));
   }

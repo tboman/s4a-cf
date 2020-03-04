@@ -20,7 +20,7 @@ const ALL_ROUTES: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'public', component: PublicComponent },
   { path: 'cdk', children: CDK_ROUTES },
-  { path: 'guides', children: GUIDE_ROUTES },
+  { path: 'guides', children: GUIDE_ROUTES, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'public' }
 ]
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(ALL_ROUTES);
