@@ -22,10 +22,12 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
 
 import "hammerjs";
+import * as Firebase from 'firebase';
 /**
  * NgModule that includes all Material modules that are required to serve
  * the Plunker.
  */
+Firebase.initializeApp(environment.firebase);
 
 @NgModule({
   imports: [
