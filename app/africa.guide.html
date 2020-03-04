@@ -1,8 +1,9 @@
 <h1 class="mat-display-1">Requests</h1>
 <p>To enroll Your Academic Organization or Research Institution tell us about your institution and its collaborative
 	needs.</p>
-<p>Complete the profile survey below and validate that you can access the email address you provided (you will receive an
-	activation code after sign-up).  Once enrolled, you will get furter instructions and more information about the
+<p>Complete the profile survey below and validate that you can access the email address you provided (you will receive
+	an
+	activation code after sign-up). Once enrolled, you will get furter instructions and more information about the
 	program. You can change your profile, interest and requests at any time to be matched with parties in the regions
 	your choose.</p>
 <form #form="ngForm" (submit)="onSubmit()">
@@ -54,7 +55,8 @@
 			<mat-form-field>
 				<mat-select name="interest" required [(ngModel)]="account.interest" placeholder="Interested In">
 					<mat-option value>Please Select</mat-option>
-					<mat-option value="collaboration">Collaborating with scientists in the U.S., EU or Canada on projects or
+					<mat-option value="collaboration">Collaborating with scientists in the U.S., EU or Canada on
+						projects or
 						publications</mat-option>
 					<mat-option value="residencyinvite">
 						Inviting U.S., Canadian, or EU scientists/researchers for a research collaboration residency at
