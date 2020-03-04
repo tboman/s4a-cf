@@ -1,28 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home.component';
-import { PublicComponent } from './public.component';
-import { AboutComponent } from './about.component';
-import { AppRouting } from '../app.routing';
-import { MaterialModule } from './material.module';
-import { GuidesModule } from './guides.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { InputComponent } from './input.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule, Routes } from "@angular/router";
+import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home.component";
+import { PublicComponent } from "./public.component";
+import { AboutComponent } from "./about.component";
+import { AppRouting } from "../app.routing";
+import { MaterialModule } from "./material.module";
+import { GuidesModule } from "./guides.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { InputComponent } from "./input.component";
 
-import { AuthGuard } from '../services/auth-guard.service';
-import { environment } from '../environments/environments';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthGuard } from "../services/auth-guard.service";
+import { environment } from "../environments/environments";
+import { AngularFireModule } from "angularfire2";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFireAuthModule } from "angularfire2/auth";
 
-import 'hammerjs';
+import "hammerjs";
 /**
- * NgModule that includes all Material modules that are required to serve 
+ * NgModule that includes all Material modules that are required to serve
  * the Plunker.
  */
 
@@ -37,21 +37,19 @@ import 'hammerjs';
     AppRouting,
     GuidesModule,
     FlexLayoutModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireModule.initializeApp(
+      environment.firebase,
+      "angular-auth-firebase"
+    ),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  declarations: [
-    AppComponent,
-    AboutComponent,
-    PublicComponent,
-    HomeComponent
-   ],
+  declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
-  entryComponents: [
-  ]
+  entryComponents: []
 })
-export class AppModule { }
+export class AppModule {}
 
 /*
  Copyright 2016 Google Inc. All Rights Reserved.
