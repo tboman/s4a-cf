@@ -1,4 +1,4 @@
-export * from './africa.guide';
+export * from './west.guide';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,8 +18,8 @@ import {
   MatSliderModule,
   MatDatepickerModule } from '@angular/material';
 
-import { AppComponent } from '../../app/app.component';
-import { InputComponent } from '../../app/input/input.component';
+import { AppComponent } from './app.component';
+import { InputComponent } from './input.component';
 
 @NgModule({
   imports: [

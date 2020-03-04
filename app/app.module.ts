@@ -13,7 +13,7 @@ import { ExampleModule } from './example.module';
 import { MaterialModule } from './material.module';
 import { GuidesModule } from './guides.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { InputComponent } from './input/input.component'
+import { InputComponent } from './input.component'
 import 'hammerjs';
 /**
  * NgModule that includes all Material modules that are required to serve 

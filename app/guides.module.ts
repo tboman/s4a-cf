@@ -4,8 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
 import { ExampleModule } from './example.module';
-import { WestGuide } from '../guides/west/west';
-import { AfricaGuide } from '../guides/africa/africa';
+import { WestGuide } from './west';
+import { AfricaGuide } from './africa';
 
 @NgModule({
   declarations: [
