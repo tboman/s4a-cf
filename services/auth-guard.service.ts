@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
         }
         console.info('not logged in');
         this.authService.signInWithFacebook();
-        this.router.navigate(['/']);
+        this.router.navigate(['/about']);
         return false;
     }
 }
