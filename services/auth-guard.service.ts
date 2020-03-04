@@ -11,8 +11,7 @@ export class AuthGuard implements CanActivate {
             return true;
         }
         console.info('not logged in');
-        this.authService.signInWithFacebook();
-        this.router.navigate(['/about']);
+        this.authService.signInWithPopup();
         return false;
     }
 }

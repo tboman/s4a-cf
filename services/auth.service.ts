@@ -21,9 +21,9 @@ export class AuthService {
     });
   }
 
-  signInWithFacebook() {
+  signInWithPopup() {
     return this._firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.FacebookAuthProvider()
+      new firebase.auth.GoogleAuthProvider()
     );
   }
 
