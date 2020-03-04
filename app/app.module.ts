@@ -15,6 +15,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { InputComponent } from "./input.component";
 
 import { AuthGuard } from "../services/auth-guard.service";
+import { AuthService } from "../services/auth.service";
 import { environment } from "../environments/environments";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
@@ -45,7 +46,7 @@ import "hammerjs";
     AngularFireAuthModule
   ],
   declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent],
-  providers: [AuthGuard],
+  providers: [AuthGuard, [AuthService]],
   bootstrap: [AppComponent],
   entryComponents: []
 })
