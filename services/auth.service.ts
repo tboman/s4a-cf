@@ -22,9 +22,20 @@ export class AuthService {
   }
 
   signInWithPopup() {
-    return this._firebaseAuth.auth.signInWithRedirect(
-      new firebase.auth.GoogleAuthProvider()
-    );
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope("profile");
+    provider.addScope("email");
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function(result) {
+        console.info(result.credential.toJSON);
+        var user = result.user;
+      });
+
+//    return this._firebaseAuth.auth.signInWithRedirect(
+//      new firebase.auth.GoogleAuthProvider()
+//    );
   }
 
   isLoggedIn() {
