@@ -5,6 +5,7 @@ import { WestGuide } from './app/west';
 import { PublicComponent } from './app/public.component';
 import { HomeComponent } from './app/home.component';
 import { AboutComponent } from './app/about.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const GUIDE_ROUTES: Route[] = [
   { path: 'africa-guide', component: AfricaGuide },
@@ -14,7 +15,7 @@ const CDK_ROUTES: Route[] = [
 
 ]
 const ALL_ROUTES: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'public', component: PublicComponent },
   { path: 'cdk', children: CDK_ROUTES },
