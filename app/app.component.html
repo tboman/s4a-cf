@@ -1,42 +1,43 @@
 <mat-sidenav-container fullscreen>
 	<mat-sidenav #exampleSidenav class="example-sidenav mat-elevation-z3" [mode]="isMobile ? 'over' : 'side'">
-    <mat-toolbar>
-      Links
-      <span fxFlex></span>
-      <button mat-icon-button (click)="exampleSidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button>
-    </mat-toolbar>
+		<mat-toolbar>
+			Links
+			<span fxFlex></span>
+			<button mat-icon-button (click)="exampleSidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+		</mat-toolbar>
 		<mat-nav-list style="z-index: 2">
-			<a mat-list-item routerLink="/public" routerLinkActive="active-link" (click)="exampleSidenav.close()">Home</a>
-			<a mat-list-item routerLink="/about" routerLinkActive="active-link" (click)="exampleSidenav.close()">About</a>
-			<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">Login</a>
+			<a mat-list-item routerLink="/public" routerLinkActive="active-link"
+				(click)="exampleSidenav.close()">Home</a>
+			<a mat-list-item routerLink="/about" routerLinkActive="active-link"
+				(click)="exampleSidenav.close()">About</a>
+			<a mat-list-item routerLink="/home" routerLinkActive="active-link"
+				(click)="exampleSidenav.close()">Login</a>
 			<a mat-list-item (click)="toggleGuides()">
 				<p matLine>Collaborate</p>
-				<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon" [class.isUnToggled]="!hideGuides">keyboard_arrow_down</mat-icon>
+				<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon"
+					[class.isUnToggled]="!hideGuides">keyboard_arrow_down</mat-icon>
 			</a>
 		</mat-nav-list>
-    		<div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
-          <mat-nav-list>
-            <a mat-list-item *ngFor="let guideLink of guideLinks" [routerLink]="['/guides', guideLink.url]" routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(guideLink.name)">
-            <p matLine>{{guideLink.name}}</p>
-            </a>
-          </mat-nav-list>
-    		</div>
+		<div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
+			<mat-nav-list>
+				<a mat-list-item *ngFor="let guideLink of guideLinks" [routerLink]="['/guides', guideLink.url]"
+					routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(guideLink.name)">
+					<p matLine>{{guideLink.name}}</p>
+				</a>
+			</mat-nav-list>
+		</div>
 		<mat-nav-list>
 			<a mat-list-item (click)="toggleComponents()">
 				<p matLine>-test only-</p>
-				<mat-icon [class.isToggled]="hideComponents" class="toggle-component-icon" [class.isUnToggled]="!hideComponents">keyboard_arrow_down</mat-icon>
+				<mat-icon [class.isToggled]="hideComponents" class="toggle-component-icon"
+					[class.isUnToggled]="!hideComponents">keyboard_arrow_down</mat-icon>
 			</a>
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-toolbar color="primary" class="mat-elevation-z3">
-		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration Framework
-
+		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration
+		Framework
 		<span fxFlex></span>
-    <button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>lock</mat-icon></button>
-
-		<span fxFlex></span>
-    
-
 	</mat-toolbar>
 	<div class="app-content">
 		<router-outlet></router-outlet>
