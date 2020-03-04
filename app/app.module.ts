@@ -9,7 +9,6 @@ import { HomeComponent } from './home.component';
 import { PublicComponent } from './public.component';
 import { AboutComponent } from './about.component';
 import { AppRouting } from '../app.routing';
-import { ExampleModule } from './example.module';
 import { MaterialModule } from './material.module';
 import { GuidesModule } from './guides.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -29,7 +28,6 @@ import 'hammerjs';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRouting,
-    ExampleModule,
     GuidesModule,
     FlexLayoutModule
   ],
