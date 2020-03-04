@@ -13,6 +13,8 @@ import { MaterialModule } from './material.module';
 import { GuidesModule } from './guides.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { InputComponent } from './input.component';
+
+import { AuthGuard } from '../services/auth/auth-guard.service';
 import { environment } from '../environments/environments';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
