@@ -4,7 +4,7 @@ export const environment = {
       apiKey: "AIzaSyAnyTHp1y0mUjQbFTsBShbP_qcaCLaVzG8",
       authDomain: "bhazze.com",
       databaseURL: "DATABASE-URL-HERE",
-      projectId: "project-437005760912",
+      projectId: "science4africa-e9a07",
       storageBucket: "STORAGE-BUCKET-HERE",
       messagingSenderId: "MESSAGING-SENDER-ID-HERE"
    }
