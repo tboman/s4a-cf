@@ -12,7 +12,12 @@ import { AppRouting } from '../app.routing';
 import { MaterialModule } from './material.module';
 import { GuidesModule } from './guides.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { InputComponent } from './input.component'
+import { InputComponent } from './input.component';
+import { environment } from '../environments/environments';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import 'hammerjs';
 /**
  * NgModule that includes all Material modules that are required to serve 
@@ -29,7 +34,10 @@ import 'hammerjs';
     BrowserAnimationsModule,
     AppRouting,
     GuidesModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   declarations: [
     AppComponent,
