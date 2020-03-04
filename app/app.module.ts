@@ -46,7 +46,7 @@ import "hammerjs";
   ],
   declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent],
   providers: [AuthGuard],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, [AuthGuard]],
   entryComponents: []
 })
 export class AppModule {}
