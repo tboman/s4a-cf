@@ -1,18 +1,30 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  FormGroup,
+  FormControl,
+  FormGroupDirective,
+  NgForm
+} from "@angular/forms";
+import { ErrorStateMatcher } from "@angular/material/core";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
 }
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  selector: "app-input",
+  templateUrl: "./input.component.html",
+  styleUrls: ["./input.component.css"]
 })
 export class InputComponent implements OnInit {
   @Input() form: FormGroup;
@@ -21,11 +33,11 @@ export class InputComponent implements OnInit {
   readonlyState: boolean = false;
   disableControl: boolean = false;
 
-  floatLabel= 'auto';
+  floatLabel = "auto";
   matcher = new MyErrorStateMatcher();
 
   get control() {
-    return this.form.get('input');
+    return this.form.get("input");
   }
 
   get controlValue() {
@@ -37,23 +49,21 @@ export class InputComponent implements OnInit {
   }
 
   get errorMessage() {
-    return this.control.hasError('required') ? 'You must enter a value' : '';
+    return this.control.hasError("required") ? "You must enter a value" : "";
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeReadonlyState() {
     this.readonlyState = !this.readonlyState;
   }
   disable() {
-    this.disableControl = ! this.disableControl;
+    this.disableControl = !this.disableControl;
   }
 
   resetControl() {
-    this.reset.emit('input');
+    this.reset.emit("input");
   }
-
 }
