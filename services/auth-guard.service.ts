@@ -10,7 +10,6 @@ export class AuthGuard implements CanActivate {
         if ( this.authService.isLoggedIn() ) {
             return true;
         }
-        console.info('not logged in');
         this.authService.signInWithPopup();
         return false;
     }

@@ -31,6 +31,7 @@ export class AuthService {
       .then(function(result) {
         console.info(result.credential.toJSON);
         this.userDetails = result.user;
+        this.router.navigate(["/home"])
       });
 
 //    return this._firebaseAuth.auth.signInWithRedirect(
