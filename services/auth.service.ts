@@ -30,7 +30,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(function(result) {
         console.info(result.credential.toJSON);
-        var user = result.user;
+        this.userDetails = result.user;
       });
 
 //    return this._firebaseAuth.auth.signInWithRedirect(
