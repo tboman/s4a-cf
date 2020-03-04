@@ -30,7 +30,6 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(function(result) {
         console.info(result.credential.toJSON);
-        this.userDetails = result.user;
         return result.user;
       });
 
