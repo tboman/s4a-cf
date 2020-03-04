@@ -5,6 +5,7 @@ import { WestGuide } from './app/west';
 import { PublicComponent } from './app/public.component';
 import { HomeComponent } from './app/home.component';
 import { AboutComponent } from './app/about.component';
+import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 
 const GUIDE_ROUTES: Route[] = [
