@@ -30,12 +30,9 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(function(result) {
         console.info(result.credential.toJSON);
+        this.router.navigate(['home'])
         return result.user;
       });
-
-//    return this._firebaseAuth.auth.signInWithRedirect(
-//      new firebase.auth.GoogleAuthProvider()
-//    );
   }
 
   isLoggedIn() {

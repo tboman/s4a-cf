@@ -11,7 +11,6 @@ export class AuthGuard implements CanActivate {
     }
     var user = this.authService.signInWithPopup();
     if (null != user) {
-      this.router.navigate(["/home"]);
       return true;
     }
     return false;

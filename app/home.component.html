@@ -10,26 +10,23 @@
 	<mat-card-title>Your Collaboration Requests</mat-card-title>
 	<mat-card-content>
 		<mat-accordion>
-			<mat-expansion-panel>
+			<mat-expansion-panel *ngFor="let value of requests">
 				<mat-expansion-panel-header>
-					<mat-panel-title>
-						<mat-icon>fiber_manual_record</mat-icon> &nbsp;&nbsp;Lecturer Invite
-					</mat-panel-title>
+					<mat-panel-title>{{value.title}}</mat-panel-title>
 				</mat-expansion-panel-header>
-				<p>Inviting U.S., Canadian, or EU scientists to deliver a lecture at your institution.</p>
-				<p>Request made: 2020 JAN 22</p>
-				<p>Responses: No responses yet</p>
-
+				<p>{{value.description}}</p>
+				<p>Request issued {{value.created | date: "d LLL yyyy" }}</p>
+				<details>
+					<p>
+						Once someones offer matches your request, you can proceed with approval of the match. If you
+						wish to ignore the response, you can archive it or report the offer as bogus by clicking the
+						spam button.
+						<p>
+				</details>
 			</mat-expansion-panel>
-			<mat-expansion-panel>
-				<mat-expansion-panel-header>
-					<mat-panel-title>
-						<mat-icon>new_releases</mat-icon> &nbsp;&nbsp;Research Collaboration Residency
-					</mat-panel-title>
-				</mat-expansion-panel-header>
-				<p>Inviting U.S., Canadian, or EU scientists/researchers for a research collaboration residency at
-					your institution</p>
-				<p>Request made: 2020 JAN 22</p>
+
+
+<!--		
 				<p>Responses: 2020 JAN 31</p>
 				<p>
 					Your input is required in order to proceed with the request:<br/>
@@ -39,14 +36,7 @@
 						<button mat-button type="submit" color="primary">Spam</button>
 					</mat-card-actions>
 				</p>
-				<details>
-					<p>
-						Once someones offer matches your request, you can proceed with approval of the match. If you
-						wish to ignore the response, you can archive it or report the offer as bogus by clicking the
-						spam button.
-						<p>
-				</details>
-			</mat-expansion-panel>
+        -->
 		</mat-accordion>
 		<mat-card-actions align="end">
 			<a mat-button routerLink="/guides/africa-guide" routerLinkActive="active-link" color="primary">Make
