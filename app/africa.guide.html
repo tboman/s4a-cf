@@ -1,11 +1,7 @@
 <h1 class="mat-display-1">Requests</h1>
-<p>To enroll Your Academic Organization or Research Institution tell us about your institution and its collaborative
-	needs.</p>
-<p>Complete the profile survey below and validate that you can access the email address you provided (you will receive
-	an
-	activation code after sign-up). Once enrolled, you will get furter instructions and more information about the
-	program. You can change your profile, interest and requests at any time to be matched with parties in the regions
-	your choose.</p>
+<p>
+  To be added to our platform, tell us about your collaborative needs. Answer a few questions below and validate the email address you provided (you will receive an activation code after sign-up). Once enrolled, you will get further instructions and more information about the program. You can change your profile, interests, and requests at any time to be matched with potential collaborators.
+</p>
 <form #form="ngForm" (submit)="onSubmit()">
 	<mat-card>
 		<mat-card-title>About You</mat-card-title>
@@ -51,7 +47,7 @@
 			<br/>
 			<br/>
 
-			<mat-card-title>Your Intentions</mat-card-title>
+			<mat-card-title>Your Needs</mat-card-title>
 			<mat-form-field>
 				<mat-select name="interest" required [(ngModel)]="account.interest" placeholder="Interested In">
 					<mat-option value>Please Select</mat-option>
