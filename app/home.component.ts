@@ -10,12 +10,13 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    console.log('reading db');
     const db = firebase.firestore();
-    db.settings({ timestampsInSnapshots: true });
     db.collection("requests")
       .get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
+          console.log('listing doc');
           console.log(doc.data);
         });
       });
