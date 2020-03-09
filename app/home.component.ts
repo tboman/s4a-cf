@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit {
       if (user) {
         this.user = user;
 
+        firebase.auth().currentUser = user;
+
         firebase.auth().currentUser.getIdToken().then(token => console.log('got token', token))
-        
+
         const db = firebase.firestore();
         db.collection("requests")
           .get()
