@@ -15,7 +15,17 @@ export class HomeComponent implements OnInit {
     this._firebaseAuth.authState.subscribe(user => {
       if (user) {
         this.user = user;
-        console.log(this.user);
+
+        firebase.auth().currentUser.getIdToken().then(token => console.log('got token', token))
+        
+        const db = firebase.firestore();
+        db.collection("requests")
+          .get()
+          .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+              this.renderRequest(doc);
+            });
+          });
       } else {
         this.user = null;
       }
@@ -32,14 +42,5 @@ export class HomeComponent implements OnInit {
     this.requests.push(request);
   }
 
-  ngOnInit() {
-    const db = firebase.firestore();
-    db.collection("requests")
-      .get()
-      .then(snapshot => {
-        snapshot.docs.forEach(doc => {
-          this.renderRequest(doc);
-        });
-      });
-  }
+  ngOnInit() {}
 }
