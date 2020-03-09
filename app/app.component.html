@@ -31,12 +31,12 @@
 		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration
 		Framework
 		<span fxFlex></span>
-		<div *ngIf="userDetails; else anonymous" class="card text-center">
-			{{ userDetails.email }}
-			<button class="btn btn-danger" (click)="signOut()">Sign out</button>
+		<div *ngIf="user; else anonymous" class="card text-center">
+			{{ user.email }}
+			<a mat-button routerLink="/logout" routerLinkActive="active-link" color="primary">Logout</a>
 		</div>
-		<ng-template #notShow>
-			<button class="btn btn-danger" (click)="signOut()">Sign In</button>
+		<ng-template #anonymous>
+			<a mat-button routerLink="/home" routerLinkActive="active-link" color="primary">Sign In</a>
 		</ng-template>
 	</mat-toolbar>
 	<div class="app-content">
