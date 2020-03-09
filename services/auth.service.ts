@@ -14,7 +14,7 @@ export class AuthService {
     this.user.subscribe(user => {
       if (user) {
         this.userDetails = user;
-        console.log(this.userDetails);
+        this.router.navigate(['home']);
       } else {
         this.userDetails = null;
       }
@@ -30,8 +30,6 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(function(result) {
         console.info('logged in');
-        this.router.navigate(['/home']);
-        console.info('forwarded to route');
       });
   }
 

@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
       this._firebaseAuth.authState.subscribe(user => {
         if (user) {
           this.user = user;
-          console.log(this.user);
         } else {
           this.user = null;
         }
