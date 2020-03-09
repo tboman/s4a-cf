@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import * as firebase from "firebase/app";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: "home-component",
@@ -8,7 +9,18 @@ import * as firebase from "firebase/app";
 })
 export class HomeComponent implements OnInit {
   requests = [];
-  constructor() {}
+  private user: firebase.User = null;
+
+  constructor(private _firebaseAuth: AngularFireAuth) {
+    this._firebaseAuth.authState.subscribe(user => {
+      if (user) {
+        this.user = user;
+        console.log(this.user);
+      } else {
+        this.user = null;
+      }
+    });
+  }
 
   renderRequest(doc) {
     var request = { id: 1, title: "", description: "", created: new Date() };

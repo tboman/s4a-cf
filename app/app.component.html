@@ -10,8 +10,8 @@
 				(click)="exampleSidenav.close()">Home</a>
 			<a mat-list-item routerLink="/about" routerLinkActive="active-link"
 				(click)="exampleSidenav.close()">About</a>
-			<a mat-list-item routerLink="/home" routerLinkActive="active-link"
-				(click)="exampleSidenav.close()">My Collaboration</a>
+			<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">My
+				Collaboration</a>
 			<a mat-list-item (click)="toggleGuides()">
 				<p matLine>New Collaboration</p>
 				<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon"
@@ -31,6 +31,13 @@
 		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration
 		Framework
 		<span fxFlex></span>
+		<div *ngIf="userDetails; else anonymous" class="card text-center">
+			{{ userDetails.email }}
+			<button class="btn btn-danger" (click)="signOut()">Sign out</button>
+		</div>
+		<ng-template #notShow>
+			<button class="btn btn-danger" (click)="signOut()">Sign In</button>
+		</ng-template>
 	</mat-toolbar>
 	<div class="app-content">
 		<router-outlet></router-outlet>

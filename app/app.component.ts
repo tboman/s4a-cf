@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from "@angular/animations";
+import { BreakpointObserver } from "@angular/cdk/layout";
+import * as firebase from "firebase/app";
+import { AngularFireAuth } from "angularfire2/auth";
 
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import {BreakpointObserver} from '@angular/cdk/layout';
 @Component({
-  selector: 'material-app',
-  templateUrl: 'app.component.html',
+  selector: "material-app",
+  templateUrl: "app.component.html",
   animations: [
-        trigger(
-      'enterAnimation', [
-        transition(':enter', [
-          style({transform: 'translateY(-20%)', opacity: 0}),
-          animate('250ms', style({transform: 'translateY(0)', opacity: 1}))
-        ]),
-        transition(':leave', [
-          style({transform: 'translateY(0)', opacity: 1}),
-          animate('250ms', style({transform: 'translateY(-20%)', opacity: 0}))
-        ])
-      ]
-    )]
+    trigger("enterAnimation", [
+      transition(":enter", [
+        style({ transform: "translateY(-20%)", opacity: 0 }),
+        animate("250ms", style({ transform: "translateY(0)", opacity: 1 }))
+      ]),
+      transition(":leave", [
+        style({ transform: "translateY(0)", opacity: 1 }),
+        animate("250ms", style({ transform: "translateY(-20%)", opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class AppComponent implements OnInit {
   guideLinks: Guides[];
@@ -26,9 +33,26 @@ export class AppComponent implements OnInit {
   hideGuides: boolean = false;
   hideCDK: boolean = false;
   title: string;
-  constructor(private breakObserver: BreakpointObserver){}
+  private user: firebase.User = null;
+
+  constructor(
+    private _firebaseAuth: AngularFireAuth,
+    private breakObserver: BreakpointObserver
+  ) {
+    if (this._firebaseAuth) {
+      this._firebaseAuth.authState.subscribe(user => {
+        if (user) {
+          this.user = user;
+          console.log(this.user);
+        } else {
+          this.user = null;
+        }
+      });
+    }
+  }
+
   get isMobile() {
-    if (this.breakObserver.isMatched('(max-width: 599px)')) {
+    if (this.breakObserver.isMatched("(max-width: 599px)")) {
       return true;
     } else {
       return false;
@@ -46,22 +70,24 @@ export class AppComponent implements OnInit {
   toggleUppercase() {
     this.isToggledUppercase = !this.isToggledUppercase;
     if (this.isToggledUppercase) {
-      document.body.classList.add('button-uppercase');
-      window.localStorage.setItem('isToggledUppercase', JSON.stringify(true));
+      document.body.classList.add("button-uppercase");
+      window.localStorage.setItem("isToggledUppercase", JSON.stringify(true));
     } else {
-      document.body.classList.remove('button-uppercase');
-      window.localStorage.setItem('isToggledUppercase', JSON.stringify(false));
+      document.body.classList.remove("button-uppercase");
+      window.localStorage.setItem("isToggledUppercase", JSON.stringify(false));
     }
   }
   ngOnInit() {
-    if (document.body.classList.contains('button-uppercase')) {
+    if (document.body.classList.contains("button-uppercase")) {
       this.isToggledUppercase = true;
-    } else if (window.localStorage.getItem('isToggledUppercase')) {
-      this.isToggledUppercase = JSON.parse(window.localStorage.getItem('isToggledUppercase'));
+    } else if (window.localStorage.getItem("isToggledUppercase")) {
+      this.isToggledUppercase = JSON.parse(
+        window.localStorage.getItem("isToggledUppercase")
+      );
     }
     this.guideLinks = [
-      { name: "New Request", url: "africa-guide"},
-      { name: "New Offer", url: "west-guide"}
+      { name: "New Request", url: "africa-guide" },
+      { name: "New Offer", url: "west-guide" }
     ];
   }
 }
