@@ -9,6 +9,7 @@ import {
 import { BreakpointObserver } from "@angular/cdk/layout";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "angularfire2/auth";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "material-app",
@@ -37,7 +38,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _firebaseAuth: AngularFireAuth,
-    private breakObserver: BreakpointObserver
+    private breakObserver: BreakpointObserver,
+    private router: Router
   ) {
     if (this._firebaseAuth) {
       this._firebaseAuth.authState.subscribe(user => {
@@ -49,6 +51,12 @@ export class AppComponent implements OnInit {
         }
       });
     }
+  }
+
+  signOut(): void {
+    this._firebaseAuth.auth.signOut().then(() => {
+      this.router.navigate([""]);
+    });
   }
 
   get isMobile() {

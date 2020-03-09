@@ -34,8 +34,14 @@
 		<div *ngIf="user; else anonymous" class="card text-center">
 			{{ user.email }}
 			<a mat-button routerLink="/logout" routerLinkActive="active-link" title="logout"><mat-icon>clear</mat-icon></a>
+            <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+
 		</div>
 		<ng-template #anonymous>
+            <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+      <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
+      <button class="btn btn-social-icon btn-linkedin" (click)="signInWithLinkedIn()"><span class="fa fa-linkedin"></span></button>
+
 			<a mat-button routerLink="/home" routerLinkActive="active-link"><mat-icon>lock</mat-icon></a>
 		</ng-template>
 	</mat-toolbar>
