@@ -29,8 +29,9 @@ export class AuthService {
       .auth
       .signInWithPopup(provider)
       .then(function(result) {
-        console.info(result.credential.toJSON);
-        this.router.navigate(['home']);
+        console.info('logged in');
+        this.router.navigate(['/home']);
+        console.info('forwarded to route');
       });
   }
 
