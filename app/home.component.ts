@@ -9,16 +9,13 @@ import { AngularFireAuth } from "angularfire2/auth";
 })
 export class HomeComponent implements OnInit {
   requests = [];
-  private user: firebase.User = null;
+  user: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth) {
+   // var userLocal = this.user;
     this._firebaseAuth.authState.subscribe(user => {
       if (user) {
-        this.user = user;
-
-        firebase.auth().currentUser = user;
-
-        firebase.auth().currentUser.getIdToken().then(token => console.log('got token', token))
+   //     userLocal = user;
 
         const db = firebase.firestore();
         db.collection("requests")
@@ -32,6 +29,7 @@ export class HomeComponent implements OnInit {
         this.user = null;
       }
     });
+    this.user = firebase.auth().currentUser;
   }
 
   renderRequest(doc) {

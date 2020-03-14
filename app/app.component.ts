@@ -34,28 +34,48 @@ export class AppComponent implements OnInit {
   hideGuides: boolean = false;
   hideCDK: boolean = false;
   title: string;
-  private user: firebase.User = null;
+  user: firebase.User = null;
 
   constructor(
-    private _firebaseAuth: AngularFireAuth,
     private breakObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private _firebaseAuth: AngularFireAuth
   ) {
-    if (this._firebaseAuth) {
-      this._firebaseAuth.authState.subscribe(user => {
-        if (user) {
-          this.user = user;
-        } else {
-          this.user = null;
-        }
-      });
-    }
+    var userLocal = this.user;
+    this._firebaseAuth.authState.subscribe(user => {
+      if (user) {
+        userLocal = user;
+      } else {
+        userLocal = null;
+      }
+    });
+
+    var component = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.info("app component changing to " + user.email);
+        component.ngOnInit();
+      } else {
+        this.user = null;
+      }
+    });
   }
 
-  signOut(): void {
-    this._firebaseAuth.auth.signOut().then(() => {
-      this.router.navigate([""]);
-    });
+  signIn() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope("profile");
+    provider.addScope("email");
+
+    var localUser = this.user;
+    var localRouter = this.router;
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function(result) {
+        console.info("logged in explicitly as " + result.user.email);
+        localUser = result.user;
+        localRouter.navigate([""]);
+      });
   }
 
   get isMobile() {
@@ -96,6 +116,8 @@ export class AppComponent implements OnInit {
       { name: "New Request", url: "africa-guide" },
       { name: "New Offer", url: "west-guide" }
     ];
+
+    this.user = firebase.auth().currentUser;
   }
 }
 

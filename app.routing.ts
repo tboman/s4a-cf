@@ -5,6 +5,7 @@ import { WestGuide } from './app/west';
 import { PublicComponent } from './app/public.component';
 import { HomeComponent } from './app/home.component';
 import { AboutComponent } from './app/about.component';
+import { LogoutComponent } from './app/logout/logout.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 
@@ -19,6 +20,7 @@ const ALL_ROUTES: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'public', component: PublicComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'cdk', children: CDK_ROUTES },
   { path: 'guides', children: GUIDE_ROUTES, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'public' }

@@ -9,33 +9,39 @@ export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
-    this.user = _firebaseAuth.authState;
-    this.user.subscribe(user => {
+  constructor(private router: Router) {
+    /** var userDetails = this.userDetails;
+    firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        this.userDetails = user;
-        this.router.navigate(['home']);
+        console.info("setting current user in auth service to " + user.email);
+        userDetails = user;
       } else {
-        this.userDetails = null;
+        userDetails = null;
       }
     });
+    **/
   }
 
   signInWithPopup() {
+    var router = this.router;
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope("profile");
     provider.addScope("email");
-    this._firebaseAuth
-      .auth
+
+    firebase
+      .auth()
       .signInWithPopup(provider)
       .then(function(result) {
-        console.info('logged in');
+        firebase
+          .auth()
+          .currentUser.getIdToken()
+          .then(token => console.log("got token for "+ result.user.email));
+        router.navigate(['home']);
       });
   }
 
   isLoggedIn() {
-    console.info("user " + this.userDetails);
-    if (this.userDetails == null) {
+    if (firebase.auth().currentUser == null) {
       return false;
     } else {
       return true;
@@ -47,6 +53,10 @@ export class AuthService {
   }
 
   logout() {
-    this._firebaseAuth.auth.signOut().then(res => this.router.navigate(["/"]));
+    this.userDetails = null;
+    firebase
+      .auth()
+      .signOut()
+      .then(res => this.router.navigate(["/"]));
   }
 }

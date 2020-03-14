@@ -32,12 +32,16 @@
 		Framework
 		<span fxFlex></span>
 		<div *ngIf="user; else anonymous" class="card text-center">
-			{{ user.email }}
-			<button class="mat-button" (click)="signOut()"><mat-icon>clear</mat-icon></button>
+			<a mat-button routerLink="/profile" routerLinkActive="active-link" title="{{ user.email }}">
+				<mat-icon>person</mat-icon>
+			</a>
+			<a mat-button routerLink="/logout" routerLinkActive="active-link" title="logout">
+				<mat-icon>clear</mat-icon>
+			</a>
 		</div>
 		<ng-template #anonymous>
-			<a mat-button routerLink="/home" routerLinkActive="active-link">
-				login <mat-icon>lock</mat-icon>
+			<a mat-button routerLink="/home" routerLinkActive="active-link" title="login">
+				<mat-icon>lock</mat-icon>
 			</a>
 		</ng-template>
 	</mat-toolbar>
