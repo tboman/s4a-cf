@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { Offer } from './module/offer';
+import { Offer } from './model/offer';
 
 @Component({
   selector: 'west-guide',
