@@ -10,7 +10,7 @@ interests, and offers at any time to be matched with African peers.
 		<mat-card-title>About You</mat-card-title>
 		<mat-card-content>
 			<mat-form-field>
-				<input matInput placeholder="Your Email" name="email" required [(ngModel)]="account.email">
+				<input matInput placeholder="Your Email" name="email" required [(ngModel)]="offer.email">
 				<mat-error>You will need to provide an email that we can verify by sending an activation code.
 				</mat-error>
 			</mat-form-field>
@@ -18,20 +18,20 @@ interests, and offers at any time to be matched with African peers.
 			<br/>
 
 			<mat-form-field>
-				<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="account.work">
+				<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="offer.work">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>
 			<br/>
 
 			<mat-form-field>
-				<input matInput placeholder="Your Name" name="accountName" required [(ngModel)]="account.name">
+				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="offer.name">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>
 
 			<mat-form-field>
-				<mat-select name="title" required [(ngModel)]="account.title" placeholder="Your Title">
+				<mat-select name="title" required [(ngModel)]="offer.title" placeholder="Your Title">
 					<mat-option value>Please Select</mat-option>
 					<mat-option value="researcher">Researcher at private institution</mat-option>
 					<mat-option value="junior">Junior faculty member at a university/research institution</mat-option>
@@ -45,7 +45,7 @@ interests, and offers at any time to be matched with African peers.
 			<br/>
 
 			<mat-form-field>
-				<mat-select name="location" required [(ngModel)]="account.location" placeholder="Your Location">
+				<mat-select name="location" required [(ngModel)]="offer.location" placeholder="Your Location">
 					<mat-option value>Please Select</mat-option>
 					<mat-option value="europe">European Union Country</mat-option>
 					<mat-option value="us">United States of America</mat-option>
@@ -60,7 +60,7 @@ interests, and offers at any time to be matched with African peers.
 
 			<mat-card-title>Your Intentions</mat-card-title>
 			<mat-form-field>
-				<mat-select name="interest" required [(ngModel)]="account.interest" placeholder="Interested In">
+				<mat-select name="interest" required [(ngModel)]="offer.interest" placeholder="Interested In">
 					<mat-option value>Please Select</mat-option>
 					<mat-option value="collaboration">Collaborating with scientists in Africa on specific projects
 					</mat-option>
@@ -83,7 +83,7 @@ interests, and offers at any time to be matched with African peers.
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-select name="field" required [(ngModel)]="account.field" placeholder="Research Field">
+				<mat-select name="field" required [(ngModel)]="offer.field" placeholder="Research Field">
 					<mat-option value>Please Select</mat-option>
 					<mat-option value="agritech">Agritech</mat-option>
 					<mat-option value="agritech">Applied science</mat-option>
@@ -102,7 +102,7 @@ interests, and offers at any time to be matched with African peers.
 			</mat-form-field>
 
 			<mat-form-field>
-				<input matInput placeholder="Collaboration Needs" name="need" required [(ngModel)]="account.need">
+				<input matInput placeholder="Collaboration Needs" name="need" required [(ngModel)]="offer.need">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>

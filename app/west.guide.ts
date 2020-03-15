@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Offer } from './module/offer';
 
 @Component({
   selector: 'west-guide',
@@ -7,12 +8,14 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class WestGuide implements OnInit {
   form: FormGroup;
+  offer: Offer;
 
   constructor(
     private fb: FormBuilder
   ) {}
   
   ngOnInit() {
+    this.offer = new Offer();
     this.initForm();
   }
 
@@ -25,7 +28,6 @@ export class WestGuide implements OnInit {
   resetControl(control: string) {
     this.form.get(control).reset('');
   }
-  account = {};
 
   onSubmit() {
     alert("Successfully submitted form.");
