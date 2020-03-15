@@ -1,4 +1,5 @@
 export class Offer extends Object {
+  creator: string;
   name: string;
   title: string;
   email: string;

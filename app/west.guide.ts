@@ -32,6 +32,9 @@ export class WestGuide implements OnInit {
   onSubmit() {
     console.log(this.offer);
     const db = firebase.firestore();
+    this.offer.email = firebase.auth().currentUser.email;
+    this.offer.creator = firebase.auth().currentUser.uid;
+
     db.collection("offer")
       .add(this.offer)
       .then(function(docRef) {
