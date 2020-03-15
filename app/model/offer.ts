@@ -1,4 +1,4 @@
-export class Offer {
+export class Offer extends Object {
   name: string;
   title: string;
   email: string;
