@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Offer } from './model/offer';
+import * as firebase from "firebase/app";
 
 @Component({
   selector: 'west-guide',
@@ -16,6 +17,7 @@ export class WestGuide implements OnInit {
   
   ngOnInit() {
     this.offer = new Offer();
+    this.offer.email = firebase.auth().currentUser.email;
     this.initForm();
   }
 
@@ -30,6 +32,7 @@ export class WestGuide implements OnInit {
   }
 
   onSubmit() {
-    alert("Successfully submitted form.");
+    console.log(this.offer);
+    alert("Successfully submitted form. ");
   }
 }
