@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
               this.renderRequest(doc);
             });
           });
-        db.collection("offer")
+        db.collection("offer").where("creator", "==", user.uid)
           .get()
           .then(snapshot => {
             snapshot.docs.forEach(doc => {
