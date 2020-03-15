@@ -9,6 +9,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 })
 export class HomeComponent implements OnInit {
   requests = [];
+  offers = [];
   user: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth) {
@@ -23,6 +24,13 @@ export class HomeComponent implements OnInit {
           .then(snapshot => {
             snapshot.docs.forEach(doc => {
               this.renderRequest(doc);
+            });
+          });
+        db.collection("offer")
+          .get()
+          .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+              this.renderOffer(doc);
             });
           });
       } else {
@@ -40,6 +48,14 @@ export class HomeComponent implements OnInit {
     request.created = doc.data().created.toDate();
 
     this.requests.push(request);
+  }
+  renderOffer(doc) {
+    var offer = { email: "", title: "", name: "", created: new Date() };
+    offer.email = doc.data().email;
+    offer.title = doc.data().title;
+    offer.name = doc.data().name;
+    
+    this.offers.push(offer);
   }
 
   ngOnInit() {}

@@ -57,7 +57,20 @@
 <mat-card>
 	<mat-card-title>Your Collaboration Offers</mat-card-title>
 	<mat-card-content>
-		<p>No offers created.</p>
+			<mat-expansion-panel *ngFor="let value of offers">
+				<mat-expansion-panel-header>
+					<mat-panel-title>{{value.need}}</mat-panel-title>
+				</mat-expansion-panel-header>
+				<p>{{value.name}}</p>
+				<p>Request issued {{value.created | date: "d LLL yyyy" }}</p>
+				<details>
+					<p>
+						Once someones responds and is matched to your request, you can proceed with approval of the match and start collaborating. If you
+						wish to ignore the response, you can archive it or report the offer as bogus by clicking the
+						spam button.
+						<p>
+				</details>
+			</mat-expansion-panel>
 	</mat-card-content>
 	<mat-card-actions align="end">
 		<a mat-button routerLink="/guides/west-guide" routerLinkActive="active-link" color="primary">Make zx9xTQXU8xodN9N8d6bYWLtjJM9DOYycZKUW010NHdRrOfRtyciUkuqfhe0up5Xgr</a>
