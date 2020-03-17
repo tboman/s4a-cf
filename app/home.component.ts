@@ -10,6 +10,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class HomeComponent implements OnInit {
   requests = [];
   offers = [];
+  offerInterests = [];
   user: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth) {
@@ -19,6 +20,13 @@ export class HomeComponent implements OnInit {
    //     userLocal = user;
 
         const db = firebase.firestore();
+        db.collection("offer-interests")
+          .get()
+          .then(snapshot => {
+            snapshot.docs.forEach(doc => {
+              this.addInterestDescription(doc);
+            });
+          });
         db.collection("requests")
           .get()
           .then(snapshot => {
@@ -46,16 +54,23 @@ export class HomeComponent implements OnInit {
     request.title = doc.data().title;
     request.description = doc.data().description;
     request.created = doc.data().created.toDate();
-
     this.requests.push(request);
   }
+
   renderOffer(doc) {
-    var offer = { email: "", title: "", name: "", created: new Date() };
+    var offer = { email: "", title: "", name: "", created: new Date(), interest: "" };
     offer.email = doc.data().email;
     offer.title = doc.data().title;
-    offer.name = doc.data().name;
-    
+    offer.name = doc.data().name;  
+    offer.interest = this.offerInterests[doc.data.interest];
     this.offers.push(offer);
+  }
+
+  addInterestDescription(doc) {
+    var interest = { value: "", en_us: "" };
+    interest.value = doc.data().value;
+    interest.en_us = doc.data().en_us;
+    this.offerInterests.push(interest);
   }
 
   ngOnInit() {}
