@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "angularfire2/auth";
+import { Offer } from "./model/offer";
 
 @Component({
   selector: "home-component",
@@ -58,13 +59,15 @@ export class HomeComponent implements OnInit {
   }
 
   renderOffer(doc) {
-    var offer = { email: "", title: "", name: "", created: new Date(), interest: "" };
+    var offer : Offer = new Offer();
     offer.email = doc.data().email;
     offer.title = doc.data().title;
     offer.name = doc.data().name;
-    const interest = this.offerInterests.find(interest => interest.value === doc.data().interest);
-    console.log(interest);
-    offer.interest =  interest.en_us;
+    offer.work = doc.data().work;
+    offer.field = doc.data().field;
+    offer.need = doc.data().need;
+    offer.created = doc.data().created.toDate();
+    offer.interest =  this.offerInterests.find(interest => interest.value === doc.data().interest).en_us;
     console.log(offer);
     this.offers.push(offer);
   }

@@ -8,4 +8,5 @@ export class Offer extends Object {
   interest: string;
   field: string;
   need: string;
+  created: Date;
 }
