@@ -61,8 +61,11 @@ export class HomeComponent implements OnInit {
     var offer = { email: "", title: "", name: "", created: new Date(), interest: "" };
     offer.email = doc.data().email;
     offer.title = doc.data().title;
-    offer.name = doc.data().name;  
-    offer.interest = this.offerInterests[doc.data.interest];
+    offer.name = doc.data().name;
+    const interest = this.offerInterests.find(interest => interest.value === doc.data().interest);
+    console.log(interest);
+    offer.interest =  interest.en_us;
+    console.log(offer);
     this.offers.push(offer);
   }
 
@@ -70,6 +73,7 @@ export class HomeComponent implements OnInit {
     var interest = { value: "", en_us: "" };
     interest.value = doc.data().value;
     interest.en_us = doc.data().en_us;
+    console.log(interest);
     this.offerInterests.push(interest);
   }
 
