@@ -2,18 +2,30 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Offer } from "../model/offer";
+import { Interest } from "../model/interest";
 import * as firebase from "firebase/app";
 
 @Component({
-  selector: 'app-offer',
-  templateUrl: './offer.component.html',
-  styleUrls: ['./offer.component.css']
+  selector: "app-offer",
+  templateUrl: "./offer.component.html",
+  styleUrls: ["./offer.component.css"]
 })
 export class OfferComponent implements OnInit {
   form: FormGroup;
   offer: Offer;
+  interests: Interest[];
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {
+    const db = firebase.firestore();
+
+    db.collection("offer-interests")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          this.addInterestDescription(doc);
+        });
+      });
+  }
 
   ngOnInit() {
     this.offer = new Offer();
@@ -25,10 +37,24 @@ export class OfferComponent implements OnInit {
     this.form = this.fb.group({
       input: ["", [Validators.required]]
     });
+    this.interests = [
+      {
+        value: "collaboration",
+        en_us: "Collaborating with scientists in Africa on specific projects"
+      }
+    ];
   }
 
   resetControl(control: string) {
     this.form.get(control).reset("");
+  }
+
+  addInterestDescription(doc) {
+    var interest: Interest = new Interest();
+    interest.value = doc.data().value;
+    interest.en_us = doc.data().en_us;
+    console.log(interest);
+    this.interests.push(interest);
   }
 
   onSubmit() {
@@ -46,6 +72,6 @@ export class OfferComponent implements OnInit {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-      this.router.navigate("/home");
+    this.router.navigate("/home");
   }
 }

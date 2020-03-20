@@ -62,22 +62,7 @@ interests, and offers at any time to be matched with African peers.
 			<mat-form-field>
 				<mat-select name="interest" required [(ngModel)]="offer.interest" placeholder="Interested In">
 					<mat-option value>Please Select</mat-option>
-					<mat-option value="collaboration">Collaborating with scientists in Africa on specific projects
-					</mat-option>
-					<mat-option value="mentor">
-						Mentoring or advising young African scientists
-					</mat-option>
-					<mat-option value="lecture">
-						Delivering (a) virtual lecture(s) at an African university
-					</mat-option>
-					<mat-option value="building">
-						Joining a capacity-building mission in Africa
-					</mat-option>
-					<mat-option value="researchinvite">Offering a research position in your laboratory/group
-					</mat-option>
-					<mat-option value="other">
-						Other (please provide more information in the collaboration needs field below)
-					</mat-option>
+					<mat-option  *ngFor="let interest of interests" value="{{interest.value}}">{{interest.en_us}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
