@@ -92,6 +92,7 @@ export class OfferComponent implements OnInit {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-    this.router.navigate(['/home']);
+    window.alert("Offer submitted.");
+    this.router.navigate(["/home"]);
   }
 }
