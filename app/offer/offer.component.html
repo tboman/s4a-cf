@@ -61,7 +61,6 @@ interests, and offers at any time to be matched with African peers.
 			<mat-card-title>Your Intentions</mat-card-title>
 			<mat-form-field>
 				<mat-select name="interest" required [(ngModel)]="offer.interest" placeholder="Interested In">
-					<mat-option value>Please Select</mat-option>
 					<mat-option  *ngFor="let interest of interests" value="{{interest.value}}">{{interest.en_us}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
@@ -69,19 +68,7 @@ interests, and offers at any time to be matched with African peers.
 
 			<mat-form-field>
 				<mat-select name="field" required [(ngModel)]="offer.field" placeholder="Research Field">
-					<mat-option value>Please Select</mat-option>
-					<mat-option value="agritech">Agritech</mat-option>
-					<mat-option value="appl">Applied science</mat-option>
-					<mat-option value="biomed">Biomedical</mat-option>
-					<mat-option value="chem">Chemistry</mat-option>
-					<mat-option value="compcsi">Computer science</mat-option>
-					<mat-option value="energy">Energy</mat-option>
-					<mat-option value="eng">Engineering</mat-option>
-					<mat-option value="it">Information technology</mat-option>
-					<mat-option value="infra">Infrastructure</mat-option>
-					<mat-option value="math">Mathematics</mat-option>
-					<mat-option value="phys">Physics</mat-option>
-					<mat-option value="tran">Transportation</mat-option>
+					<mat-option  *ngFor="let field of fields" value="{{field.value}}">{{field.en_us}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>

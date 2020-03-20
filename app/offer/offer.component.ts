@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Offer } from "../model/offer";
 import { Interest } from "../model/interest";
+import { Field } from "../model/field";
 import * as firebase from "firebase/app";
 
 @Component({
@@ -13,6 +14,7 @@ import * as firebase from "firebase/app";
 export class OfferComponent implements OnInit {
   form: FormGroup;
   offer: Offer;
+  fields: Field[];
   interests: Interest[];
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -23,6 +25,13 @@ export class OfferComponent implements OnInit {
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           this.addInterestDescription(doc);
+        });
+      });
+    db.collection("offer-fields")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          this.addFieldDescription(doc);
         });
       });
   }
@@ -39,8 +48,14 @@ export class OfferComponent implements OnInit {
     });
     this.interests = [
       {
-        value: "collaboration",
-        en_us: "Collaborating with scientists in Africa on specific projects"
+        value: "",
+        en_us: "Please Select"
+      }
+    ];
+    this.fields = [
+      {
+        value: "",
+        en_us: "Please Select"
       }
     ];
   }
@@ -53,8 +68,13 @@ export class OfferComponent implements OnInit {
     var interest: Interest = new Interest();
     interest.value = doc.data().value;
     interest.en_us = doc.data().en_us;
-    console.log(interest);
     this.interests.push(interest);
+  }
+  addFieldDescription(doc) {
+    var field: Field = new Field();
+    field.value = doc.data().value;
+    field.en_us = doc.data().en_us;
+    this.fields.push(field);
   }
 
   onSubmit() {
@@ -72,6 +92,6 @@ export class OfferComponent implements OnInit {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-    this.router.navigate("/home");
+    this.router.navigate(['/home']);
   }
 }
