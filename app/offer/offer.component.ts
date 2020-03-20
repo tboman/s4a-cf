@@ -16,6 +16,7 @@ export class OfferComponent implements OnInit {
   offer: Offer;
   fields: Field[];
   interests: Interest[];
+  location: [{value:string, en_us: string}];
 
   constructor(private fb: FormBuilder, private router: Router) {
     const db = firebase.firestore();
@@ -58,6 +59,32 @@ export class OfferComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
+    this.locations = [
+      {
+        value: "",
+        en_us: "Please Select"
+      },
+      {
+        value: "eu",
+        en_us: "European Union Country"
+      },
+      {
+        value: "us",
+        en_us: "United States of America"
+      },
+      {
+        value: "ca",
+        en_us: "Canada"
+      },
+      {
+        value: "sa",
+        en_us: "South America"
+      },
+      {
+        value: "oth",
+        en_us: "Other"
+      }
+    ]
   }
 
   resetControl(control: string) {
