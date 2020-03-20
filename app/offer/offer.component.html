@@ -1,0 +1,116 @@
+<h1 class="mat-display-1">Offers</h1>
+<p>
+  Complete the fields below and validate the email address
+you provided (you will receive an activation code after sign-up). Once enrolled, you will get
+further instructions and more information about the program. You can change your profile,
+interests, and offers at any time to be matched with African peers.
+</p>
+<form #form="ngForm" (submit)="onSubmit()">
+	<mat-card>
+		<mat-card-title>About You</mat-card-title>
+		<mat-card-content>
+			<mat-form-field>
+				<input matInput placeholder="Your Email" name="email" required [(ngModel)]="offer.email">
+				<mat-error>You will need to provide an email that we can verify by sending an activation code.
+				</mat-error>
+			</mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-form-field>
+				<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="offer.work">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-form-field>
+				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="offer.name">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
+				<mat-select name="title" required [(ngModel)]="offer.title" placeholder="Your Title">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="researcher">Researcher at private institution</mat-option>
+					<mat-option value="junior">Junior faculty member at a university/research institution</mat-option>
+					<mat-option value="senior">Senior faculty member at a university/research institution</mat-option>
+					<mat-option value="fellow">Postdoctoral fellow</mat-option>
+					<mat-option value="lecturer">Lecturer</mat-option>
+					<mat-option value="other">Other</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
+				<mat-select name="location" required [(ngModel)]="offer.location" placeholder="Your Location">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="europe">European Union Country</mat-option>
+					<mat-option value="us">United States of America</mat-option>
+					<mat-option value="canada">Canada</mat-option>
+					<mat-option value="southamerica">South America</mat-option>
+					<mat-option value="other">Other</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-card-title>Your Intentions</mat-card-title>
+			<mat-form-field>
+				<mat-select name="interest" required [(ngModel)]="offer.interest" placeholder="Interested In">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="collaboration">Collaborating with scientists in Africa on specific projects
+					</mat-option>
+					<mat-option value="mentor">
+						Mentoring or advising young African scientists
+					</mat-option>
+					<mat-option value="lecture">
+						Delivering (a) virtual lecture(s) at an African university
+					</mat-option>
+					<mat-option value="building">
+						Joining a capacity-building mission in Africa
+					</mat-option>
+					<mat-option value="researchinvite">Offering a research position in your laboratory/group
+					</mat-option>
+					<mat-option value="other">
+						Other (please provide more information in the collaboration needs field below)
+					</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-select name="field" required [(ngModel)]="offer.field" placeholder="Research Field">
+					<mat-option value>Please Select</mat-option>
+					<mat-option value="agritech">Agritech</mat-option>
+					<mat-option value="appl">Applied science</mat-option>
+					<mat-option value="biomed">Biomedical</mat-option>
+					<mat-option value="chem">Chemistry</mat-option>
+					<mat-option value="compcsi">Computer science</mat-option>
+					<mat-option value="energy">Energy</mat-option>
+					<mat-option value="eng">Engineering</mat-option>
+					<mat-option value="it">Information technology</mat-option>
+					<mat-option value="infra">Infrastructure</mat-option>
+					<mat-option value="math">Mathematics</mat-option>
+					<mat-option value="phys">Physics</mat-option>
+					<mat-option value="tran">Transportation</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="Collaboration Needs" name="need" required [(ngModel)]="offer.need">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+		</mat-card-content>
+			<mat-card-actions align="end">
+				<button mat-button type="reset" color="primary">Reset</button>
+				<button mat-button type="submit" color="primary" [disabled]="form.invalid">Submit</button>
+			</mat-card-actions>
+	</mat-card>
+</form>
