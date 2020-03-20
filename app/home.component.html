@@ -44,10 +44,6 @@
 				</p>
         -->
 		</mat-accordion>
-		<mat-card-actions align="end">
-			<a mat-button routerLink="/guides/africa-guide" routerLinkActive="active-link" color="primary">Make
-				Request</a>
-		</mat-card-actions>
 	</mat-card-content>
 
 </mat-card>
@@ -58,7 +54,7 @@
 			<mat-expansion-panel-header>
 				<mat-panel-title>{{value.interest}}</mat-panel-title>
 			</mat-expansion-panel-header>
-			<p>Request issued by {{value.name}}, {{value.title}}, {{value.email}}</p>
+			<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
 			<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
 			<details>
         <p>
@@ -69,7 +65,4 @@
 			</details>
 		</mat-expansion-panel>
 	</mat-card-content>
-	<mat-card-actions align="end">
-		<a mat-button routerLink="/guides/west-guide" routerLinkActive="active-link" color="primary">Make Offer</a>
-	</mat-card-actions>
 </mat-card>

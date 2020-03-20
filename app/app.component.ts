@@ -113,8 +113,8 @@ export class AppComponent implements OnInit {
       );
     }
     this.guideLinks = [
-      { name: "New Request", url: "africa-guide" },
-      { name: "New Offer", url: "west-guide" }
+      { name: "Match Maker", url: "africa-guide" },
+      { name: "Configuration", url: "west-guide" }
     ];
 
     this.user = firebase.auth().currentUser;

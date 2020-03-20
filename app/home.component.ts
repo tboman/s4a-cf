@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
     offer.work = doc.data().work;
     offer.field = doc.data().field;
     offer.need = doc.data().need;
+    offer.location = doc.data().location;
     offer.created = doc.data().created.toDate();
     offer.interest =  this.offerInterests.find(interest => interest.value === doc.data().interest).en_us;
     this.offers.push(offer);
