@@ -68,7 +68,6 @@ export class HomeComponent implements OnInit {
     offer.need = doc.data().need;
     offer.created = doc.data().created.toDate();
     offer.interest =  this.offerInterests.find(interest => interest.value === doc.data().interest).en_us;
-    console.log(offer);
     this.offers.push(offer);
   }
 

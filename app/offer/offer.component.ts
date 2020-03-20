@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Offer } from "../model/offer";
 import * as firebase from "firebase/app";
@@ -12,7 +13,7 @@ export class OfferComponent implements OnInit {
   form: FormGroup;
   offer: Offer;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.offer = new Offer();
@@ -31,11 +32,11 @@ export class OfferComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.offer);
     const db = firebase.firestore();
     this.offer.email = firebase.auth().currentUser.email;
     this.offer.creator = firebase.auth().currentUser.uid;
     this.offer.created = new Date();
+    console.log(this.offer);
 
     db.collection("offer")
       .add(this.offer)
@@ -45,6 +46,6 @@ export class OfferComponent implements OnInit {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-    alert("Successfully submitted form. ");
+      this.router.navigate("/home");
   }
 }
