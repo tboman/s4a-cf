@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Offer } from "../model/offer";
 import { Interest } from "../model/interest";
 import { Field } from "../model/field";
+import { CacheService } from "../services/CacheService";
 import * as firebase from "firebase/app";
 
 @Component({
@@ -60,32 +61,7 @@ export class OfferComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
-    this.locations = [
-      {
-        value: "",
-        en_us: "Please Select"
-      },
-      {
-        value: "eu",
-        en_us: "European Union Country"
-      },
-      {
-        value: "us",
-        en_us: "United States of America"
-      },
-      {
-        value: "ca",
-        en_us: "Canada"
-      },
-      {
-        value: "sa",
-        en_us: "South America"
-      },
-      {
-        value: "oth",
-        en_us: "Other"
-      }
-    ];
+    this.locations = cacheService.getLocations();
     this.titles = [
       {
         value: "",
