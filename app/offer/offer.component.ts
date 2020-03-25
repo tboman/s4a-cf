@@ -17,8 +17,8 @@ export class OfferComponent implements OnInit {
   offer: Offer;
   fields: Field[];
   interests: Interest[];
-  locations: [{value:string, en_us: string}];
-  titles: [{value:string, en_us: string}];
+  locations: [{key:string, value: string}];
+  titles: [{key:string, value: string}];
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
@@ -63,37 +63,7 @@ export class OfferComponent implements OnInit {
     ];
     console.log('getting locations');
     this.locations = this.cacheService.getLocations();
-    console.log(this.locations);
-    this.titles = [
-      {
-        value: "",
-        en_us: "Please Select"
-      },
-      {
-        value: "researcher",
-        en_us: "Researcher at private institution"
-      },
-      {
-        value: "junior",
-        en_us: "Junior faculty member at a university/research institution"
-      },
-      {
-        value: "senior",
-        en_us: "Senior faculty member at a university/research institution"
-      },
-      {
-        value: "fellow",
-        en_us: "Postdoctoral fellow"
-      },
-      {
-        value: "lecturer",
-        en_us: "Lecturer"
-      },
-      {
-        value: "oth",
-        en_us: "Other"
-      }
-    ];
+    this.titles = this.cacheService.getTitles();
   }
 
   resetControl(control: string) {

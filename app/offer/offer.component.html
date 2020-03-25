@@ -57,7 +57,7 @@ interests, and offers at any time to be matched with African peers.
 
 			<mat-form-field>
 				<mat-select name="field" required [(ngModel)]="offer.field" placeholder="Research Field">
-					<mat-option  *ngFor="let field of fields" value="{{field.value}}">{{field.en_us}}</mat-option>
+					<mat-option  *ngFor="let field of fields" value="{{field.key}}">{{field.value}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
