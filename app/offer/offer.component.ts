@@ -15,8 +15,8 @@ import * as firebase from "firebase/app";
 export class OfferComponent implements OnInit {
   form: FormGroup;
   offer: Offer;
-  fields: Field[];
   interests: Interest[];
+  fields: [{key:string, value: string}];
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
 
@@ -28,13 +28,6 @@ export class OfferComponent implements OnInit {
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           this.addInterestDescription(doc);
-        });
-      });
-    db.collection("offer-fields")
-      .get()
-      .then(snapshot => {
-        snapshot.docs.forEach(doc => {
-          this.addFieldDescription(doc);
         });
       });
   }
@@ -55,15 +48,9 @@ export class OfferComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
-    this.fields = [
-      {
-        value: "",
-        en_us: "Please Select"
-      }
-    ];
-    console.log('getting locations');
     this.locations = this.cacheService.getLocations();
     this.titles = this.cacheService.getTitles();
+    this.fields = this.cacheService.getFields();
   }
 
   resetControl(control: string) {
@@ -75,12 +62,6 @@ export class OfferComponent implements OnInit {
     interest.value = doc.data().value;
     interest.en_us = doc.data().en_us;
     this.interests.push(interest);
-  }
-  addFieldDescription(doc) {
-    var field: Field = new Field();
-    field.value = doc.data().value;
-    field.en_us = doc.data().en_us;
-    this.fields.push(field);
   }
 
   onSubmit() {

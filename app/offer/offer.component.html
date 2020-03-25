@@ -32,7 +32,7 @@ interests, and offers at any time to be matched with African peers.
 
 			<mat-form-field>
 				<mat-select name="title" required [(ngModel)]="offer.title" placeholder="Your Title">
-					<mat-option  *ngFor="let title of titles" value="{{title.value}}">{{title.en_us}}</mat-option>
+					<mat-option  *ngFor="let title of titles" value="{{title.key}}">{{title.value}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
@@ -63,7 +63,7 @@ interests, and offers at any time to be matched with African peers.
 			</mat-form-field>
 
 			<mat-form-field>
-				<input matInput placeholder="Collaboration Needs" name="need" required [(ngModel)]="offer.need">
+				<input matInput placeholder="Comments and Collaboration Needs" name="need" required [(ngModel)]="offer.need">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>

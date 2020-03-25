@@ -6,8 +6,21 @@ import * as firebase from "firebase/app";
 export class CacheService {
   locations: [{ key: string; value: string }];
   titles: [{ key: string; value: string }];
+  fields: [{ key: string; value: string }] = [{
+          key: "",
+          value: "Please Select"
+        }];
 
-  constructor() {}
+  constructor() {
+    const db = firebase.firestore();
+    db.collection("offer-fields")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          this.addFieldDescription(doc);
+        });
+      });
+  }
 
   public getLocations() {
     if (!this.locations) {
@@ -75,5 +88,17 @@ export class CacheService {
         }
       ];
     }
+    return this.titles;
+  }
+
+  public getFields() {
+    return this.fields;
+  }
+
+  addFieldDescription(doc) {
+    var field = { key: "", value: "" };
+    field.key = doc.data().value;
+    field.value = doc.data().en_us;
+    this.fields.push(field);
   }
 }
