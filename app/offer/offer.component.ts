@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Offer } from "../model/offer";
 import { Interest } from "../model/interest";
 import { Field } from "../model/field";
-import { CacheService } from "../services/CacheService";
+import { CacheService } from "../../services/cache.service";
 import * as firebase from "firebase/app";
 
 @Component({
@@ -20,7 +20,7 @@ export class OfferComponent implements OnInit {
   locations: [{value:string, en_us: string}];
   titles: [{value:string, en_us: string}];
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
 
     db.collection("offer-interests")
@@ -61,7 +61,9 @@ export class OfferComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
-    this.locations = CacheService.getLocations();
+    console.log('getting locations');
+    this.locations = this.cacheService.getLocations();
+    console.log(this.locations);
     this.titles = [
       {
         value: "",
