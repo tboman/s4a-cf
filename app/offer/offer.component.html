@@ -40,7 +40,7 @@ interests, and offers at any time to be matched with African peers.
 
 			<mat-form-field>
 				<mat-select name="location" required [(ngModel)]="offer.location" placeholder="Your Location">
-					<mat-option  *ngFor="let location of locations" value="{{location.value}}">{{location.en_us}}</mat-option>
+					<mat-option  *ngFor="let location of locations" value="{{location.key}}">{{location.value}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>

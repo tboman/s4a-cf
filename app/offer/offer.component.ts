@@ -17,7 +17,7 @@ export class OfferComponent implements OnInit {
   offer: Offer;
   fields: Field[];
   interests: Interest[];
-  location: [{value:string, en_us: string}];
+  locations: [{value:string, en_us: string}];
   titles: [{value:string, en_us: string}];
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -61,7 +61,7 @@ export class OfferComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
-    this.locations = cacheService.getLocations();
+    this.locations = CacheService.getLocations();
     this.titles = [
       {
         value: "",
