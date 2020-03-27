@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Request } from "../model/request";
-import { Interest } from "../model/interest";
-import { Field } from "../model/field";
 import { CacheService } from "../../services/cache.service";
 import * as firebase from "firebase/app";
 
@@ -15,21 +13,13 @@ import * as firebase from "firebase/app";
 export class RequestComponent implements OnInit {
   form: FormGroup;
   request: Request;
-  interests: Interest[];
-  fields: [{key:string, value: string}];
+  interests;
+  fields;
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
-
-    db.collection("offer-interests")
-      .get()
-      .then(snapshot => {
-        snapshot.docs.forEach(doc => {
-          this.addInterestDescription(doc);
-        });
-      });
   }
 
   ngOnInit() {
@@ -49,6 +39,7 @@ export class RequestComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
+    this.interests = this.cacheService.getInterests();
     this.locations = this.cacheService.getLocations();
     this.titles = this.cacheService.getTitles();
     this.fields = this.cacheService.getFields();
@@ -56,13 +47,6 @@ export class RequestComponent implements OnInit {
 
   resetControl(control: string) {
     this.form.get(control).reset("");
-  }
-
-  addInterestDescription(doc) {
-    var interest: Interest = new Interest();
-    interest.value = doc.data().value;
-    interest.en_us = doc.data().en_us;
-    this.interests.push(interest);
   }
 
   onSubmit() {
