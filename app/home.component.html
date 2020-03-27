@@ -14,38 +14,21 @@
 <mat-card>
 	<mat-card-title>Your Collaboration Requests</mat-card-title>
 	<mat-card-content>
-		<mat-accordion>
-			<mat-expansion-panel *ngFor="let value of requests">
-				<mat-expansion-panel-header>
-					<mat-panel-title>{{value.title}}</mat-panel-title>
-				</mat-expansion-panel-header>
-				<p>{{value.description}}</p>
-				<p>Request issued {{value.created | date: "d LLL yyyy" }}</p>
-				<details>
-					<p>
-						Once someones responds and is matched to your request, you can proceed with approval of the
-						match and start collaborating. If you
-						wish to ignore the response, you can archive it or report the offer as bogus by clicking the
-						spam button.
-						<p>
-				</details>
-			</mat-expansion-panel>
-
-
-			<!--		
-				<p>Responses: 2020 JAN 31</p>
-				<p>
-					Your input is required in order to proceed with the request:<br/>
-					<mat-card-actions align="end">
-						<button mat-button type="submit" color="primary">Proceed</button>
-						<button mat-button type="submit" color="primary">Archive</button>
-						<button mat-button type="submit" color="primary">Spam</button>
-					</mat-card-actions>
-				</p>
-        -->
-		</mat-accordion>
+		<mat-expansion-panel *ngFor="let value of requests">
+			<mat-expansion-panel-header>
+				<mat-panel-title>{{value.interest}}</mat-panel-title>
+			</mat-expansion-panel-header>
+			<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
+			<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
+			<details>
+        <p>
+				Work example: {{value.work}}<br/>
+				Field: {{value.field}}<br/>
+				Need: {{value.need}}
+        </p>
+			</details>
+		</mat-expansion-panel>
 	</mat-card-content>
-
 </mat-card>
 <mat-card>
 	<mat-card-title>Your Collaboration Offers</mat-card-title>

@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Offer } from "./model/offer";
+import { Request } from "./model/request";
+import { CacheService } from "../services/cache.service";
 
 @Component({
   selector: "home-component",
@@ -11,31 +13,30 @@ import { Offer } from "./model/offer";
 export class HomeComponent implements OnInit {
   requests = [];
   offers = [];
-  offerInterests = [];
+  interests;
   user: firebase.User = null;
 
-  constructor(private _firebaseAuth: AngularFireAuth) {
-   // var userLocal = this.user;
+  constructor(
+    private _firebaseAuth: AngularFireAuth,
+    private cacheService: CacheService
+  ) {
+    this.interests = cacheService.getInterests();
+    // var userLocal = this.user;
     this._firebaseAuth.authState.subscribe(user => {
       if (user) {
-   //     userLocal = user;
+        //     userLocal = user;
 
         const db = firebase.firestore();
-        db.collection("offer-interests")
-          .get()
-          .then(snapshot => {
-            snapshot.docs.forEach(doc => {
-              this.addInterestDescription(doc);
-            });
-          });
         db.collection("requests")
+          .where("creator", "==", user.uid)
           .get()
           .then(snapshot => {
             snapshot.docs.forEach(doc => {
               this.renderRequest(doc);
             });
           });
-        db.collection("offer").where("creator", "==", user.uid)
+        db.collection("offers")
+          .where("creator", "==", user.uid)
           .get()
           .then(snapshot => {
             snapshot.docs.forEach(doc => {
@@ -50,16 +51,23 @@ export class HomeComponent implements OnInit {
   }
 
   renderRequest(doc) {
-    var request = { id: 1, title: "", description: "", created: new Date() };
-    request.id = doc.id;
+    var request: Request = new Request();
+    request.email = doc.data().email;
     request.title = doc.data().title;
-    request.description = doc.data().description;
+    request.name = doc.data().name;
+    request.work = doc.data().work;
+    request.field = doc.data().field;
+    request.need = doc.data().need;
+    request.location = doc.data().location;
     request.created = doc.data().created.toDate();
+    request.interest = this.interests.find(
+      interest => interest.key === doc.data().interest
+    ).value;
     this.requests.push(request);
   }
 
   renderOffer(doc) {
-    var offer : Offer = new Offer();
+    var offer: Offer = new Offer();
     offer.email = doc.data().email;
     offer.title = doc.data().title;
     offer.name = doc.data().name;
@@ -68,16 +76,10 @@ export class HomeComponent implements OnInit {
     offer.need = doc.data().need;
     offer.location = doc.data().location;
     offer.created = doc.data().created.toDate();
-    offer.interest =  this.offerInterests.find(interest => interest.value === doc.data().interest).en_us;
+    offer.interest = this.interests.find(
+      interest => interest.key === doc.data().interest
+    ).value;
     this.offers.push(offer);
-  }
-
-  addInterestDescription(doc) {
-    var interest = { value: "", en_us: "" };
-    interest.value = doc.data().value;
-    interest.en_us = doc.data().en_us;
-    console.log(interest);
-    this.offerInterests.push(interest);
   }
 
   ngOnInit() {}

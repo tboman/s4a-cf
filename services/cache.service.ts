@@ -114,9 +114,9 @@ export class CacheService {
     return this.interests;
   }
   addInterest(doc) {
-    var field = { key: "", value: "" };
-    field.key = doc.data().key;
-    field.value = doc.data().en_us_title;
-    this.fields.push(field);
+    var interest = { key: "", value: "" };
+    interest.key = doc.data().key;
+    interest.value = doc.data().en_us_title;
+    this.interests.push(interest);
   }
 }
