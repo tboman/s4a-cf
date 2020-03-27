@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Offer } from "../model/offer";
-import { Interest } from "../model/interest";
-import { Field } from "../model/field";
 import { CacheService } from "../../services/cache.service";
 import * as firebase from "firebase/app";
 
@@ -15,7 +13,7 @@ import * as firebase from "firebase/app";
 export class OfferComponent implements OnInit {
   form: FormGroup;
   offer: Offer;
-  interests: Interest[];
+  interests: [{key:string, value: string}];
   fields: [{key:string, value: string}];
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
@@ -33,12 +31,6 @@ export class OfferComponent implements OnInit {
     this.form = this.fb.group({
       input: ["", [Validators.required]]
     });
-    this.interests = [
-      {
-        value: "",
-        en_us: "Please Select"
-      }
-    ];
     this.interests = this.cacheService.getInterests();
     this.locations = this.cacheService.getLocations();
     this.titles = this.cacheService.getTitles();
@@ -47,13 +39,6 @@ export class OfferComponent implements OnInit {
 
   resetControl(control: string) {
     this.form.get(control).reset("");
-  }
-
-  addInterestDescription(doc) {
-    var interest: Interest = new Interest();
-    interest.value = doc.data().value;
-    interest.en_us = doc.data().en_us;
-    this.interests.push(interest);
   }
 
   onSubmit() {

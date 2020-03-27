@@ -50,7 +50,7 @@ interests, and offers at any time to be matched with African peers.
 			<mat-card-title>Your Intentions</mat-card-title>
 			<mat-form-field>
 				<mat-select name="interest" required [(ngModel)]="offer.interest" placeholder="Interested In">
-					<mat-option  *ngFor="let interest of interests" value="{{interest.value}}">{{interest.en_us}}</mat-option>
+					<mat-option  *ngFor="let interest of interests" value="{{interest.key}}">{{interest.value}}</mat-option>
 				</mat-select>
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
