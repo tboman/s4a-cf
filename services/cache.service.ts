@@ -4,20 +4,31 @@ import * as firebase from "firebase/app";
 
 @Injectable()
 export class CacheService {
-  locations: [{ key: string; value: string }];
-  titles: [{ key: string; value: string }];
+  locations;
+  titles;
   fields: [{ key: string; value: string }] = [{
+          key: "",
+          value: "Please Select"
+        }];
+  interests: [{ key: string; value: string }] = [{
           key: "",
           value: "Please Select"
         }];
 
   constructor() {
     const db = firebase.firestore();
-    db.collection("offer-fields")
+    db.collection("fields")
       .get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
-          this.addFieldDescription(doc);
+          this.addField(doc);
+        });
+      });
+    db.collection("interests")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          this.addInterest(doc);
         });
       });
   }
@@ -90,15 +101,22 @@ export class CacheService {
     }
     return this.titles;
   }
-
   public getFields() {
     return this.fields;
   }
-
-  addFieldDescription(doc) {
+  addField(doc) {
     var field = { key: "", value: "" };
-    field.key = doc.data().value;
-    field.value = doc.data().en_us;
+    field.key = doc.data().key;
+    field.value = doc.data().en_us_title;
+    this.fields.push(field);
+  }
+  public getInterests() {
+    return this.interests;
+  }
+  addInterest(doc) {
+    var field = { key: "", value: "" };
+    field.key = doc.data().key;
+    field.value = doc.data().en_us_title;
     this.fields.push(field);
   }
 }

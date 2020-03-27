@@ -21,15 +21,6 @@ export class OfferComponent implements OnInit {
   titles: [{key:string, value: string}];
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
-    const db = firebase.firestore();
-
-    db.collection("offer-interests")
-      .get()
-      .then(snapshot => {
-        snapshot.docs.forEach(doc => {
-          this.addInterestDescription(doc);
-        });
-      });
   }
 
   ngOnInit() {
@@ -48,6 +39,7 @@ export class OfferComponent implements OnInit {
         en_us: "Please Select"
       }
     ];
+    this.interests = this.cacheService.getInterests();
     this.locations = this.cacheService.getLocations();
     this.titles = this.cacheService.getTitles();
     this.fields = this.cacheService.getFields();
@@ -71,7 +63,7 @@ export class OfferComponent implements OnInit {
     this.offer.created = new Date();
     console.log(this.offer);
 
-    db.collection("offer")
+    db.collection("offers")
       .add(this.offer)
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
