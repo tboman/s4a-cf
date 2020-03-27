@@ -10,6 +10,7 @@ import { PublicComponent } from "./public.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { AboutComponent } from "./about.component";
 import { OfferComponent } from "./offer/offer.component";
+import { RequestComponent } from "./request/request.component";
 import { AppRouting } from "../app.routing";
 import { MaterialModule } from "./material.module";
 import { GuidesModule } from "./guides.module";
@@ -50,7 +51,7 @@ Firebase.initializeApp(environment.firebase);
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent, LogoutComponent, OfferComponent],
+  declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent, LogoutComponent, OfferComponent, RequestComponent],
   providers: [AuthGuard, [AuthService], CacheService],
   bootstrap: [AppComponent],
   entryComponents: []
