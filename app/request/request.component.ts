@@ -71,7 +71,7 @@ export class RequestComponent implements OnInit {
     this.request.created = new Date();
     console.log(this.request);
 
-    db.collection("request")
+    db.collection("requests")
       .add(this.request)
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
