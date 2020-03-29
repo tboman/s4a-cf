@@ -18,16 +18,16 @@ interests, and offers at any time to be matched with African peers.
 			<br/>
 
 			<mat-form-field>
+				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="offer.name">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
 				<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="offer.work">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>
-			<br/>
-
-			<mat-form-field>
-				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="offer.name">
-				<mat-error>This is required.</mat-error>
-			</mat-form-field>
 			<br/>
 
 			<mat-form-field>

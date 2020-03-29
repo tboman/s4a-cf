@@ -13,17 +13,21 @@ import * as firebase from "firebase/app";
 export class OfferComponent implements OnInit {
   form: FormGroup;
   offer: Offer;
-  interests: [{key:string, value: string}];
-  fields: [{key:string, value: string}];
-  locations: [{key:string, value: string}];
-  titles: [{key:string, value: string}];
+  interests: [{ key: string; value: string }];
+  fields: [{ key: string; value: string }];
+  locations: [{ key: string; value: string }];
+  titles: [{ key: string; value: string }];
 
-  constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cacheService: CacheService
+  ) {}
 
   ngOnInit() {
     this.offer = new Offer();
     this.offer.email = firebase.auth().currentUser.email;
+    this.offer.name = firebase.auth().currentUser.displayName;
     this.initForm();
   }
 

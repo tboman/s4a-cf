@@ -25,7 +25,7 @@ export class RequestComponent implements OnInit {
   ngOnInit() {
     this.request = new Request();
     this.request.email = firebase.auth().currentUser.email;
-    this.request.need = firebase.auth().currentUser.displayName;
+    this.request.name = firebase.auth().currentUser.displayName;
     this.initForm();
   }
 

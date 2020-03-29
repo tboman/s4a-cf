@@ -17,16 +17,16 @@ interests, and requests at any time.
 			<br/>
 
 			<mat-form-field>
+				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="request.name">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
 				<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="request.work">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>
-			<br/>
-
-			<mat-form-field>
-				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="request.name">
-				<mat-error>This is required.</mat-error>
-			</mat-form-field>
 			<br/>
 
 			<mat-form-field>
