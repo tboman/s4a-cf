@@ -48,7 +48,7 @@ export class AuthService {
     }
   }
 
-  isAdmin() {
+  export isAdmin() {
     const user = firebase.auth().currentUser;
     if (user == null) {
       return false;

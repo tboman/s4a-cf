@@ -7,7 +7,7 @@ export class AdminGuard {
 
   constructor(private router: Router, private authService: AuthService) {}
   canActivate() {
-    if (this.authService.isLoggedIn()) {
+    if (this.authService.isAdmin()) {
       return true;
     }
     this.authService.signInWithPopup();

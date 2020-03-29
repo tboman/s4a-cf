@@ -21,32 +21,6 @@ export class HomeComponent implements OnInit {
     private cacheService: CacheService
   ) {
     this.interests = cacheService.getInterests();
-    // var userLocal = this.user;
-    this._firebaseAuth.authState.subscribe(user => {
-      if (user) {
-        //     userLocal = user;
-
-        const db = firebase.firestore();
-        db.collection("requests")
-          .where("creator", "==", user.uid)
-          .get()
-          .then(snapshot => {
-            snapshot.docs.forEach(doc => {
-              this.renderRequest(doc);
-            });
-          });
-        db.collection("offers")
-          .where("creator", "==", user.uid)
-          .get()
-          .then(snapshot => {
-            snapshot.docs.forEach(doc => {
-              this.renderOffer(doc);
-            });
-          });
-      } else {
-        this.user = null;
-      }
-    });
     this.user = firebase.auth().currentUser;
   }
 
@@ -82,5 +56,27 @@ export class HomeComponent implements OnInit {
     this.offers.push(offer);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const user = firebase.auth().currentUser;
+
+    if (user) {
+      const db = firebase.firestore();
+      db.collection("requests")
+        .where("creator", "==", user.uid)
+        .get()
+        .then(snapshot => {
+          snapshot.docs.forEach(doc => {
+            this.renderRequest(doc);
+          });
+        });
+      db.collection("offers")
+        .where("creator", "==", user.uid)
+        .get()
+        .then(snapshot => {
+          snapshot.docs.forEach(doc => {
+            this.renderOffer(doc);
+          });
+        });
+    }
+  }
 }
