@@ -10,10 +10,19 @@ import { OfferComponent } from './app/offer/offer.component';
 import { RequestComponent } from './app/request/request.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { OffersComponent } from './app/admin/offers/offers.component';
+import { RequestsComponent } from './app/admin/requests/requests.component';
+import { MatchingComponent } from './app/admin/matching/matching.component';
+import { InterestsComponent } from './app/admin/interests/interests.component';
+import { FieldsComponent } from './app/admin/fields/fields.component';
 
-const GUIDE_ROUTES: Route[] = [
-  { path: 'africa-guide', component: AfricaGuide },
-  { path: 'west-guide', component: WestGuide }
+
+const ADMIN_ROUTES: Route[] = [
+  { path: 'offers', component: OffersComponent },
+  { path: 'requests', component: RequestsComponent },
+  { path: 'matching', component: MatchingComponent },
+  { path: 'interests', component: InterestsComponent },
+  { path: 'fields', component: FieldsComponent }
 ]
 const CDK_ROUTES: Route[] = [
 
@@ -26,7 +35,7 @@ const ALL_ROUTES: Routes = [
   { path: 'public', component: PublicComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'cdk', children: CDK_ROUTES },
-  { path: 'guides', children: GUIDE_ROUTES, canActivate: [AuthGuard] },
+  { path: 'admin', children: ADMIN_ROUTES, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'public' }
 ]
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(ALL_ROUTES);
