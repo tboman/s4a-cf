@@ -31,6 +31,7 @@ import { OffersComponent } from "./admin/offers/offers.component";
 import { RequestsComponent } from "./admin/requests/requests.component";
 import { MatchingComponent } from "./admin/matching/matching.component";
 import { FieldsComponent } from "./admin/fields/fields.component";
+import { InterestsComponent } from "./admin/interests/interests.component";
 
 /**
  * NgModule that includes all Material modules that are required to serve
