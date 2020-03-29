@@ -28,7 +28,7 @@ import { Router } from "@angular/router";
   ]
 })
 export class AppComponent implements OnInit {
-  guideLinks: Guides[];
+  adminLinks: Guides[];
   isToggledUppercase: boolean = false;
   hideComponents: boolean = false;
   hideGuides: boolean = false;
@@ -112,9 +112,12 @@ export class AppComponent implements OnInit {
         window.localStorage.getItem("isToggledUppercase")
       );
     }
-    this.guideLinks = [
+    this.adminLinks = [
+      { name: "View Offers", url: "africa-guide" },
+      { name: "View Requests", url: "africa-guide" },
       { name: "Match Maker", url: "africa-guide" },
-      { name: "Configuration", url: "west-guide" }
+      { name: "Configure Interests", url: "west-guide" },
+      { name: "Configure Research Fields", url: "west-guide" }
     ];
 
     this.user = firebase.auth().currentUser;

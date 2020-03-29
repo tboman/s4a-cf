@@ -22,9 +22,9 @@
 		</mat-nav-list>
 		<div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
 			<mat-nav-list>
-				<a mat-list-item *ngFor="let guideLink of guideLinks" [routerLink]="['/guides', guideLink.url]"
-					routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(guideLink.name)">
-					<p matLine>{{guideLink.name}}</p>
+				<a mat-list-item *ngFor="let adminLink of adminLinks" [routerLink]="['/admin', adminLink.url]"
+					routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(adminLink.name)">
+					<p matLine>{{adminLink.name}}</p>
 				</a>
 			</mat-nav-list>
 		</div>
