@@ -32,30 +32,14 @@ export class InterestsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private cacheService: CacheService) {
-    this.interests = cacheService.getInterests();
-    const db = firebase.firestore();
-    db.collection("interests")
-      .get()
-      .then(snapshot => {
-        snapshot.docs.forEach(doc => {
-          this.addInterest(doc);
-        });
-      });
+    this.interests = cacheService.getInterestsRaw();
   }
 
-  addInterest(doc) {
-    var interest: Score = new Score();
-    interest.key = doc.data().key;
-    interest.en_us_title = doc.data().en_us_title;
-    interest.fr_fr_title = 'X';
-    this.scoreboard.push(interest);
-  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngOnInit() {
-    console.log(this.interests);
     this.dataSource = new MatTableDataSource(this.interests);
     this.dataSource.paginator = this.paginator;
   }

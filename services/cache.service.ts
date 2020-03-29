@@ -15,7 +15,10 @@ export class CacheService {
           value: "Please Select"
         }];
 
+  interests_raw: [{ key: string; en_us_title: string; fr_fr_title: string }];
+
   constructor() {
+    this.interests_raw = [{key: "", en_us_title: "", fr_fr_title: ""}];
     const db = firebase.firestore();
     db.collection("fields")
       .get()
@@ -113,10 +116,14 @@ export class CacheService {
   public getInterests() {
     return this.interests;
   }
+  public getInterestsRaw() {
+    return this.interests_raw;
+  }
   addInterest(doc) {
     var interest = { key: "", value: "" };
     interest.key = doc.data().key;
     interest.value = doc.data().en_us_title;
     this.interests.push(interest);
+    this.interests_raw.push(doc.data());
   }
 }
