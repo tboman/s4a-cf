@@ -18,6 +18,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { InputComponent } from "./input.component";
 
 import { AuthGuard } from "../services/auth-guard.service";
+import { AdminGuard } from "../services/admin-guard.service";
 import { AuthService } from "../services/auth.service";
 import { environment } from "../environments/environments";
 import { AngularFireModule } from "angularfire2";
@@ -58,7 +59,7 @@ Firebase.initializeApp(environment.firebase);
     AngularFireAuthModule
   ],
   declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent, LogoutComponent, OfferComponent, RequestComponent, OffersComponent, RequestsComponent, MatchingComponent, InterestsComponent, FieldsComponent],
-  providers: [AuthGuard, [AuthService], CacheService],
+  providers: [AdminGuard, AuthGuard, [AuthService], CacheService],
   bootstrap: [AppComponent],
   entryComponents: []
 })
