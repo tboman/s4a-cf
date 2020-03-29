@@ -10,6 +10,7 @@ import { OfferComponent } from './app/offer/offer.component';
 import { RequestComponent } from './app/request/request.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { AdminGuard } from './services/admin-guard.service';
 import { OffersComponent } from './app/admin/offers/offers.component';
 import { RequestsComponent } from './app/admin/requests/requests.component';
 import { MatchingComponent } from './app/admin/matching/matching.component';
@@ -35,7 +36,7 @@ const ALL_ROUTES: Routes = [
   { path: 'public', component: PublicComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'cdk', children: CDK_ROUTES },
-  { path: 'admin', children: ADMIN_ROUTES, canActivate: [AuthGuard] },
+  { path: 'admin', children: ADMIN_ROUTES, canActivate: [AdminGuard] },
   { path: '**', redirectTo: 'public' }
 ]
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(ALL_ROUTES);

@@ -48,6 +48,15 @@ export class AuthService {
     }
   }
 
+  isAdmin() {
+    const user = firebase.auth().currentUser;
+    if (user == null) {
+      return false;
+    } else {
+      return user.uid == '7uFXFb65XRRpzwtraFMTFN58LCK2' || user.uid == 'OSdYE7GLcjMsVThjfbHfWG2uUhr1';
+    }
+  }
+
   getUserdetails() {
     return this.userDetails;
   }
