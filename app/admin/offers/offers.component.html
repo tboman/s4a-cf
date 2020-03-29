@@ -1,3 +1,19 @@
-<p>
-offers works!
-</p>
+<mat-card>
+	<mat-card-title>All Collaboration Offers</mat-card-title>
+	<mat-card-content>
+		<mat-expansion-panel *ngFor="let value of offers">
+			<mat-expansion-panel-header>
+				<mat-panel-title>{{value.interest}}</mat-panel-title>
+			</mat-expansion-panel-header>
+			<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
+			<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
+			<details>
+        <p>
+				Work example: {{value.work}}<br/>
+				Field: {{value.field}}<br/>
+				Need: {{value.need}}
+        </p>
+			</details>
+		</mat-expansion-panel>
+	</mat-card-content>
+</mat-card>
