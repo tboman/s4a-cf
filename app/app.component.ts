@@ -113,11 +113,11 @@ export class AppComponent implements OnInit {
       );
     }
     this.adminLinks = [
-      { name: "View Offers", url: "africa-guide" },
-      { name: "View Requests", url: "africa-guide" },
-      { name: "Match Maker", url: "africa-guide" },
-      { name: "Configure Interests", url: "west-guide" },
-      { name: "Configure Research Fields", url: "west-guide" }
+      { name: "View Offers", url: "offers" },
+      { name: "View Requests", url: "requests" },
+      { name: "Match Maker", url: "matching" },
+      { name: "Configure Interests", url: "interests" },
+      { name: "Configure Research Fields", url: "fields" }
     ];
 
     this.user = firebase.auth().currentUser;
