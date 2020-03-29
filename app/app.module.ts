@@ -26,18 +26,24 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
 
 import "hammerjs";
-import * as Firebase from 'firebase';
+import * as Firebase from "firebase";
 import { CacheService } from "../services/cache.service";
 import { OffersComponent } from "./admin/offers/offers.component";
 import { RequestsComponent } from "./admin/requests/requests.component";
 import { MatchingComponent } from "./admin/matching/matching.component";
 import { FieldsComponent } from "./admin/fields/fields.component";
 import { InterestsComponent } from "./admin/interests/interests.component";
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTableModule,
+  MatTooltipModule
+} from "@angular/material";
 
-/**
- * NgModule that includes all Material modules that are required to serve
- * the Plunker.
- */
 Firebase.initializeApp(environment.firebase);
 
 @NgModule({
@@ -56,9 +62,30 @@ Firebase.initializeApp(environment.firebase);
       "angular-auth-firebase"
     ),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatTooltipModule
   ],
-  declarations: [AppComponent, AboutComponent, PublicComponent, HomeComponent, LogoutComponent, OfferComponent, RequestComponent, OffersComponent, RequestsComponent, MatchingComponent, InterestsComponent, FieldsComponent],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    PublicComponent,
+    HomeComponent,
+    LogoutComponent,
+    OfferComponent,
+    RequestComponent,
+    OffersComponent,
+    RequestsComponent,
+    MatchingComponent,
+    InterestsComponent,
+    FieldsComponent
+  ],
   providers: [AdminGuard, AuthGuard, [AuthService], CacheService],
   bootstrap: [AppComponent],
   entryComponents: []
