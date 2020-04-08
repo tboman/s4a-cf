@@ -6,19 +6,29 @@ import * as firebase from "firebase/app";
 export class CacheService {
   locations;
   titles;
-  fields: [{ key: string; value: string }] = [{
-          key: "",
-          value: "Please Select"
-        }];
-  interests: [{ key: string; value: string }] = [{
-          key: "",
-          value: "Please Select"
-        }];
+  fields: [{ key: string; value: string }] = [
+    {
+      key: "",
+      value: "Please Select"
+    }
+  ];
+  request_interests: [{ key: string; value: string }] = [
+    {
+      key: "",
+      value: "Please Select"
+    }
+  ];
+  offer_interests: [{ key: string; value: string }] = [
+    {
+      key: "",
+      value: "Please Select"
+    }
+  ];
 
   interests_raw: [{ key: string; en_us_title: string; fr_fr_title: string }];
 
   constructor() {
-    this.interests_raw = [{key: "", en_us_title: "", fr_fr_title: ""}];
+    this.interests_raw = [{ key: "", en_us_title: "", fr_fr_title: "" }];
     const db = firebase.firestore();
     db.collection("fields")
       .get()
@@ -114,7 +124,7 @@ export class CacheService {
     this.fields.push(field);
   }
   public getInterests() {
-    return this.interests;
+    return this.request_interests;
   }
   public getInterestsRaw() {
     return this.interests_raw;
@@ -123,7 +133,12 @@ export class CacheService {
     var interest = { key: "", value: "" };
     interest.key = doc.data().key;
     interest.value = doc.data().en_us_title + ": " + doc.data().en_us_desc;
-    this.interests.push(interest);
+    if (
+      doc.data().type &&
+      (doc.data().type == "request" || doc.data().type == "both")
+    ) {
+      this.request_interests.push(interest);
+    }
     this.interests_raw.push(doc.data());
   }
 }
