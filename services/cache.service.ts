@@ -110,7 +110,7 @@ export class CacheService {
   addField(doc) {
     var field = { key: "", value: "" };
     field.key = doc.data().key;
-    field.value = doc.data().en_us_title;
+    field.value = doc.data().en_us_title + ": " + doc.data().en_us_desc;
     this.fields.push(field);
   }
   public getInterests() {
@@ -122,7 +122,7 @@ export class CacheService {
   addInterest(doc) {
     var interest = { key: "", value: "" };
     interest.key = doc.data().key;
-    interest.value = doc.data().en_us_title;
+    interest.value = doc.data().en_us_title + ": " + doc.data().en_us_desc;
     this.interests.push(interest);
     this.interests_raw.push(doc.data());
   }
