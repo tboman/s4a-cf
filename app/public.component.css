@@ -1,9 +1,19 @@
-.splash {
+.splash-image {
     background-image: url('https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
     background-size: 400px;
-//    background-position-y: -20vh;
     background-repeat: no-repeat;
     background-color: #000000;
     text-align: left;
     color: #FFFFFF;
+}
+
+.splash-text {
+  margin-left: 400px; 
+  text-align: left;
+  color:white;
+}
+
+.splash-cell {
+  margin:20px;
+  vertical-align: top;
 }
