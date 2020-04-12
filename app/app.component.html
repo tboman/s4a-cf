@@ -1,15 +1,13 @@
 <mat-sidenav-container fullscreen>
 	<mat-sidenav #exampleSidenav class="example-sidenav mat-elevation-z3" [mode]="isMobile ? 'over' : 'side'">
 		<mat-toolbar>
-			Links
+			Menu
 			<span fxFlex></span>
 			<button mat-icon-button (click)="exampleSidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button>
 		</mat-toolbar>
 		<mat-nav-list style="z-index: 2">
 			<a mat-list-item routerLink="/public" routerLinkActive="active-link"
 				(click)="exampleSidenav.close()">Home</a>
-			<a mat-list-item routerLink="/about" routerLinkActive="active-link"
-				(click)="exampleSidenav.close()">About</a>
 			<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">My
 				Collaboration</a>
 			<a mat-list-item routerLink="/offer" routerLinkActive="active-link" (click)="exampleSidenav.close()">Create Offer</a>
