@@ -33,7 +33,7 @@
 		Framework
 		<span fxFlex></span>
 		<div *ngIf="user; else anonymous" class="card text-center">
-			<a mat-button routerLink="/profile" routerLinkActive="active-link" title="{{ user.email }}">
+			<a mat-button routerLink="/home" routerLinkActive="active-link" title="{{ user.email }}">
 				<mat-icon>person</mat-icon>
 			</a>
 			<a mat-button routerLink="/logout" routerLinkActive="active-link" title="logout">
@@ -49,4 +49,11 @@
 	<div class="app-content">
 		<router-outlet></router-outlet>
 	</div>
+	<mat-toolbar color="primary" class="mat-elevation-z3">
+    <a mat-button href="https://science4africa.org" title="S4A Website">Science for Africa</a>
+			<span fxFlex></span>
+			<a mat-button href="mailto:s4a@gmail.com" title="Email">
+				<mat-icon>mail</mat-icon>
+			</a>
+	</mat-toolbar>
 </mat-sidenav-container>

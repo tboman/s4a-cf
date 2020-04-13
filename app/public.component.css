@@ -2,15 +2,15 @@
     background-image: url('https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
     background-size: 400px;
     background-repeat: no-repeat;
-    background-color: #000000;
+    background-color: #ffffff;
     text-align: left;
-    color: #FFFFFF;
+    color: #795548;
 }
 
 .splash-text {
   margin-left: 400px; 
   text-align: left;
-  color:white;
+  color:#000000;
 }
 
 .splash-cell {
