@@ -10,6 +10,7 @@ import { BreakpointObserver } from "@angular/cdk/layout";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from "@angular/router";
+import { CacheService } from "../services/cache.service";
 
 @Component({
   selector: "material-app",
@@ -39,7 +40,8 @@ export class AppComponent implements OnInit {
   constructor(
     private breakObserver: BreakpointObserver,
     private router: Router,
-    private _firebaseAuth: AngularFireAuth
+    private _firebaseAuth: AngularFireAuth,
+    private cacheService: CacheService
   ) {
     var userLocal = this.user;
     this._firebaseAuth.authState.subscribe(user => {
@@ -105,6 +107,10 @@ export class AppComponent implements OnInit {
     }
   }
   ngOnInit() {
+    // warmup DB read cache
+    console.log("Cache warmup");
+    var mainsummary = this.cacheService.getArticle("mainsummary");
+
     if (document.body.classList.contains("button-uppercase")) {
       this.isToggledUppercase = true;
     } else if (window.localStorage.getItem("isToggledUppercase")) {

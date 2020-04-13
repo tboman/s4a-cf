@@ -15,15 +15,25 @@ export class RequestComponent implements OnInit {
   request: Request;
   interests;
   fields;
-  requestsummary: string = "";
-  requestheader: string = "";
+  requestsummary: {
+    header: string;
+    p1: string;
+    p2: string;
+    p3: string;
+    p4: string;
+  } = {
+    header: "Your Page",
+    p1: ".",
+    p2: ".",
+    p3: ".",
+    p4: "."
+  };
 
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
-    this.requestheader = cacheService.getArticle("requestheader");
     this.requestsummary = cacheService.getArticle("requestsummary");
   }
 

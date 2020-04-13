@@ -21,9 +21,13 @@ export class PublicComponent implements OnInit {
     p4: "."
   };
 
-  constructor(private cacheService: CacheService) {}
+  constructor(private cacheService: CacheService) {
+  }
 
   ngOnInit() {
-    this.mainsummary = this.cacheService.getArticle("mainsummary");
+    var mainsummary = this.cacheService.getArticle("mainsummary");
+    if (mainsummary) {
+      this.mainsummary = mainsummary;
+    }
   }
 }

@@ -6,7 +6,14 @@ import * as firebase from "firebase/app";
 export class CacheService {
   locations;
   titles;
-  articles: { key: string; header: string, p1: string, p2: string, p3: string, p4: string }[];
+  articles: {
+    key: string;
+    header: string;
+    p1: string;
+    p2: string;
+    p3: string;
+    p4: string;
+  }[];
   fields: { key: string; value: string }[] = [
     {
       key: "",
@@ -30,7 +37,6 @@ export class CacheService {
 
   constructor() {
     this.interests_raw = [{ key: "", en_us_title: "", fr_fr_title: "" }];
-    this.articles = [{ key: "", header: "", p1: "", p2: "", p3: "", p4: "" }];
     const db = firebase.firestore();
     db.collection("fields")
       .get()
@@ -140,6 +146,9 @@ export class CacheService {
     article.p2 = doc.data().en_data_2;
     article.p3 = doc.data().en_data_3;
     article.p4 = doc.data().en_data_4;
+    if (!this.articles) {
+          this.articles = [{ key: "", header: "", p1: "", p2: "", p3: "", p4: "" }];
+    }
     this.articles.push(article);
   }
   public getInterests() {
@@ -149,12 +158,22 @@ export class CacheService {
     return this.interests_raw;
   }
   public getArticle(key) {
+    if (!this.articles) {
+      var db = firebase.firestore();
+      db.collection("articles")
+        .get()
+        .then(snapshot => {
+          snapshot.docs.forEach(doc => {
+            this.addArticle(doc);
+          });
+        });
+    }
     if (this.articles) {
-    console.log(this.articles);
+      console.log(this.articles);
       var article = this.articles.find(article => article.key === key);
       if (article) {
         return article;
-      };
+      }
     }
   }
   addInterest(doc) {
