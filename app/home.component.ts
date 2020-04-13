@@ -15,8 +15,19 @@ export class HomeComponent implements OnInit {
   offers = [];
   interests;
   user: firebase.User = null;
-  homesummary: string = "Below you can see the full list of your offers and requests, along with any matches that has been made.";
-
+  homesummary: {
+    header: string;
+    p1: string;
+    p2: string;
+    p3: string;
+    p4: string;
+  } = {
+    header: "Your Page",
+    p1: ".",
+    p2: ".",
+    p3: ".",
+    p4: "."
+  };
   constructor(
     private _firebaseAuth: AngularFireAuth,
     private cacheService: CacheService

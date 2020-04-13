@@ -6,7 +6,7 @@ import * as firebase from "firebase/app";
 export class CacheService {
   locations;
   titles;
-  articles: { key: string; value: string }[];
+  articles: { key: string; header: string, p1: string, p2: string, p3: string, p4: string }[];
   fields: { key: string; value: string }[] = [
     {
       key: "",
@@ -30,7 +30,7 @@ export class CacheService {
 
   constructor() {
     this.interests_raw = [{ key: "", en_us_title: "", fr_fr_title: "" }];
-    this.articles = [{ key: "", value: "" }];
+    this.articles = [{ key: "", header: "", p1: "", p2: "", p3: "", p4: "" }];
     const db = firebase.firestore();
     db.collection("fields")
       .get()
@@ -133,9 +133,13 @@ export class CacheService {
     this.fields.push(field);
   }
   addArticle(doc) {
-    var article = { key: "", value: "" };
+    var article = { key: "", header: "", p1: "", p2: "", p3: "", p4: "" };
     article.key = doc.data().key;
-    article.value = doc.data().en_data;
+    article.header = doc.data().en_header;
+    article.p1 = doc.data().en_data_1;
+    article.p2 = doc.data().en_data_2;
+    article.p3 = doc.data().en_data_3;
+    article.p4 = doc.data().en_data_4;
     this.articles.push(article);
   }
   public getInterests() {
@@ -149,7 +153,7 @@ export class CacheService {
     console.log(this.articles);
       var article = this.articles.find(article => article.key === key);
       if (article) {
-        return article.value;
+        return article;
       };
     }
   }

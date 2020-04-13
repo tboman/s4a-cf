@@ -9,10 +9,11 @@
 				<p class="card-text">{{ user.email }}</p>
 			</div>
 		</div>
-		{{ homesummary }}
+		<h1>{{ homesummary.header }}</h1>
+		<p>{{ homesummary.p1 }}</p>
 </mat-card>
 <mat-card>
-	<mat-card-title>Your Collaboration Requests</mat-card-title>
+	<mat-card-title>{{ homesummary.p2 }}</mat-card-title>
 	<mat-card-content>
 		<mat-expansion-panel *ngFor="let value of requests">
 			<mat-expansion-panel-header>
@@ -31,7 +32,7 @@
 	</mat-card-content>
 </mat-card>
 <mat-card>
-	<mat-card-title>Your Collaboration Offers</mat-card-title>
+	<mat-card-title>{{ homesummary.p3 }}</mat-card-title>
 	<mat-card-content>
 		<mat-expansion-panel *ngFor="let value of offers">
 			<mat-expansion-panel-header>
