@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
     const user = firebase.auth().currentUser;
 
     if (user) {
+      this.homesummary.header = user.email;
       const db = firebase.firestore();
       db.collection("requests")
         .where("creator", "==", user.uid)

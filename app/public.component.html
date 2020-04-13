@@ -8,26 +8,20 @@
 	</mat-card-content>
 </mat-card>
 <mat-card>
-	<mat-card-title>Scientists in Africa</mat-card-title>
+	<mat-card-title>{{mainafrica.header}}</mat-card-title>
 	<mat-card-content>
-		<p>Are you looking to establish a scientific collaboration or benefit from research mentorship? Sign up
-			here to
-			get connected with peers in your field of study in the United States, Canada, and Europe.</p>
+		{{mainafrica.p1}}
 	</mat-card-content>
 	<mat-card-actions align="end">
-		<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">Make Request</a>
+		<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">{{mainafrica.p2}}</a>
 	</mat-card-actions>
 </mat-card>
 <mat-card>
-	<mat-card-title>Scientists in North America and Europe</mat-card-title>
+	<mat-card-title>{{mainwest.header}}</mat-card-title>
 	<mat-card-content>
-		<p>
-			Would you be interested in collaborating with African researchers and apply your work to
-			distinct environments and populations? Start the process here by making an offer to be match with
-			African
-			scientists.</p>
+		{{mainwest.p1}}
 	</mat-card-content>
 	<mat-card-actions align="end">
-		<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">Make Offer</a>
+		<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">{{mainwest.p2}}</a>
 	</mat-card-actions>
 </mat-card>
