@@ -6,19 +6,20 @@ import * as firebase from "firebase/app";
 export class CacheService {
   locations;
   titles;
-  fields: [{ key: string; value: string }] = [
+  articles: { key: string; value: string }[];
+  fields: { key: string; value: string }[] = [
     {
       key: "",
       value: "Please Select"
     }
   ];
-  request_interests: [{ key: string; value: string }] = [
+  request_interests: { key: string; value: string }[] = [
     {
       key: "",
       value: "Please Select"
     }
   ];
-  offer_interests: [{ key: string; value: string }] = [
+  offer_interests: { key: string; value: string }[] = [
     {
       key: "",
       value: "Please Select"
@@ -29,6 +30,7 @@ export class CacheService {
 
   constructor() {
     this.interests_raw = [{ key: "", en_us_title: "", fr_fr_title: "" }];
+    this.articles = [{ key: "", value: "" }];
     const db = firebase.firestore();
     db.collection("fields")
       .get()
@@ -42,6 +44,13 @@ export class CacheService {
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
           this.addInterest(doc);
+        });
+      });
+    db.collection("articles")
+      .get()
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
+          this.addArticle(doc);
         });
       });
   }
@@ -123,11 +132,26 @@ export class CacheService {
     field.value = doc.data().en_us_title + ": " + doc.data().en_us_desc;
     this.fields.push(field);
   }
+  addArticle(doc) {
+    var article = { key: "", value: "" };
+    article.key = doc.data().key;
+    article.value = doc.data().en_data;
+    this.articles.push(article);
+  }
   public getInterests() {
     return this.request_interests;
   }
   public getInterestsRaw() {
     return this.interests_raw;
+  }
+  public getArticle(key) {
+    if (this.articles) {
+    console.log(this.articles);
+      var article = this.articles.find(article => article.key === key);
+      if (article) {
+        return article.value;
+      };
+    }
   }
   addInterest(doc) {
     var interest = { key: "", value: "" };

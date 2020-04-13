@@ -15,12 +15,14 @@ export class HomeComponent implements OnInit {
   offers = [];
   interests;
   user: firebase.User = null;
+  homesummary: string = "Below you can see the full list of your offers and requests, along with any matches that has been made.";
 
   constructor(
     private _firebaseAuth: AngularFireAuth,
     private cacheService: CacheService
   ) {
     this.interests = cacheService.getInterests();
+    this.homesummary = cacheService.getArticle("homesummary");
     this.user = firebase.auth().currentUser;
   }
 

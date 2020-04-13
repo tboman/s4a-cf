@@ -15,11 +15,16 @@ export class RequestComponent implements OnInit {
   request: Request;
   interests;
   fields;
+  requestsummary: string = "";
+  requestheader: string = "";
+
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
+    this.requestheader = cacheService.getArticle("requestheader");
+    this.requestsummary = cacheService.getArticle("requestsummary");
   }
 
   ngOnInit() {

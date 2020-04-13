@@ -1,8 +1,6 @@
-<h1 class="mat-display-1">Request</h1>
+<h1 class="mat-display-1">{{ requestheader }}</h1>
 <p>
-  After you submit a request for collaboration or help, you will get
-further instructions and more information about the program. You can change your profile,
-interests, and requests at any time.
+  {{ requestsummary }}
 </p>
 <form #form="ngForm" (submit)="onSubmit()">
 	<mat-card>
