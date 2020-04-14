@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CacheService } from "../services/cache.service";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: "app-public",
@@ -7,6 +8,8 @@ import { CacheService } from "../services/cache.service";
   styleUrls: ["./public.component.css"]
 })
 export class PublicComponent implements OnInit {
+  hideLogin: boolean = false;
+  hideCreate: boolean = true;
   mainsummary: {
     header: string;
     p1: string;
@@ -61,7 +64,8 @@ export class PublicComponent implements OnInit {
     p5: ""
   };
 
-  constructor(private cacheService: CacheService) {}
+  constructor(private cacheService: CacheService,     
+  private _firebaseAuth: AngularFireAuth) {}
 
   ngOnInit() {
     var mainsummary = this.cacheService.getArticle("mainsummary");
@@ -75,6 +79,14 @@ export class PublicComponent implements OnInit {
     var mainwest = this.cacheService.getArticle("mainwest");
     if (mainwest) {
       this.mainwest = mainwest;
+    }
+
+    if (this._firebaseAuth.authState) {
+      this.hideCreate = false;
+      this.hideLogin = true;
+    } else {
+      this.hideCreate = true;
+      this.hideLogin = false;
     }
   }
 }

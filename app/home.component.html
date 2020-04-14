@@ -1,46 +1,49 @@
-	<mat-card>
-		<mat-card-title> {{ homesummary.header }}</mat-card-title>
-		<mat-card-content> {{ homesummary.p1 }} </mat-card-content>
-		<mat-card-actions align="end">
-			<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">{{homesummary.p4}}</a>
-			<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">{{homesummary.p5}}</a>
-		</mat-card-actions>
-	</mat-card>
-	<mat-card>
-		<mat-card-title>{{ homesummary.p2 }}</mat-card-title>
-		<mat-card-content>
-			<mat-expansion-panel *ngFor="let value of requests">
-				<mat-expansion-panel-header>
-					<mat-panel-title>{{value.interest}}</mat-panel-title>
-				</mat-expansion-panel-header>
-				<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
-				<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
-				<details>
-					<p>
-						Work example: {{value.work}}<br/>
+<mat-card>
+	<mat-card-title> {{ homesummary.header }}</mat-card-title>
+	<mat-card-content> {{ homesummary.p1 }} </mat-card-content>
+</mat-card>
+<mat-card>
+	<mat-card-title>{{ homesummary.p2 }}</mat-card-title>
+	<mat-card-content>
+		<mat-expansion-panel *ngFor="let value of requests">
+			<mat-expansion-panel-header>
+				<mat-panel-title>{{value.interest}}</mat-panel-title>
+			</mat-expansion-panel-header>
+			<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
+			<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
+			<details>
+				<p>
+					Work example: {{value.work}}<br/>
 				Field: {{value.field}}<br/>
 				Need: {{value.need}}
         </p>
-				</details>
-			</mat-expansion-panel>
-		</mat-card-content>
-	</mat-card>
-	<mat-card>
-		<mat-card-title>{{ homesummary.p3 }}</mat-card-title>
-		<mat-card-content>
-			<mat-expansion-panel *ngFor="let value of offers">
-				<mat-expansion-panel-header>
-					<mat-panel-title>{{value.interest}}</mat-panel-title>
-				</mat-expansion-panel-header>
-				<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
-				<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
-				<details>
-					<p>
-						Work example: {{value.work}}<br/>
+			</details>
+		</mat-expansion-panel>
+	</mat-card-content>
+	<mat-card-actions align="end">
+		<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">{{homesummary.p4}}</a>
+	</mat-card-actions>
+
+</mat-card>
+<mat-card>
+	<mat-card-title>{{ homesummary.p3 }}</mat-card-title>
+	<mat-card-content>
+		<mat-expansion-panel *ngFor="let value of offers">
+			<mat-expansion-panel-header>
+				<mat-panel-title>{{value.interest}}</mat-panel-title>
+			</mat-expansion-panel-header>
+			<p>Request issued by {{value.name}}, {{value.title}}, {{value.location}}, {{value.email}}</p>
+			<p>Request issued on {{value.created | date: "d LLL yyyy" }}</p>
+			<details>
+				<p>
+					Work example: {{value.work}}<br/>
 				Field: {{value.field}}<br/>
 				Need: {{value.need}}
         </p>
-				</details>
-			</mat-expansion-panel>
-		</mat-card-content>
-	</mat-card>
+			</details>
+		</mat-expansion-panel>
+	</mat-card-content>
+	<mat-card-actions align="end">
+		<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">{{homesummary.p5}}</a>
+	</mat-card-actions>
+</mat-card>
