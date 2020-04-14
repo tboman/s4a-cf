@@ -28,6 +28,7 @@ export class AuthService {
     provider.addScope("profile");
     provider.addScope("email");
 
+    var user = this.userDetails;
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -35,8 +36,11 @@ export class AuthService {
         firebase
           .auth()
           .currentUser.getIdToken()
-          .then(token => console.log("got token for "+ result.user.email));
-        router.navigate(['home']);
+          .then(token =>
+            console.log("got token for " + result.user.displayName)
+          );
+        user = result.user;
+        router.navigate(["home"]);
       });
   }
 
@@ -48,12 +52,15 @@ export class AuthService {
     }
   }
 
-  export isAdmin() {
+  isAdmin() {
     const user = firebase.auth().currentUser;
     if (user == null) {
       return false;
     } else {
-      return user.uid == '7uFXFb65XRRpzwtraFMTFN58LCK2' || user.uid == 'OSdYE7GLcjMsVThjfbHfWG2uUhr1';
+      return (
+        user.uid == "7uFXFb65XRRpzwtraFMTFN58LCK2" ||
+        user.uid == "OSdYE7GLcjMsVThjfbHfWG2uUhr1"
+      );
     }
   }
 

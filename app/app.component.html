@@ -33,12 +33,12 @@
 		Framework
 		<span fxFlex></span>
 		<div *ngIf="user; else anonymous" class="card text-center">
-			<a mat-button routerLink="/home" routerLinkActive="active-link" title="{{ user.email }}">
-				<mat-icon>person</mat-icon>
-			</a>
-			<a mat-button routerLink="/logout" routerLinkActive="active-link" title="logout">
-				<mat-icon>clear</mat-icon>
-			</a>
+			<a mat-button routerLink="/home" routerLinkActive="active-link"
+				title="{{ user.email }}"><img style="margin-right:5px;height:28px;width:28px; border-radius: 80%;" src="{{ user.photoURL }}">{{ user.displayName }}</a>
+
+				<a mat-button routerLink="/logout" routerLinkActive="active-link" title="logout">
+					<mat-icon>clear</mat-icon>
+				</a>
 		</div>
 		<ng-template #anonymous>
 			<a mat-button routerLink="/home" routerLinkActive="active-link" title="login">
@@ -50,10 +50,10 @@
 		<router-outlet></router-outlet>
 	</div>
 	<mat-toolbar color="primary" class="mat-elevation-z3">
-    <a mat-button href="https://science4africa.org" title="S4A Website">Science for Africa</a>
-			<span fxFlex></span>
-			<a mat-button href="mailto:s4a@gmail.com" title="Email">
-				<mat-icon>mail</mat-icon>
-			</a>
+		<a mat-button href="https://science4africa.org" title="S4A Website">Science for Africa</a>
+		<span fxFlex></span>
+		<a mat-button href="mailto:s4a@gmail.com" title="Email">
+			<mat-icon>mail</mat-icon>
+		</a>
 	</mat-toolbar>
 </mat-sidenav-container>

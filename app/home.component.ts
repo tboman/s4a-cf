@@ -4,6 +4,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { Offer } from "./model/offer";
 import { Request } from "./model/request";
 import { CacheService } from "../services/cache.service";
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "home-component",
@@ -30,11 +31,23 @@ export class HomeComponent implements OnInit {
   };
   constructor(
     private _firebaseAuth: AngularFireAuth,
-    private cacheService: CacheService
+    private cacheService: CacheService,
+    private authService: AuthService
   ) {
     this.interests = cacheService.getInterests();
     this.homesummary = cacheService.getArticle("homesummary");
-    this.user = firebase.auth().currentUser;
+
+    var user = this.user;
+    var component = this;
+    firebase.auth().onAuthStateChanged(function(newuser) {
+      if (newuser) {
+        console.info("home component changing to " + newuser.displayName);
+        user = newuser;
+        component.ngOnInit();
+      } else {
+        user = null;
+      }
+    });
   }
 
   renderRequest(doc) {
@@ -94,3 +107,15 @@ export class HomeComponent implements OnInit {
     }
   }
 }
+HomeComponent.prototype.onAuthStateChanged = function(user) {
+  if (user) {
+    this.nameContainer.innerText = user.displayName;
+    this.uidContainer.innerText = user.uid;
+    this.profilePic.src = user.photoURL;
+    this.signedOutCard.style.display = "none";
+    this.signedInCard.style.display = "block";
+  } else {
+    this.signedOutCard.style.display = "block";
+    this.signedInCard.style.display = "none";
+  }
+};

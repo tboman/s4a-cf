@@ -53,12 +53,14 @@ export class AppComponent implements OnInit {
     });
 
     var component = this;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.info("app component changing to " + user.email);
+    var user = this.user;
+    firebase.auth().onAuthStateChanged(function(newuser) {
+      if (newuser) {
+        console.info("app component changing to " + newuser.displayName );
+        user = newuser;
         component.ngOnInit();
       } else {
-        this.user = null;
+        user = null;
       }
     });
   }
