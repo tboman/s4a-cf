@@ -5,6 +5,7 @@
 		<p> {{ mainsummary.p2}} </p>
 		<p> {{ mainsummary.p3}} </p>
 		<p> {{ mainsummary.p4}} </p>
+		<p> {{ mainsummary.p5}} </p>
 	</mat-card-content>
 </mat-card>
 <mat-card>
@@ -12,15 +13,15 @@
 	<mat-card-content>
 		{{mainafrica.p1}}
 	</mat-card-content>
+	<mat-card-actions align="end">
+		<a mat-button routerLink="/login" routerLinkActive="active-link" color="primary">{{mainafrica.p2}}</a>
+	</mat-card-actions>
 </mat-card>
 <mat-card>
 	<mat-card-title>{{mainwest.header}}</mat-card-title>
 	<mat-card-content>
 		{{mainwest.p1}}
 	</mat-card-content>
-	<mat-card-actions align="end">
-		<a mat-button routerLink="/login" routerLinkActive="active-link" color="primary">{{mainafrica.p2}}</a>
-	</mat-card-actions>
 	<mat-card-actions align="end">
 		<a mat-button routerLink="/login" routerLinkActive="active-link" color="primary">{{mainwest.p2}}</a>
 	</mat-card-actions>
