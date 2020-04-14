@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   requests = [];
   offers = [];
   interests;
-  user: firebase.User = null;
   homesummary: {
     header: string;
     p1: string;
@@ -36,18 +35,6 @@ export class HomeComponent implements OnInit {
   ) {
     this.interests = cacheService.getInterests();
     this.homesummary = cacheService.getArticle("homesummary");
-
-    var user = this.user;
-    var component = this;
-    firebase.auth().onAuthStateChanged(function(newuser) {
-      if (newuser) {
-        console.info("home component changing to " + newuser.displayName);
-        user = newuser;
-        component.ngOnInit();
-      } else {
-        user = null;
-      }
-    });
   }
 
   renderRequest(doc) {
@@ -84,9 +71,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     const user = firebase.auth().currentUser;
-
     if (user) {
-      this.homesummary.header = user.email;
       const db = firebase.firestore();
       db.collection("requests")
         .where("creator", "==", user.uid)
@@ -107,15 +92,3 @@ export class HomeComponent implements OnInit {
     }
   }
 }
-HomeComponent.prototype.onAuthStateChanged = function(user) {
-  if (user) {
-    this.nameContainer.innerText = user.displayName;
-    this.uidContainer.innerText = user.uid;
-    this.profilePic.src = user.photoURL;
-    this.signedOutCard.style.display = "none";
-    this.signedInCard.style.display = "block";
-  } else {
-    this.signedOutCard.style.display = "block";
-    this.signedInCard.style.display = "none";
-  }
-};
