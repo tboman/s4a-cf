@@ -12,9 +12,6 @@
 	<mat-card-content>
 		{{mainafrica.p1}}
 	</mat-card-content>
-	<mat-card-actions align="end">
-		<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">{{mainafrica.p2}}</a>
-	</mat-card-actions>
 </mat-card>
 <mat-card>
 	<mat-card-title>{{mainwest.header}}</mat-card-title>
@@ -22,6 +19,9 @@
 		{{mainwest.p1}}
 	</mat-card-content>
 	<mat-card-actions align="end">
-		<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">{{mainwest.p2}}</a>
+		<a mat-button routerLink="/login" routerLinkActive="active-link" color="primary">{{mainafrica.p2}}</a>
+	</mat-card-actions>
+	<mat-card-actions align="end">
+		<a mat-button routerLink="/login" routerLinkActive="active-link" color="primary">{{mainwest.p2}}</a>
 	</mat-card-actions>
 </mat-card>

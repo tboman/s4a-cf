@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
   isToggledUppercase: boolean = false;
   hideComponents: boolean = false;
   hideGuides: boolean = false;
+  hideMenu: boolean = true;
   hideCDK: boolean = false;
   title: string;
   user: firebase.User = null;
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit {
     this._firebaseAuth.authState.subscribe(user => {
       if (user) {
         userLocal = user;
+        this.hideMenu = true;
       } else {
         userLocal = null;
       }

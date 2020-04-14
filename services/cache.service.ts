@@ -13,6 +13,7 @@ export class CacheService {
     p2: string;
     p3: string;
     p4: string;
+    p5: string;
   }[];
   fields: { key: string; value: string }[] = [
     {
@@ -139,15 +140,16 @@ export class CacheService {
     this.fields.push(field);
   }
   addArticle(doc) {
-    var article = { key: "", header: "", p1: "", p2: "", p3: "", p4: "" };
+    var article = { key: "", header: "", p1: "", p2: "", p3: "", p4: "", p5: "" };
     article.key = doc.data().key;
     article.header = doc.data().en_header;
     article.p1 = doc.data().en_data_1;
     article.p2 = doc.data().en_data_2;
     article.p3 = doc.data().en_data_3;
     article.p4 = doc.data().en_data_4;
+    article.p5 = doc.data().en_data_5;
     if (!this.articles) {
-          this.articles = [{ key: "", header: "", p1: "", p2: "", p3: "", p4: "" }];
+          this.articles = [{ key: "", header: "", p1: "", p2: "", p3: "", p4: "", p5: "" }];
     }
     this.articles.push(article);
   }

@@ -21,12 +21,14 @@ export class HomeComponent implements OnInit {
     p2: string;
     p3: string;
     p4: string;
+    p5: string;
   } = {
     header: "Your Page",
-    p1: ".",
-    p2: ".",
-    p3: ".",
-    p4: "."
+    p1: "",
+    p2: "",
+    p3: "",
+    p4: "",
+    p5: ""
   };
   constructor(
     private _firebaseAuth: AngularFireAuth,

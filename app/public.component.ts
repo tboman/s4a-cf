@@ -13,6 +13,7 @@ export class PublicComponent implements OnInit {
     p2: string;
     p3: string;
     p4: string;
+    p5: string;
   } = {
     header: "Science for Africa",
     p1:
@@ -22,7 +23,8 @@ export class PublicComponent implements OnInit {
     p3:
       "This framework allows academic and private sector scientists and engineers to sign up, free of charge, to identify, initiate, and pursue productive and mutually beneficial collaborations linking the scientific communities in North America and Europe with peers in sub- Saharan Africa. The system matches requests and offers, based on scientific sub-specialty and type of collaboration.",
     p4:
-      "With this platform, scientists may also share additional needs, resources, and offers."
+      "With this platform, scientists may also share additional needs, resources, and offers.",
+    p5: ""
   };
 
   mainafrica: {
@@ -31,13 +33,15 @@ export class PublicComponent implements OnInit {
     p2: string;
     p3: string;
     p4: string;
+    p5: string;
   } = {
     header: "Scientists in Africa",
     p1:
       "Are you looking to establish a scientific collaboration or benefit from research mentorship? Sign up here to get connected with peers in your field of study in the United States, Canada, and Europe.",
     p2: "Make Request",
     p3: "",
-    p4: ""
+    p4: "",
+    p5: ""
   };
 
   mainwest: {
@@ -46,13 +50,15 @@ export class PublicComponent implements OnInit {
     p2: string;
     p3: string;
     p4: string;
+    p5: string;
   } = {
     header: "Scientists in North America and Europe",
     p1:
       "Would you be interested in collaborating with African researchers and apply your work to	distinct environments and populations? Start the process here by making an offer to be match with African scientists.",
     p2: "Make Offer",
     p3: "",
-    p4: ""
+    p4: "",
+    p5: ""
   };
 
   constructor(private cacheService: CacheService) {}

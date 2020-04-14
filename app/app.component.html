@@ -1,51 +1,57 @@
 <mat-sidenav-container fullscreen>
-	<mat-sidenav #exampleSidenav class="example-sidenav mat-elevation-z3" [mode]="isMobile ? 'over' : 'side'">
-		<mat-toolbar>
-			Menu
-			<span fxFlex></span>
-			<button mat-icon-button (click)="exampleSidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button>
-		</mat-toolbar>
-		<mat-nav-list style="z-index: 2">
-			<a mat-list-item routerLink="/" routerLinkActive="active-link" (click)="exampleSidenav.close()">Home</a>
-			<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">My
-				Collaboration</a>
-			<!--a mat-list-item routerLink="/offer" routerLinkActive="active-link" (click)="exampleSidenav.close()">Create
+	<div *ngIf="user; else anonymous" class="card text-center">
+		<mat-sidenav #exampleSidenav class="example-sidenav mat-elevation-z3" [mode]="isMobile ? 'over' : 'side'">
+			<mat-toolbar>
+				Menu
+				<span fxFlex></span>
+				<button mat-icon-button (click)="exampleSidenav.close()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+			</mat-toolbar>
+			<mat-nav-list style="z-index: 2">
+				<a mat-list-item routerLink="/" routerLinkActive="active-link" (click)="exampleSidenav.close()">Home</a>
+				<a mat-list-item routerLink="/home" routerLinkActive="active-link" (click)="exampleSidenav.close()">My
+					Collaboration</a>
+				<!--a mat-list-item routerLink="/offer" routerLinkActive="active-link" (click)="exampleSidenav.close()">Create
 				Offer</a-->
-			<a mat-list-item routerLink="/request" routerLinkActive="active-link"
-				(click)="exampleSidenav.close()">Create Request</a>
-			<a mat-list-item (click)="toggleGuides()">
-				<p matLine>Management</p>
-				<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon"
-					[class.isUnToggled]="!hideGuides">keyboard_arrow_down</mat-icon>
-			</a>
-		</mat-nav-list>
-		<div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
-			<mat-nav-list>
-				<a mat-list-item *ngFor="let adminLink of adminLinks" [routerLink]="['/admin', adminLink.url]"
-					routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(adminLink.name)">
-					<p matLine>{{adminLink.name}}</p>
+				<a mat-list-item routerLink="/request" routerLinkActive="active-link"
+					(click)="exampleSidenav.close()">Create Request</a>
+				<a mat-list-item (click)="toggleGuides()">
+					<p matLine>Management</p>
+					<mat-icon [class.isToggled]="hideGuides" class="toggle-component-icon"
+						[class.isUnToggled]="!hideGuides">keyboard_arrow_down</mat-icon>
 				</a>
 			</mat-nav-list>
-		</div>
-	</mat-sidenav>
-	<mat-toolbar color="primary" class="mat-elevation-z3">
-		<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration
-		Framework
-		<span fxFlex></span>
-		<div *ngIf="user; else anonymous" class="card text-center">
+			<div *ngIf="hideGuides" class="guide-examples-sect" @enterAnimation>
+				<mat-nav-list>
+					<a mat-list-item *ngFor="let adminLink of adminLinks" [routerLink]="['/admin', adminLink.url]"
+						routerLinkActive="active-link" (click)="exampleSidenav.close(); changeTitle(adminLink.name)">
+						<p matLine>{{adminLink.name}}</p>
+					</a>
+				</mat-nav-list>
+			</div>
+		</mat-sidenav>
+		<mat-toolbar color="primary" class="mat-elevation-z3">
+			<button mat-icon-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>Collaboration
+			Framework
+			<span fxFlex></span>
 			<a mat-button routerLink="/home" routerLinkActive="active-link"
 				title="{{ user.email }}"><img style="margin-right:5px;height:28px;width:28px; border-radius: 80%;" src="{{ user.photoURL }}">{{ user.displayName }}</a>
 
 				<a mat-button routerLink="/logout" routerLinkActive="active-link" title="logout">
 					<mat-icon>clear</mat-icon>
 				</a>
-		</div>
-		<ng-template #anonymous>
+		</mat-toolbar>
+	</div>
+
+	<ng-template #anonymous>
+		<mat-toolbar color="primary" class="mat-elevation-z3">
+			Collaboration Framework
+			<span fxFlex></span>
 			<a mat-button routerLink="/home" routerLinkActive="active-link" title="login">
 				<mat-icon>lock</mat-icon>
 			</a>
-		</ng-template>
-	</mat-toolbar>
+		</mat-toolbar>
+	</ng-template>
+
 	<div class="app-content">
 		<router-outlet></router-outlet>
 	</div>
