@@ -33,13 +33,16 @@
 			<a mat-mini-fab routerLink="/" routerLinkActive="active-link" title="home">
 				<mat-icon>home</mat-icon>
 			</a>
-      &nbsp;
+			&nbsp;
 			<button mat-button (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>
 			&nbsp;
 			Collaboration Framework
 			<span fxFlex></span>
 			<a mat-mini-fab routerLink="/home" routerLinkActive="active-link"
-				title="{{ user.email }}"><img style="margin-right:5px;height:28px;width:28px; border-radius: 80%;" src="{{ user.photoURL }}"></a>{{ user.displayName }}
+				title="{{ user.email }}"><img style="margin-right:5px;height:28px;width:28px; border-radius: 100%;" src="{{ user.photoURL }}"></a>
+				&nbsp;
+				{{ user.displayName }}
+				&nbsp;
 				<a mat-mini-fab routerLink="/logout" routerLinkActive="active-link" title="logout">
 					<mat-icon>clear</mat-icon>
 				</a>
