@@ -47,8 +47,8 @@ export class AppComponent implements OnInit {
     var userLocal = this.user;
     this._firebaseAuth.authState.subscribe(user => {
       if (user) {
+        console.info("app component AngularFireAuth changing to " + user.displayName );
         userLocal = user;
-        this.hideMenu = true;
       } else {
         userLocal = null;
       }
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
     var user = this.user;
     firebase.auth().onAuthStateChanged(function(newuser) {
       if (newuser) {
-        console.info("app component changing to " + newuser.displayName );
+        console.info("app component FirebaseAuth changing to " + newuser.displayName );
         user = newuser;
         component.ngOnInit();
       } else {
