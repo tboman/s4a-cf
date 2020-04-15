@@ -1,6 +1,6 @@
-<mat-card class="splash-image">
-	<mat-card-title class="splash-text">{{mainsummary.header}}</mat-card-title>
-	<mat-card-content class="splash-text">
+<mat-card class="splash-image-left" style="background-image: url('https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');">
+	<mat-card-title class="splash-text-left">{{mainsummary.header}}</mat-card-title>
+	<mat-card-content class="splash-text-left">
 		<p> {{ mainsummary.p1}} </p>
 		<p> {{ mainsummary.p2}} </p>
 		<p> {{ mainsummary.p3}} </p>
@@ -8,34 +8,34 @@
 		<p> {{ mainsummary.p5}} </p>
 	</mat-card-content>
 </mat-card>
-<mat-card>
-	<mat-card-title>{{mainafrica.header}}</mat-card-title>
-	<mat-card-content>
+<mat-card class="splash-image-right" style="background-image: url('https://images.unsplash.com/photo-1579154204845-5d7f8d4dc785?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80');">
+	<mat-card-title class="splash-text-right">{{mainafrica.header}}</mat-card-title>
+	<mat-card-content class="splash-text-right">
 		{{mainafrica.p1}}
 	</mat-card-content>
 	<div *ngIf="showLogin">
-		<mat-card-actions align="end">
+		<mat-card-actions class="splash-text-right" align="end">
 			<a mat-button routerLink="/register" routerLinkActive="active-link" color="primary">{{mainafrica.p2}}</a>
 		</mat-card-actions>
 	</div>
 	<div *ngIf="showCreate">
-		<mat-card-actions align="end">
+		<mat-card-actions  class="splash-text-right" align="end">
 			<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">{{mainafrica.p3}}</a>
 		</mat-card-actions>
 	</div>
 </mat-card>
-<mat-card>
-	<mat-card-title>{{mainwest.header}}</mat-card-title>
-	<mat-card-content>
+<mat-card class="splash-image-left" style="background-image: url('https://images.unsplash.com/photo-1579963690004-b2b9fbc8b21d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80');">
+	<mat-card-title class="splash-text-left">{{mainwest.header}}</mat-card-title>
+	<mat-card-content class="splash-text-left">
 		{{mainwest.p1}}
 	</mat-card-content>
 	<div *ngIf="showLogin">
-		<mat-card-actions align="end">
+		<mat-card-actions align="end" class="splash-text-left">
 			<a mat-button routerLink="/register" routerLinkActive="active-link" color="primary">{{mainwest.p2}}</a>
 		</mat-card-actions>
 	</div>
 	<div *ngIf="showCreate">
-		<mat-card-actions align="end">
+		<mat-card-actions align="end" class="splash-text-left">
 			<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">{{mainwest.p3}}</a>
 		</mat-card-actions>
 	</div>

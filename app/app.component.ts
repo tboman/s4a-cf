@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   hideComponents: boolean = false;
   hideGuides: boolean = false;
   hideMenu: boolean = true;
+  enabledMenu: boolean = false;
   hideCDK: boolean = false;
   title: string;
   user: firebase.User = null;
@@ -45,10 +46,12 @@ export class AppComponent implements OnInit {
     private cacheService: CacheService
   ) {
     var userLocal = this.user;
+    var showMenu = this.enabledMenu;
     this._firebaseAuth.authState.subscribe(user => {
       if (user) {
         console.info("app component AngularFireAuth changing to " + user.displayName );
         userLocal = user;
+        showMenu = true;
       } else {
         userLocal = null;
       }
@@ -123,9 +126,6 @@ export class AppComponent implements OnInit {
       );
     }
     this.adminLinks = [
-      { name: "View Offers", url: "offers" },
-      { name: "View Requests", url: "requests" },
-      { name: "Match Maker", url: "matching" },
       { name: "Configure Interests", url: "interests" },
       { name: "Configure Research Fields", url: "fields" }
     ];

@@ -1,15 +1,30 @@
-.splash-image {
-    background-image: url('https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80');
+.splash-image-left {
     background-size: 400px;
     background-repeat: no-repeat;
     background-color: #ffffff;
+    background-position-x: left;
     text-align: left;
     color: #795548;
 }
 
-.splash-text {
+.splash-image-right {
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position-x: right;
+    text-align: right;
+    color: #795548;
+}
+
+.splash-text-left {
   margin-left: 400px; 
   text-align: left;
+  color:#000000;
+}
+
+.splash-text-right {
+  margin-right: 400px; 
+  text-align: right;
   color:#000000;
 }
 
