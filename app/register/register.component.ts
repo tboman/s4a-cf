@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
     this.registersummary = cacheService.getArticle("registersummary");
+    console.log(this.registersummary);
   }
 
   ngOnInit() {
