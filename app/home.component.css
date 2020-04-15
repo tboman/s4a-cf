@@ -1,0 +1,36 @@
+.splash-image-left {
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position-x: left;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #795548;
+}
+
+.splash-image-right {
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position-x: right;
+    margin-bottom: 10px;
+    text-align: right;
+    color: #795548;
+}
+
+.splash-text-left {
+  margin-left: 400px; 
+  text-align: left;
+  color:#000000;
+}
+
+.splash-text-right {
+  margin-right: 400px; 
+  text-align: right;
+  color:#000000;
+}
+
+.splash-cell {
+  margin:20px;
+  vertical-align: top;
+}

@@ -4,6 +4,7 @@
     background-color: #ffffff;
     background-position-x: left;
     text-align: left;
+    margin-bottom: 10px;
     color: #795548;
 }
 
@@ -13,6 +14,7 @@
     background-color: #ffffff;
     background-position-x: right;
     text-align: right;
+    margin-bottom: 10px;
     color: #795548;
 }
 
