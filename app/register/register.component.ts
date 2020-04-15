@@ -42,8 +42,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.register = new Register();
-    this.register.email = firebase.auth().currentUser.email;
-    this.register.name = firebase.auth().currentUser.displayName;
     this.initForm();
   }
 

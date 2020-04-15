@@ -26,13 +26,6 @@
 				<br/>
 
 				<mat-form-field>
-					<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="request.work">
-					<mat-error>This is required.</mat-error>
-				</mat-form-field>
-				<br/>
-				<br/>
-
-				<mat-form-field>
 					<mat-select name="title" required [(ngModel)]="register.title" placeholder="Your Title">
 						<mat-option *ngFor="let title of titles" value="{{title.key}}">{{title.value}}</mat-option>
 					</mat-select>
