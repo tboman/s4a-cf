@@ -1,0 +1,61 @@
+<form #form="ngForm" (submit)="onSubmit()">
+	<mat-card>
+			<mat-card-title>{{ registersummary.header }}</mat-card-title>
+			<mat-card-content>{{ registersummary.p1 }}</mat-card-content>
+
+			<mat-card-title>{{ registersummary.p2 }}</mat-card-title>
+			<mat-card-content>
+				<mat-form-field>
+					<input matInput placeholder="Your Email" name="email" required [(ngModel)]="register.email">
+					<mat-error>You will need to provide an email that we can verify by sending an activation code.
+					</mat-error>
+				</mat-form-field>
+				<br/>
+				<br/>
+
+				<mat-form-field>
+					<input matInput placeholder="Your Name" name="name" required [(ngModel)]="register.name">
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<br/>
+
+				<mat-form-field>
+					<input matInput placeholder="Password" name="password" required [(ngModel)]="register.password">
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<br/>
+
+				<mat-form-field>
+					<input matInput placeholder="Link to your work (e.g. lab webpage, publication list,...)?" name="work" required [(ngModel)]="request.work">
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<br/>
+				<br/>
+
+				<mat-form-field>
+					<mat-select name="title" required [(ngModel)]="register.title" placeholder="Your Title">
+						<mat-option *ngFor="let title of titles" value="{{title.key}}">{{title.value}}</mat-option>
+					</mat-select>
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<br/>
+
+				<mat-form-field>
+					<mat-select name="location" required [(ngModel)]="register.location" placeholder="Your Location">
+						<mat-option *ngFor="let location of locations" value="{{location.key}}">{{location.value}}
+						</mat-option>
+					</mat-select>
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<br/>
+		</mat-card-content>
+				<mat-card-actions align="end">
+					<button mat-button type="reset" color="primary">Reset</button>
+					<button mat-button type="submit" color="primary" [disabled]="form.invalid" (click)="tryRegister(registerForm.value)">Register</button>
+				</mat-card-actions>
+	</mat-card>
+  <label class="error">{{errorMessage}}</label>
+<label class="success">{{successMessage}}</label>
+
+
+</form>

@@ -1,21 +1,21 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Request } from "../model/request";
+import { Register } from "../model/register";
 import { CacheService } from "../../services/cache.service";
 import * as firebase from "firebase/app";
 
 @Component({
-  selector: "app-request",
-  templateUrl: "./request.component.html",
-  styleUrls: ["./request.component.css"]
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class RequestComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   form: FormGroup;
-  request: Request;
+  register: Register;
   interests;
   fields;
-  requestsummary: {
+  registersummary: {
     header: string;
     p1: string;
     p2: string;
@@ -36,13 +36,13 @@ export class RequestComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
-    this.requestsummary = cacheService.getArticle("requestsummary");
+    this.registersummary = cacheService.getArticle("registersummary");
   }
 
   ngOnInit() {
-    this.request = new Request();
-    this.request.email = firebase.auth().currentUser.email;
-    this.request.name = firebase.auth().currentUser.displayName;
+    this.register = new Register();
+    this.register.email = firebase.auth().currentUser.email;
+    this.register.name = firebase.auth().currentUser.displayName;
     this.initForm();
   }
 
@@ -68,20 +68,20 @@ export class RequestComponent implements OnInit {
 
   onSubmit() {
     const db = firebase.firestore();
-    this.request.email = firebase.auth().currentUser.email;
-    this.request.creator = firebase.auth().currentUser.uid;
-    this.request.created = new Date();
-    console.log(this.request);
+    this.register.email = firebase.auth().currentUser.email;
+    this.register.creator = firebase.auth().currentUser.uid;
+    this.register.created = new Date();
+    console.log(this.register);
 
-    db.collection("requests")
-      .add(this.request)
+    db.collection("registrations")
+      .add(this.register)
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
       })
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-    window.alert("Request submitted.");
+    window.alert("Registration submitted, stay tuned for email.");
     this.router.navigate(["/home"]);
   }
 }

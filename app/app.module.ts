@@ -11,6 +11,8 @@ import { LogoutComponent } from "./logout/logout.component";
 import { AboutComponent } from "./about.component";
 import { OfferComponent } from "./offer/offer.component";
 import { RequestComponent } from "./request/request.component";
+import { RegisterComponent } from "./register/register.component";
+import { LoginComponent } from "./login/login.component";
 import { AppRouting } from "../app.routing";
 import { MaterialModule } from "./material.module";
 import { GuidesModule } from "./guides.module";
@@ -78,6 +80,8 @@ Firebase.initializeApp(environment.firebase);
     PublicComponent,
     HomeComponent,
     LogoutComponent,
+    LoginComponent,
+    RegisterComponent,
     OfferComponent,
     RequestComponent,
     OffersComponent,

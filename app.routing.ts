@@ -8,6 +8,8 @@ import { AboutComponent } from "./app/about.component";
 import { LogoutComponent } from "./app/logout/logout.component";
 import { OfferComponent } from "./app/offer/offer.component";
 import { RequestComponent } from "./app/request/request.component";
+import { RegisterComponent } from "./app/register/register.component";
+import { LoginComponent } from "./app/login/login.component";
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./services/auth-guard.service";
 import { AdminGuard } from "./services/admin-guard.service";
@@ -29,6 +31,8 @@ const ALL_ROUTES: Routes = [
   { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
   { path: "offer", component: OfferComponent, canActivate: [AuthGuard] },
   { path: "request", component: RequestComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LoginComponent, canActivate: [AuthGuard] },
+  { path: "register", component: RegisterComponent },
   { path: "about", component: AboutComponent },
   { path: "logout", component: LogoutComponent },
   { path: "cdk", children: CDK_ROUTES },
