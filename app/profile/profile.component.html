@@ -1,0 +1,36 @@
+<form #form="ngForm" (submit)="onSubmit()">
+	<mat-card>
+		<mat-card-title>{{ profilesummary.header }}</mat-card-title>
+		<mat-card-content>{{ profilesummary.p1 }}</mat-card-content>
+		<mat-card-content>
+			<mat-form-field>
+				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="profile.name">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+
+			<mat-form-field>
+				<mat-select name="title" required [(ngModel)]="profile.title" placeholder="Your Title">
+					<mat-option *ngFor="let title of titles" value="{{title.key}}">{{title.value}}</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+
+			<mat-form-field>
+				<mat-select name="location" required [(ngModel)]="profile.location" placeholder="Your Location">
+					<mat-option *ngFor="let location of locations" value="{{location.key}}">{{location.value}}
+					</mat-option>
+				</mat-select>
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+		</mat-card-content>
+			<mat-card-actions align="end">
+				<button mat-button type="reset" color="primary">Reset</button>
+				<button mat-button type="submit" color="primary" [disabled]="form.invalid" (click)="tryRegister(ngForm.value)">Register</button>
+			</mat-card-actions>
+	</mat-card>
+	</div>
+</form>

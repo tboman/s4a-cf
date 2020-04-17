@@ -44,13 +44,13 @@
 				<mat-icon>folder</mat-icon>
 			</a>
 			&nbsp;
-			<img style="margin:0px;height:48px;width:48px; border-radius: 100%;" src="{{ user.photoURL }}" title="{{ user.email }}">
-				&nbsp;
-				{{ user.displayName }}
-				&nbsp;
-			<a mat-mini-fab color="primary" routerLink="/logout" routerLinkActive="active-link" title="logout">
-				<mat-icon>clear</mat-icon>
+			<a mat-mini-fab color="primary" routerLink="/profile" routerLinkActive="active-link" title="profile">
+				<img style="margin-top:-4px;height:32px;width:32px;border-radius:100%;" src="{{ user.photoURL }}" title="{{ user.email }}">
 			</a>
+				&nbsp;
+				<a mat-mini-fab color="primary" routerLink="/logout" routerLinkActive="active-link" title="logout">
+					<mat-icon>clear</mat-icon>
+				</a>
 		</mat-toolbar>
 	</div>
 
