@@ -4,11 +4,16 @@
 		<mat-card-content>{{ profilesummary.p1 }}</mat-card-content>
 		<mat-card-content>
 			<mat-form-field>
+				<input matInput placeholder="Your Email" name="email" required [(ngModel)]="profile.email">
+				<mat-error>This is required.</mat-error>
+			</mat-form-field>
+			<br/>
+      
+			<mat-form-field>
 				<input matInput placeholder="Your Name" name="name" required [(ngModel)]="profile.name">
 				<mat-error>This is required.</mat-error>
 			</mat-form-field>
 			<br/>
-
 
 			<mat-form-field>
 				<mat-select name="title" required [(ngModel)]="profile.title" placeholder="Your Title">
@@ -28,9 +33,7 @@
 			<br/>
 		</mat-card-content>
 			<mat-card-actions align="end">
-				<button mat-button type="reset" color="primary">Reset</button>
-				<button mat-button type="submit" color="primary" [disabled]="form.invalid" (click)="tryRegister(ngForm.value)">Register</button>
+				<button mat-button type="submit" color="primary" [disabled]="form.invalid">Update My Information</button>
 			</mat-card-actions>
 	</mat-card>
-	</div>
 </form>

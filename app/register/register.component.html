@@ -54,7 +54,7 @@ Facebook</button>
 				</mat-card-content>
 				<mat-card-actions align="end">
 					<button mat-button type="reset" color="primary">Reset</button>
-					<button mat-button type="submit" color="primary" [disabled]="form.invalid" (click)="tryRegister(registerForm.value)">Register</button>
+					<button mat-button type="submit" color="primary" [disabled]="form.invalid" (click)="tryRegister(ngForm.value)">Register</button>
 				</mat-card-actions>
 			</mat-card>
 		</mat-grid-tile>

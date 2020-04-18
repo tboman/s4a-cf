@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Register } from "../model/register";
+import { Profile } from "../model/profile";
 import { CacheService } from "../../services/cache.service";
 import * as firebase from "firebase/app";
 
@@ -12,7 +12,7 @@ import * as firebase from "firebase/app";
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  register: Register;
+  profile: Profile;
   interests;
   fields;
   registersummary: {
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.register = new Register();
+    this.profile = new Profile();
     this.initForm();
   }
 
@@ -67,13 +67,13 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     const db = firebase.firestore();
-    this.register.email = firebase.auth().currentUser.email;
-    this.register.creator = firebase.auth().currentUser.uid;
-    this.register.created = new Date();
-    console.log(this.register);
+    this.profile.email = firebase.auth().currentUser.email;
+    this.profile.creator = firebase.auth().currentUser.uid;
+    this.profile.created = new Date();
+    console.log(this.profile);
 
-    db.collection("registrations")
-      .add(this.register)
+    db.collection("profiles")
+      .add(this.profile)
       .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
       })

@@ -159,6 +159,20 @@ export class CacheService {
   public getInterestsRaw() {
     return this.interests_raw;
   }
+   
+  public getProfile(key) {
+    if (!this.articles) {
+      var db = firebase.firestore();
+      db.collection("profiles").
+      where("creator", "==", key)
+        .get()
+        .then(snapshot => {
+          snapshot.docs.forEach(doc => {
+            return doc;
+          });
+        });
+    }
+  }
   public getArticle(key) {
     if (!this.articles) {
       var db = firebase.firestore();

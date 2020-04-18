@@ -34,7 +34,7 @@ const ALL_ROUTES: Routes = [
   { path: "request", component: RequestComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent, canActivate: [AuthGuard] },
   { path: "register", component: RegisterComponent },
-  { path: "profile", component: ProfileComponent },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "about", component: AboutComponent },
   { path: "logout", component: LogoutComponent },
   { path: "cdk", children: CDK_ROUTES },

@@ -39,6 +39,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.profile = new Profile();
+    var loadedProfile = this.cacheService.getProfile(firebase.auth().currentUser.uid);
+    console.log(loadedProfile);
+    this.profile.email = firebase.auth().currentUser.email;
+    this.profile.name = firebase.auth().currentUser.displayName;
+    this.profile.creator = firebase.auth().currentUser.uid;
     this.initForm();
   }
 
@@ -69,7 +74,7 @@ export class ProfileComponent implements OnInit {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-    window.alert("Registration submitted, stay tuned for email.");
+    window.alert("Profile updated.");
     this.router.navigate(["/home"]);
   }
 }
