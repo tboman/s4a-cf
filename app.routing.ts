@@ -9,6 +9,7 @@ import { LogoutComponent } from "./app/logout/logout.component";
 import { OfferComponent } from "./app/offer/offer.component";
 import { RequestComponent } from "./app/request/request.component";
 import { RegisterComponent } from "./app/register/register.component";
+import { ProfileComponent } from "./app/profile/profile.component";
 import { LoginComponent } from "./app/login/login.component";
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./services/auth-guard.service";
@@ -33,6 +34,7 @@ const ALL_ROUTES: Routes = [
   { path: "request", component: RequestComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent, canActivate: [AuthGuard] },
   { path: "register", component: RegisterComponent },
+  { path: "profile", component: ProfileComponent },
   { path: "about", component: AboutComponent },
   { path: "logout", component: LogoutComponent },
   { path: "cdk", children: CDK_ROUTES },

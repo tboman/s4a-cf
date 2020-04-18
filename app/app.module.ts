@@ -8,6 +8,7 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home.component";
 import { PublicComponent } from "./public.component";
 import { LogoutComponent } from "./logout/logout.component";
+import { ProfileComponent } from "./app/profile/profile.component";
 import { AboutComponent } from "./about.component";
 import { OfferComponent } from "./offer/offer.component";
 import { RequestComponent } from "./request/request.component";
@@ -81,6 +82,7 @@ Firebase.initializeApp(environment.firebase);
     HomeComponent,
     LogoutComponent,
     LoginComponent,
+    ProfileComponent,
     RegisterComponent,
     OfferComponent,
     RequestComponent,
