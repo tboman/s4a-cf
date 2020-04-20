@@ -8,17 +8,11 @@
 			<mat-card-title>{{ requestsummary.p2 }}</mat-card-title>
 			<mat-card-content>
 				<mat-form-field>
-					<input matInput placeholder="Your Email" name="email" required [(ngModel)]="request.email">
-					<mat-error>You will need to provide an email that we can verify by sending an activation code.
+					<input matInput placeholder="Academic Organization/Research Institution" name="institution" required [(ngModel)]="request.institution">
+					<mat-error>The institution name will help collaborators research your work.
 					</mat-error>
 				</mat-form-field>
 				<br/>
-				<br/>
-
-				<mat-form-field>
-					<input matInput placeholder="Your Name" name="name" required [(ngModel)]="request.name">
-					<mat-error>This is required.</mat-error>
-				</mat-form-field>
 				<br/>
 
 				<mat-form-field>
@@ -28,23 +22,6 @@
 				<br/>
 				<br/>
 
-				<mat-form-field>
-					<mat-select name="title" required [(ngModel)]="request.title" placeholder="Your Title">
-						<mat-option *ngFor="let title of titles" value="{{title.key}}">{{title.value}}</mat-option>
-					</mat-select>
-					<mat-error>This is required.</mat-error>
-				</mat-form-field>
-				<br/>
-
-				<mat-form-field>
-					<mat-select name="location" required [(ngModel)]="request.location" placeholder="Your Location">
-						<mat-option *ngFor="let location of locations" value="{{location.key}}">{{location.value}}
-						</mat-option>
-					</mat-select>
-					<mat-error>This is required.</mat-error>
-				</mat-form-field>
-				<br/>
-				<br/>
 
 				<mat-card-title>{{ requestsummary.p3 }}</mat-card-title>
 				<mat-form-field>

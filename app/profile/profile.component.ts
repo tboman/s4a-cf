@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Profile } from "../model/profile";
 import { CacheService } from "../../services/cache.service";
+import { Observable } from 'rxjs';
 import * as firebase from "firebase/app";
 
 @Component({
@@ -31,6 +32,7 @@ export class ProfileComponent implements OnInit {
 
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
+  loadedProfile: Observable<Profile>;
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
@@ -38,11 +40,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.profile = new Profile();
-    var loadedProfile = this.cacheService.getProfile(firebase.auth().currentUser.uid);
-    console.log(loadedProfile);
-    this.profile.email = firebase.auth().currentUser.email;
-    this.profile.name = firebase.auth().currentUser.displayName;
+    this.profile = this.cacheService.getProfile(firebase.auth().currentUser.uid);
     this.profile.creator = firebase.auth().currentUser.uid;
     this.initForm();
   }

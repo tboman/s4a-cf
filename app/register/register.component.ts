@@ -3,12 +3,13 @@ import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Profile } from "../model/profile";
 import { CacheService } from "../../services/cache.service";
+import { AuthService } from "../../services/auth.service";
 import * as firebase from "firebase/app";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
@@ -31,10 +32,15 @@ export class RegisterComponent implements OnInit {
     p5: "."
   };
 
-  locations: [{key:string, value: string}];
-  titles: [{key:string, value: string}];
+  locations: [{ key: string; value: string }];
+  titles: [{ key: string; value: string }];
 
-  constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cacheService: CacheService,
+    private authService: AuthService
+  ) {
     const db = firebase.firestore();
     this.registersummary = cacheService.getArticle("registersummary");
     console.log(this.registersummary);
@@ -65,22 +71,43 @@ export class RegisterComponent implements OnInit {
     this.form.get(control).reset("");
   }
 
-  onSubmit() {
+  registerWithGoogle() {
+    var router = this.router;
+    var register = this;
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope("profile");
+    provider.addScope("email");
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(function(result) {
+        firebase
+          .auth()
+          .currentUser.getIdToken()
+          .then(token => register.tryRegister());
+        router.navigate(["/profile"]);
+      });
+  }
+
+  registerWithFacebook() {
+    window.alert("Not yet working.");
+  }
+
+  registerWithMicrosoft() {
+    window.alert("Not yet working.");
+  }
+
+  registerWithTwitter() {
+    window.alert("Not yet working.");
+  }
+
+  tryRegister() {
     const db = firebase.firestore();
     this.profile.email = firebase.auth().currentUser.email;
+    this.profile.name = firebase.auth().currentUser.displayName;
     this.profile.creator = firebase.auth().currentUser.uid;
     this.profile.created = new Date();
-    console.log(this.profile);
-
-    db.collection("profiles")
-      .add(this.profile)
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
-    window.alert("Registration submitted, stay tuned for email.");
-    this.router.navigate(["/home"]);
+    this.cacheService.putProfile(this.profile);
+    this.router.navigate(["/profile"]);
   }
 }

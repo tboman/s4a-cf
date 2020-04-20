@@ -65,13 +65,15 @@ export class PublicComponent implements OnInit {
   };
 
   constructor(private cacheService: CacheService) {
+    var showLogin = this.showLogin;
+    var showCreate = this.showCreate;
     firebase.auth().onAuthStateChanged(function(newuser) {
       if (newuser) {
-        this.showLogin = false;
-        this.showCreate = true;
+        showLogin = false;
+        showCreate = true;
       } else {
-        this.showLogin = true;
-        this.showCreate = false;
+        showLogin = true;
+        showCreate = false;
       }
     });
   }

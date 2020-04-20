@@ -6,6 +6,7 @@ import * as firebase from "firebase/app";
 export class CacheService {
   locations;
   titles;
+  profile;
   articles: {
     key: string;
     header: string;
@@ -140,7 +141,15 @@ export class CacheService {
     this.fields.push(field);
   }
   addArticle(doc) {
-    var article = { key: "", header: "", p1: "", p2: "", p3: "", p4: "", p5: "" };
+    var article = {
+      key: "",
+      header: "",
+      p1: "",
+      p2: "",
+      p3: "",
+      p4: "",
+      p5: ""
+    };
     article.key = doc.data().key;
     article.header = doc.data().en_header;
     article.p1 = doc.data().en_data_1;
@@ -149,7 +158,9 @@ export class CacheService {
     article.p4 = doc.data().en_data_4;
     article.p5 = doc.data().en_data_5;
     if (!this.articles) {
-          this.articles = [{ key: "", header: "", p1: "", p2: "", p3: "", p4: "", p5: "" }];
+      this.articles = [
+        { key: "", header: "", p1: "", p2: "", p3: "", p4: "", p5: "" }
+      ];
     }
     this.articles.push(article);
   }
@@ -159,20 +170,36 @@ export class CacheService {
   public getInterestsRaw() {
     return this.interests_raw;
   }
-   
+
   public getProfile(key) {
-    if (!this.articles) {
+    if (!this.profile) {
       var db = firebase.firestore();
-      db.collection("profiles").
-      where("creator", "==", key)
+      db.collection("profiles")
+        .where("creator", "==", key)
         .get()
         .then(snapshot => {
           snapshot.docs.forEach(doc => {
-            return doc;
+            console.log(doc.data());
+            this.profile = doc.data();
           });
         });
     }
+    return this.profile;
   }
+
+  public putProfile(profile) {
+    this.profile = profile;
+    var db = firebase.firestore();
+    db.collection("profiles")
+      .add(this.profile)
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+  }
+  
   public getArticle(key) {
     if (!this.articles) {
       var db = firebase.firestore();

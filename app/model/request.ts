@@ -8,5 +8,6 @@ export class Request extends Object {
   interest: string;
   field: string;
   need: string;
+  institution: string;
   created: Date;
 }
