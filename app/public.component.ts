@@ -69,11 +69,11 @@ export class PublicComponent implements OnInit {
     var showCreate = this.showCreate;
     firebase.auth().onAuthStateChanged(function(newuser) {
       if (newuser) {
-        showLogin = true;
-        showCreate = false;
-      } else {
         showLogin = false;
         showCreate = true;
+      } else {
+        showLogin = true;
+        showCreate = false;
       }
     });
   }
