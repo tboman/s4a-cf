@@ -30,11 +30,8 @@
 		</mat-sidenav>
 	</div>
 
-	<div *ngIf="user; else anonymous" class="card text-center">
+	<div *ngIf="auth.user | async as user; else anonymous" class="card text-center">
 		<mat-toolbar color="primary" class="mat-elevation-z3">
-			<div *ngIf="enableMenu" class="card text-center">
-				<button mat-mini-fab color="primary" (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>
-			</div>
 			<a mat-mini-fab color="primary" routerLink="/" routerLinkActive="active-link" title="home">
 				<mat-icon>home</mat-icon>
 			</a>
@@ -51,6 +48,11 @@
 				<a mat-mini-fab color="primary" routerLink="/logout" routerLinkActive="active-link" title="logout">
 					<mat-icon>clear</mat-icon>
 				</a>
+				&nbsp;
+				<div *ngIf="enableMenu" class="card text-center">
+					<button mat-mini-fab color="primary" (click)="exampleSidenav.toggle()"><mat-icon>menu</mat-icon></button>
+				</div>
+
 		</mat-toolbar>
 	</div>
 

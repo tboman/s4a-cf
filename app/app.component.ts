@@ -37,20 +37,18 @@ export class AppComponent implements OnInit {
   enabledMenu: boolean = false;
   hideCDK: boolean = false;
   title: string;
-  user: firebase.User = null;
 
   constructor(
     private breakObserver: BreakpointObserver,
     private router: Router,
-    private _firebaseAuth: AngularFireAuth,
+    public auth: AngularFireAuth,
     private cacheService: CacheService
   ) {
     
     var showMenu = this.enabledMenu;
     var component = this;
     var cacheService = this.cacheService;
-    this._firebaseAuth.authState.subscribe(newUser => {
-      this.user = newUser;
+    this.auth.authState.subscribe(newUser => {
       if (newUser) {
         console.info("app component AngularFireAuth changing to " + newUser.displayName );
         cacheService.getProfile(newUser.email);
@@ -58,23 +56,6 @@ export class AppComponent implements OnInit {
       }
     });
  }
-
-  signIn() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope("profile");
-    provider.addScope("email");
-
-    var localUser = this.user;
-    var localRouter = this.router;
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(function(result) {
-        console.info("logged in explicitly as " + result.user.email);
-        localUser = result.user;
-        localRouter.navigate([""]);
-      });
-  }
 
   get isMobile() {
     if (this.breakObserver.isMatched("(max-width: 599px)")) {
@@ -122,8 +103,6 @@ export class AppComponent implements OnInit {
       { name: "Configure Interests", url: "interests" },
       { name: "Configure Research Fields", url: "fields" }
     ];
-
-    this.user = firebase.auth().currentUser;
   }
 }
 

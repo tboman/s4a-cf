@@ -202,7 +202,7 @@ export class CacheService {
   }
   
   public getArticle(key) {
-    if (!this.articles) {
+    if (!this.articles || this.articles.length < 1) {
       var db = firebase.firestore();
       db.collection("articles")
         .get()

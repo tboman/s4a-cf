@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import * as firebase from "firebase/app";
-import { AngularFireAuth } from "angularfire2/auth";
 import { Offer } from "./model/offer";
 import { Request } from "./model/request";
 import { CacheService } from "../services/cache.service";
@@ -31,7 +30,6 @@ export class HomeComponent implements OnInit {
     p5: ""
   };
   constructor(
-    private _firebaseAuth: AngularFireAuth,
     private cacheService: CacheService,
     private authService: AuthService
   ) {
