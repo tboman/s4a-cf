@@ -190,13 +190,14 @@ export class CacheService {
   public putProfile(profile) {
     this.profile = profile;
     var db = firebase.firestore();
-    db.collection("profiles")
-      .add(this.profile)
+    console.log(profile.email);
+    db.collection("profiles").doc(profile.email)
+      .set(profile)
       .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        console.log("Document written with ID: ", docRef);
       })
       .catch(function(error) {
-        console.error("Error adding document: ", error);
+        console.error("Error updating document: ", error);
       });
   }
   

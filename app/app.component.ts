@@ -45,30 +45,19 @@ export class AppComponent implements OnInit {
     private _firebaseAuth: AngularFireAuth,
     private cacheService: CacheService
   ) {
-    var userLocal = this.user;
+    
     var showMenu = this.enabledMenu;
-    this._firebaseAuth.authState.subscribe(user => {
-      if (user) {
-        console.info("app component AngularFireAuth changing to " + user.displayName );
-        userLocal = user;
-        showMenu = true;
-      } else {
-        userLocal = null;
-      }
-    });
-
     var component = this;
-    var user = this.user;
-    firebase.auth().onAuthStateChanged(function(newuser) {
-      if (newuser) {
-        console.info("app component FirebaseAuth changing to " + newuser.displayName );
-        user = newuser;
-        component.ngOnInit();
-      } else {
-        user = null;
+    var cacheService = this.cacheService;
+    this._firebaseAuth.authState.subscribe(newUser => {
+      this.user = newUser;
+      if (newUser) {
+        console.info("app component AngularFireAuth changing to " + newUser.displayName );
+        cacheService.getProfile(newUser.email);
+        showMenu = true;
       }
     });
-  }
+ }
 
   signIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
@@ -117,6 +106,10 @@ export class AppComponent implements OnInit {
     // warmup DB read cache
     console.log("Cache warmup");
     var mainsummary = this.cacheService.getArticle("mainsummary");
+    this.cacheService.getLocations();
+    this.cacheService.getTitles();
+    this.cacheService.getInterests();
+    this.cacheService.getFields();
 
     if (document.body.classList.contains("button-uppercase")) {
       this.isToggledUppercase = true;

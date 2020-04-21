@@ -64,14 +64,7 @@ export class ProfileComponent implements OnInit {
     this.profile.created = new Date();
     console.log(this.profile);
 
-    db.collection("profiles")
-      .add(this.profile)
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
-      });
+    this.cacheService.putProfile(this.profile);
     window.alert("Profile updated.");
     this.router.navigate(["/home"]);
   }

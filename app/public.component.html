@@ -17,18 +17,13 @@
 			<mat-card-content class="splash-text-right">
 				{{mainafrica.p1}}
 			</mat-card-content>
-			<div *ngIf="showLogin">
-				<mat-card-actions class="splash-text-right" align="end">
-					<a mat-button routerLink="/register" routerLinkActive="active-link"
-						color="primary">{{mainafrica.p2}}</a>
-				</mat-card-actions>
-			</div>
-			<div *ngIf="showCreate">
-				<mat-card-actions class="splash-text-right" align="end">
-					<a mat-button routerLink="/request" routerLinkActive="active-link"
-						color="primary">{{mainafrica.p3}}</a>
-				</mat-card-actions>
-			</div>
+			<mat-card-actions class="splash-text-right" align="end">
+				<a mat-button routerLink="/register" routerLinkActive="active-link"
+					color="primary">{{mainafrica.p2}}</a>
+			</mat-card-actions>
+			<mat-card-actions class="splash-text-right" align="end">
+				<a mat-button routerLink="/request" routerLinkActive="active-link" color="primary">{{mainafrica.p3}}</a>
+			</mat-card-actions>
 		</mat-card>
 	</mat-grid-tile>
 	<mat-grid-tile>
@@ -38,17 +33,10 @@
 			<mat-card-content class="splash-text-left">
 				{{mainwest.p1}}
 			</mat-card-content>
-			<div *ngIf="showLogin">
 				<mat-card-actions align="end" class="splash-text-left">
 					<a mat-button routerLink="/register" routerLinkActive="active-link"
 						color="primary">{{mainwest.p2}}</a>
 				</mat-card-actions>
-			</div>
-			<div *ngIf="showCreate">
-				<mat-card-actions align="end" class="splash-text-left">
-					<a mat-button routerLink="/offer" routerLinkActive="active-link" color="primary">{{mainwest.p3}}</a>
-				</mat-card-actions>
-			</div>
 		</mat-card>
 	</mat-grid-tile>
 </mat-grid-list>

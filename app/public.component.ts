@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { CacheService } from "../services/cache.service";
-import * as firebase from "firebase/app";
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: "app-public",
@@ -8,8 +8,6 @@ import * as firebase from "firebase/app";
   styleUrls: ["./public.component.css"]
 })
 export class PublicComponent implements OnInit {
-  showCreate: boolean = false;
-  showLogin: boolean = true;
   mainsummary: {
     header: string;
     p1: string;
@@ -41,7 +39,7 @@ export class PublicComponent implements OnInit {
     header: "Scientists in Africa",
     p1:
       "Are you looking to establish a scientific collaboration or benefit from research mentorship? Sign up here to get connected with peers in your field of study in the United States, Canada, and Europe.",
-    p2: "Make Request",
+    p2: "Sign Up Now",
     p3: "",
     p4: "",
     p5: ""
@@ -58,24 +56,14 @@ export class PublicComponent implements OnInit {
     header: "Scientists in North America and Europe",
     p1:
       "Would you be interested in collaborating with African researchers and apply your work to	distinct environments and populations? Start the process here by making an offer to be match with African scientists.",
-    p2: "Make Offer",
+    p2: "Sign Up Now",
     p3: "",
     p4: "",
     p5: ""
   };
 
   constructor(private cacheService: CacheService) {
-    var showLogin = this.showLogin;
-    var showCreate = this.showCreate;
-    firebase.auth().onAuthStateChanged(function(newuser) {
-      if (newuser) {
-        showLogin = false;
-        showCreate = true;
-      } else {
-        showLogin = true;
-        showCreate = false;
-      }
-    });
+    this.cacheService.getArticle("mainsummary");
   }
 
   ngOnInit() {
