@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { CacheService } from "../services/cache.service";
-import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: "app-public",
@@ -66,16 +65,16 @@ export class PublicComponent implements OnInit {
     this.cacheService.getArticle("mainsummary");
   }
 
-  ngOnInit() {
-    var mainsummary = this.cacheService.getArticle("mainsummary");
+  async ngOnInit() {
+    var mainsummary = await this.cacheService.getArticle("mainsummary");
     if (mainsummary) {
       this.mainsummary = mainsummary;
     }
-    var mainafrica = this.cacheService.getArticle("mainafrica");
+    var mainafrica = await this.cacheService.getArticle("mainafrica");
     if (mainafrica) {
       this.mainafrica = mainafrica;
     }
-    var mainwest = this.cacheService.getArticle("mainwest");
+    var mainwest = await this.cacheService.getArticle("mainwest");
     if (mainwest) {
       this.mainwest = mainwest;
     }

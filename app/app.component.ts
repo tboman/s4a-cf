@@ -11,6 +11,7 @@ import * as firebase from "firebase/app";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from "@angular/router";
 import { CacheService } from "../services/cache.service";
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "material-app",
@@ -30,6 +31,7 @@ import { CacheService } from "../services/cache.service";
 })
 export class AppComponent implements OnInit {
   adminLinks: Guides[];
+  user: any;
   isToggledUppercase: boolean = false;
   hideComponents: boolean = false;
   hideGuides: boolean = false;
@@ -41,21 +43,23 @@ export class AppComponent implements OnInit {
   constructor(
     private breakObserver: BreakpointObserver,
     private router: Router,
-    public auth: AngularFireAuth,
-    private cacheService: CacheService
+    private angularFireAuth: AngularFireAuth,
+    private cacheService: CacheService,
+    private authService: AuthService
   ) {
-    
     var showMenu = this.enabledMenu;
     var component = this;
     var cacheService = this.cacheService;
-    this.auth.authState.subscribe(newUser => {
-      if (newUser) {
-        console.info("app component AngularFireAuth changing to " + newUser.displayName );
-        cacheService.getProfile(newUser.email);
-        showMenu = true;
+
+    angularFireAuth.authState.subscribe(user => {
+      if (user) {
+        this.user = this.authService.getUserdetails();
+      } else {
+        this.user = null;
       }
+      console.log("Getting current user from auth service as " + this.user);
     });
- }
+  }
 
   get isMobile() {
     if (this.breakObserver.isMatched("(max-width: 599px)")) {
@@ -86,6 +90,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // warmup DB read cache
     console.log("Cache warmup");
+
     var mainsummary = this.cacheService.getArticle("mainsummary");
     this.cacheService.getLocations();
     this.cacheService.getTitles();

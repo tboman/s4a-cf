@@ -4,13 +4,18 @@ import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from "firebase/app";
 import { Observable } from "rxjs";
 
+import { first } from "rxjs/operators";
+
 @Injectable()
 export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
 
-  constructor(private router: Router) {
-    /** var userDetails = this.userDetails;
+  constructor(
+    private router: Router,
+    private angularFireAuth: AngularFireAuth
+  ) {
+    var userDetails = this.userDetails;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.info("setting current user in auth service to " + user.email);
@@ -19,7 +24,6 @@ export class AuthService {
         userDetails = null;
       }
     });
-    **/
   }
 
   signInWithPopup() {
