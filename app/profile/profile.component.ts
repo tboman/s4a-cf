@@ -39,8 +39,8 @@ export class ProfileComponent implements OnInit {
     this.profilesummary = cacheService.getArticle("profilesummary");
   }
 
-  ngOnInit() {
-    this.profile = this.cacheService.getProfile(firebase.auth().currentUser.uid);
+  async ngOnInit() {
+    this.profile = await this.cacheService.getProfile(firebase.auth().currentUser.uid);
     this.profile.creator = firebase.auth().currentUser.uid;
     this.initForm();
   }

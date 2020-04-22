@@ -23,7 +23,7 @@ export class PublicComponent implements OnInit {
     p3:
       "This framework allows academic and private sector scientists and engineers to sign up, free of charge, to identify, initiate, and pursue productive and mutually beneficial collaborations linking the scientific communities in North America and Europe with peers in sub- Saharan Africa. The system matches requests and offers, based on scientific sub-specialty and type of collaboration.",
     p4:
-      "With this platform, scientists may also share additional needs, resources, and offers.",
+      "With this platform, scientists may also share additional needs, resources, and offers..",
     p5: ""
   };
 

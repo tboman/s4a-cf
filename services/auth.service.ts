@@ -43,9 +43,9 @@ export class AuthService {
           .then(token =>
             console.log("got token for " + result.user.displayName)
           );
-        console.log("settting user in  localstorage " + result.user.getIdToken);
         userDetails = result.user;
         localStorage.setItem("user", JSON.stringify(userDetails));
+        this.cacheService.getProfile(userDetails.uid);
         router.navigate(["/home"]);
       });
   }
