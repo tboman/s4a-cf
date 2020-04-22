@@ -32,7 +32,7 @@ export class AuthService {
     provider.addScope("profile");
     provider.addScope("email");
 
-    var user = this.userDetails;
+    var userDetails = this.userDetails;
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -43,13 +43,16 @@ export class AuthService {
           .then(token =>
             console.log("got token for " + result.user.displayName)
           );
-        user = result.user;
-        router.navigate(["home"]);
+        console.log("settting user in  localstorage " + result.user.getIdToken);
+        userDetails = result.user;
+        localStorage.setItem("user", JSON.stringify(userDetails));
+        router.navigate(["/home"]);
       });
   }
 
   isLoggedIn() {
-    if (firebase.auth().currentUser == null) {
+    this.userDetails = JSON.parse(localStorage.getItem("user"));
+    if (this.userDetails == null) {
       return false;
     } else {
       return true;
@@ -58,6 +61,7 @@ export class AuthService {
 
   isAdmin() {
     const user = firebase.auth().currentUser;
+    
     if (user == null) {
       return false;
     } else {

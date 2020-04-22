@@ -45,19 +45,20 @@ export class AppComponent implements OnInit {
     private router: Router,
     private angularFireAuth: AngularFireAuth,
     private cacheService: CacheService,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     var showMenu = this.enabledMenu;
     var component = this;
     var cacheService = this.cacheService;
 
     angularFireAuth.authState.subscribe(user => {
+      console.log("user auth change");
       if (user) {
         this.user = this.authService.getUserdetails();
       } else {
         this.user = null;
       }
-      console.log("Getting current user from auth service as " + this.user);
+      console.log("Getting current user from auth service as " + user);
     });
   }
 
