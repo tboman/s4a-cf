@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Profile } from "../model/profile";
 import { CacheService } from "../../services/cache.service";
 import { AuthService } from "../../services/auth.service";
+import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from "firebase/app";
 
 @Component({
@@ -39,11 +40,11 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private cacheService: CacheService,
-    private authService: AuthService
+    private authService: AuthService,
+    public afAuth: AngularFireAuth
   ) {
     const db = firebase.firestore();
     this.registersummary = cacheService.getArticle("registersummary");
-    console.log(this.registersummary);
   }
 
   ngOnInit() {
@@ -99,6 +100,18 @@ export class RegisterComponent implements OnInit {
 
   registerWithTwitter() {
     window.alert("Not yet working.");
+  }
+
+  registerWithEmail() {
+    return this.afAuth.auth
+      .createUserWithEmailAndPassword(this.profile.email, this.profile.password)
+      .then(result => {
+        window.alert("You have been successfully registered!");
+        console.log(result.user);
+      })
+      .catch(error => {
+        window.alert(error.message);
+      });
   }
 
   tryRegister() {

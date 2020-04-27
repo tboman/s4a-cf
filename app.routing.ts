@@ -32,7 +32,7 @@ const ALL_ROUTES: Routes = [
   { path: "home", component: HomeComponent, canActivate: [AuthGuard] },
   { path: "offer", component: OfferComponent, canActivate: [AuthGuard] },
   { path: "request", component: RequestComponent, canActivate: [AuthGuard] },
-  { path: "login", component: LoginComponent, canActivate: [AuthGuard] },
+  { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "about", component: AboutComponent },

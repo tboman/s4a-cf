@@ -46,18 +46,12 @@ Facebook</button>
 					</mat-form-field>
 					<br/>
 					<mat-form-field>
-						<input matInput placeholder="Password" name="password" required [(ngModel)]="profile.password">
-						<mat-error>This is required.</mat-error>
-					</mat-form-field>
-					<br/>
-					<mat-form-field>
-						<input matInput placeholder="Confirm Password" name="password" required [(ngModel)]="profile.password2">
+						<input matInput placeholder="Password" name="password" type="password" required [(ngModel)]="profile.password">
 						<mat-error>This is required.</mat-error>
 					</mat-form-field>
 				</mat-card-content>
 				<mat-card-actions align="end">
-					<button mat-button type="reset" color="primary">Reset</button>
-					<button mat-button type="button" color="primary" [disabled]="form.invalid" (click)="tryRegister()">Register</button>
+					<button mat-button type="button" color="primary" [disabled]="form.invalid" (click)="registerWithEmail()">Register</button>
 				</mat-card-actions>
 			</mat-card>
 		</mat-grid-tile>

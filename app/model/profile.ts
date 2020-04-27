@@ -7,4 +7,5 @@ export class Profile extends Object {
   location: string;
   field: string;
   created: Date;
+  password: string;
 }
