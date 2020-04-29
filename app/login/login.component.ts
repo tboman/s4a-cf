@@ -56,6 +56,11 @@ export class LoginComponent implements OnInit {
     this.form.get(control).reset("");
   }
 
+  loginWithGoogle() {
+    return this.authService.signInWithPopup();
+  }
+
+
   loginWithEmail() {
     return this.afAuth.auth.signInWithEmailAndPassword(this.profile.email, this.profile.password)
       .then(result => {

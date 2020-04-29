@@ -10,6 +10,7 @@ export class LogoutComponent implements OnInit {
   constructor(private firebaseAuth: AngularFireAuth) {}
 
   ngOnInit() {
+    localStorage.removeItem("user");
     if (this.firebaseAuth.auth.currentUser) {
       this.firebaseAuth.auth.signOut().then(() => {
         window.location.reload();

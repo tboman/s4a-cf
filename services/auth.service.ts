@@ -46,7 +46,7 @@ export class AuthService {
         userDetails = result.user;
         localStorage.setItem("user", JSON.stringify(userDetails));
         this.cacheService.getProfile(userDetails.uid);
-        router.navigate(["/home"]);
+        router.navigate(["/profile"]);
       });
   }
 

@@ -25,12 +25,12 @@ export class RegisterComponent implements OnInit {
     p4: string;
     p5: string;
   } = {
-    header: "Your Page",
-    p1: ".",
-    p2: ".",
-    p3: ".",
+    header: "Register",
+    p1: "In order to join the collaboration here at Science for Africa, you need to sign up for an account.  The main purpose is to validate that you have an email and way for collaborators to contact you.  You can use Google, Apple, Twitter or Microsoft to link an account instead of providing a password and validating your email.",
+    p2: "Register Using Existing Account",
+    p3: "Register With Email and Password",
     p4: ".",
-    p5: "."
+    p5: "Already registered with us? Click the padlock in the top right corner to login."
   };
 
   locations: [{ key: string; value: string }];
@@ -86,7 +86,6 @@ export class RegisterComponent implements OnInit {
           .auth()
           .currentUser.getIdToken()
           .then(token => register.tryRegister());
-        router.navigate(["/profile"]);
       });
   }
 
