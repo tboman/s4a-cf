@@ -1,4 +1,4 @@
-.splash-image-left {
+.splash-image-top {
     background-size: 400px;
     background-repeat: no-repeat;
     background-color: #ffffff;
@@ -6,6 +6,17 @@
     text-align: left;
     margin-bottom: 10px;
     color: #795548;
+  }
+  
+  .splash-image-left {
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-position-x: left;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #795548;
+    height: 200px;
 }
 
 .splash-image-right {
@@ -16,6 +27,7 @@
     text-align: right;
     margin-bottom: 10px;
     color: #795548;
+    height: 200px;
 }
 
 .splash-text-left {
@@ -37,4 +49,14 @@
 
 .mat-card {
   vertical-align: top;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding: 5px;
+  height: 300px;
 }

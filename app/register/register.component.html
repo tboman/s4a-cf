@@ -1,41 +1,41 @@
 <form #form="ngForm">
-	<mat-grid-list cols="4" rowHeight="1:1">
-		<mat-grid-tile colspan="2">
+	<div class="row">
+		<div class="column">
 			<mat-card>
-
-				<img align="right" height="200px" src="https://images.unsplash.com/photo-1523154410-31a6b052652b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=301&q=80"/>
 				<mat-card-title>{{ registersummary.header }}</mat-card-title>
-				<mat-card-content>
-					{{ registersummary.p1 }}
-					<br/><br/>
-					{{ registersummary.p5 }}
-				</mat-card-content>
+					<mat-card-content>
+						{{ registersummary.p1 }}
+					</mat-card-content>
+					<mat-card-content>
+						{{ registersummary.p5 }}
+					</mat-card-content>
 			</mat-card>
-		</mat-grid-tile>
-		<mat-grid-tile>
+		</div>
+		<div class="column">
 			<mat-card>
-
 				<mat-card-title>{{ registersummary.p2 }}</mat-card-title>
 				<button mat-button type="button" color="primary" (click)="registerWithGoogle()">
       <img style="margin:0px;height:48px;width:48px; border-radius: 100%;" title="google" src="data:image/png;base64,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"/>
       Google</button>
 				<br/>
-				<button mat-button type="button" color="primary" (click)="registerWithFacebook(registerForm.value)">
+				<!--
+			<button mat-button type="button" color="primary" (click)="registerWithFacebook(registerForm.value)">
        <img style="margin:0px;height:48px;width:48px; border-radius: 100%;" title="facebook" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAEg0lEQVRoge2YS2icVRTH/+d+M5N3U9sami8T0GBpjMGKRkZdFVpcVrNoUBpFTTIW4wvdFcUoui0US7F5IIrFVd00biy4EGyFkpaWNMQoiElmGm0eNZkmmZnv3uMiqTSZ+70zgjK/5bn33PM/332d7wIlSpT4T0NbNVB0aHqflDhAJJ5g8F4CGgGqXmvlDDMmiWiCSV00CN/nu+JXtyJuuASGbtYIlU0KUBcDD/oKzBhT4CGVj/Wjty4TVEKwBPo4IuKpN4jpPQA7ggZfZ45BH6tU/Un0keXX2X8Cp9PNQvDXBDzi29cBBq4ogefR1fCzHz9fCRj9qUMgnAFQ7Uudd5ZAOCK7G855dRBeOxqD6RdAOIviiQeAGjC+MQbSnV4dPM3A+pc/CyASWJo/LDC3y2R82K2jewKfTe0xDDECoCaMoooIwaw0UBsjLFuMnGT8uaqQybOdS0YqehyvmuNO4zon0McR0ZC+FHTDEoDDTRV4raUKiboooqIwXPv5eZz7fVXrz8BllTITTqeT45JYPyoDiY8Kwhf7t6OjqcKxn9MXJOBRYd7oVcAJW4223l/OVBHTMVelNnzUVuMq3gtE/D6GbtouX9sERNY6CmBXkKD1lQbeaq0K4qpjp5DZHrtG2yW0Xh4E4nBTOWKa9X4rp3Bq7DamMvIf29W5vOt4AtSlgOO6Nm0C0aHpfUr5q23uJnFvTGt/5rt5/DiT8z0eE1pigzOtue7do5vbtEtIKhz0HeUuGquNAtvofD6Q+DtYSh3Q2bUJEEQicCQAtbHCYa/N+67TNkDET+rs2gQYaA4TzNCcjfNZFWZIMLBXZ7eZATZDRdMLCAUBcZ3d7hgNVTYUCa2m0MXZB4/V4PWWjWf+Ns0eSDZXovOBwott//Asri8E3x92CSwB2OllgAqDcE+Ze1VeZhDKNm0OBvDbktQ76DUVYLOJKe111DBMZiSWLW+7g4Fpnd1mE8OxhN0qJv7yvnQI0P5q6meA1U8BNfli/Jb3BBh0QWfXVrOxgamHJYSnd5uKCKF809q+cGgX9tRu3F4D48s4dmlxg23FYqxKb0vIYNGaS9Zf32zXbuJcT+M1MTA9SqBWt4FXLMbKpnWs07QqGQsBLzNijOnEA07/A4zPA0UrAkrwoF2bbQKqPHIawGxRFPljTmVjA3aN9jPw4u7bDPqkKJJ8wIwPnZ4eHW8glao/ycCVrZflmRG13Tzl1MH5Cu0jS5HqAGPRsV9xyEhFneggx6vavQbobvwVAp0AwhX0/rBA/JzbmxDg8Wlx7a2SXsa/k4QFppdkd/xbL509v43KHvMrMLfDpqjaEhiLIH5WJs0zXl08JwAAMhkflsxtDFz2r86VEalUm9cvfwdfCQAAkvEJlTITzPQ2gDnf/oXMMuNNWWsmcLTxF7/O/hMA1k6npHlC5qL3MfO7DGiveScYPMrE78hc9H6VbPjU7bSxI9wfWW9dZv3B6Xis/8ZDFvggET81mVFPV0flth1lQgDAQlapTF79AeAHZrqoInQer9SPhYpdokSJ/wd/A7yQheTiO82sAAAAAElFTkSuQmCC"/>
 Facebook</button>
-				<br/>
+			<br/>
 
-				<button mat-button type="button" color="primary" (click)="registerWithTwitter()">
+			<button mat-button type="button" color="primary" (click)="registerWithTwitter()">
       <img style="margin:0px;height:48px;width:48px; border-radius: 100%;" title="twitter" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADz0lEQVRoge2XTWgdVRiGn+/MpGnv3LRoqC4UhCz8I8RFRClSXdgqWkuV4CRpi1gqglZTuhFXkiDdCVIKBfEHo1Bzr0JRtGAqWhTBQhsaFX9ADbZisbXaJnPb5t6Z+VyotU0yc89MYlGYZzcz73fO+84ZzjcHCgoKCgoK/sfIJZ2tOnmdq+ZxYLXCNUCowvdG9b3QNbvo8Y7NLFm0O+iqry9/njRk0wDOSO2e6JvS+wxKnNv4oBr3hmBIkacBN8FKgLIt6vNe4u0Tbc65xXch8gSxfBn1eU/mC1A9Xna09JPAcNhb3prXvzMy9QIij1rKDwFdQAtwLJKoE3/Zb0likzqxercDyxQGnJHaLqrqWLv+e4xqsD6DeYBu/jR/0gj30lB13wjuTBKnBlCJO85fiD7maG0P1dOXW1tRFWJ91lr/DyHI/ljZ4bjud8bheJIwNQA66/laR51xtxqstnHRUjlzMyIdzZWzcEF7gFsQ2VT3y18kCVMDCGZijttXqzLqVKb28Nbk9Wn1Mdpp53dOfhXiVZHvvZMmSg0QLT6zHySY+6nc70TmK6cSvOtUamvZq60zFSralsHwTAbC3qWfNhMlbGl/sW75lFSCVxQGEhQCrAFd40zVJqnU9in6mREdC018VCJJ3D2aojptI2veyF5Tz22tjSlcm9tMDkS5O+wrjzbTpW+jI8EGZ1GtR2LpUxhfOHvNMYZZXXkuUj8hFW0XZEcsisDZhbFmhdbPeT/YCNNXQOTjCy6XzMtSBgS+5iGp2WhTAzT88mGEAwtjyx5FP7HVpjcywCBbgMa8HGXGpO79FymbCRq+dwjVDVy6ECcjKX1gK24aACDqa3vTqNyGcDC/LztEeRFf6rZ6qwAAsXAVyCDKq4BVk8nB2VBlZ5aC9E58MatQ3fJvnuEEdtLv/ZylxnoFIomHgF8yu7LnSNiY3p61yDoAftsJE5t1wO9ZJ7EgFuERNrZPZi20DwA0+ksHIie6Ffgw60RpqMhQ6Jf35anN/UW3VGvdkXKfiK5ESTzyWTAc+d4mRDRPcaYVuJDGg6UxgaMo3XnHAIYj8TbnNQ95VmCvtjpBrV9hmyhdOedVRZ6J/dL2+ZiHlAAtI8FNGHFVY0+FK1SlQ+AOYCUwn5PWhKCbw962j+YxxnkS+0CjtfGjW295SpGtKKUF2P5PK/JcPF163vZP04bmvnYHVxqHjcDDApkP6QrjqL4ct4av88Blp/KYTCPbi61O3ehgVhDrCgydxLockXZgKXAKZRLDBKrfouZgZMwo/pIjC226oKCgoKCg4L/CH/2pQ2zEwnKJAAAAAElFTkSuQmCC"/>
       Twitter</button>
-				<br/>
+			<br/>
 
-				<button mat-button type="button" color="primary" (click)="registerWithMicrosoft()">
+			<button mat-button type="button" color="primary" (click)="registerWithMicrosoft()">
       <img style="margin:0px;height:48px;width:48px; border-radius: 100%;" title="microsoft" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVRoge3XoQ2AMBRF0QICwxQswgIIUJ2xCkQXYBGmwCBI0U2o+uKV5B7b5KVXfucAQKkpPSQ/JtNwOLPteVtMe3HdP//aWkZrQIAaAWoEqBGgRoAaAWoEANAq3sRduEw37OOHbDsdve3Gnm5u4ioRoEaAGgFqBKgRoEaA2u8DAEDrBQofED/8n8cqAAAAAElFTkSuQmCC"/>
       Microsoft</button>
+      -->
 			</mat-card>
-		</mat-grid-tile>
-		<mat-grid-tile>
+		</div>
+		<div class="column">
 			<mat-card>
 				<mat-card-title>{{ registersummary.p3 }}</mat-card-title>
 				<mat-card-content>
@@ -55,6 +55,6 @@ Facebook</button>
 					<button mat-button type="button" color="primary" [disabled]="form.invalid" (click)="registerWithEmail()">Register</button>
 				</mat-card-actions>
 			</mat-card>
-		</mat-grid-tile>
-	</mat-grid-list>
+		</div>
+	</div>
 </form>
