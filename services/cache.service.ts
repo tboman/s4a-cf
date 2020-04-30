@@ -171,6 +171,10 @@ export class CacheService {
     return this.interests_raw;
   }
 
+  public setProfile(user) {
+    this.profile = user;
+  }
+  
   public getProfile(key) {
     if (!this.profile) {
       var db = firebase.firestore();

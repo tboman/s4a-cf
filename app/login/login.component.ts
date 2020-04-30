@@ -57,14 +57,20 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle() {
-    return this.authService.signInWithPopup();
+    var router = this.router;
+    var cacheService = this.cacheService;
+    this.authService.signInWithPopup( function(user) {
+      console.log("Signed in: " + user.email);
+      router.navigate(["/home"]);
+      cacheService.getProfile(user.uid);
+    });
   }
 
-
   loginWithEmail() {
-    return this.afAuth.auth.signInWithEmailAndPassword(this.profile.email, this.profile.password)
+    return this.afAuth.auth
+      .signInWithEmailAndPassword(this.profile.email, this.profile.password)
       .then(result => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(["/profile"]);
       })
       .catch(error => {
         window.alert(error.message);

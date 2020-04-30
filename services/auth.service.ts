@@ -8,14 +8,30 @@ import { first } from "rxjs/operators";
 
 @Injectable()
 export class AuthService {
-  private user: Observable<firebase.User>;
-  private userDetails: firebase.User = null;
+  public user: Observable<firebase.User>;
+  public userDetails: firebase.User = null;
 
   constructor(
     private router: Router,
     private angularFireAuth: AngularFireAuth
   ) {
     var userDetails = this.userDetails;
+    this.angularFireAuth.authState.subscribe(user => {
+      if (user) {
+        console.log(
+          "Got sign-in notificaton, saving user details to local storage: " +
+            user.email
+        );
+        this.userDetails = user;
+        localStorage.setItem("user", JSON.stringify(this.userDetails));
+        JSON.parse(localStorage.getItem("user"));
+      } else {
+        this.userDetails = null;
+        localStorage.setItem("user", null);
+        JSON.parse(localStorage.getItem("user"));
+      }
+    });
+    /**
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.info("setting current user in auth service to " + user.email);
@@ -24,9 +40,10 @@ export class AuthService {
         userDetails = null;
       }
     });
+     */
   }
 
-  signInWithPopup() {
+  signInWithPopup(callback) {
     var router = this.router;
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope("profile");
@@ -37,16 +54,13 @@ export class AuthService {
       .auth()
       .signInWithPopup(provider)
       .then(function(result) {
-        firebase
-          .auth()
-          .currentUser.getIdToken()
-          .then(token =>
-            console.log("got token for " + result.user.displayName)
-          );
         userDetails = result.user;
         localStorage.setItem("user", JSON.stringify(userDetails));
-        this.cacheService.getProfile(userDetails.uid);
-        router.navigate(["/profile"]);
+        console.log(
+          "Signed in, saving user details to local storage: " +
+            userDetails.email
+        );
+        callback(result.user);
       });
   }
 
@@ -61,7 +75,7 @@ export class AuthService {
 
   isAdmin() {
     const user = firebase.auth().currentUser;
-    
+
     if (user == null) {
       return false;
     } else {

@@ -13,7 +13,6 @@ import * as firebase from "firebase/app";
 })
 export class ProfileComponent implements OnInit {
   form: FormGroup;
-  profile: Profile;
   profilesummary: {
     header: string;
     p1: string;
@@ -32,16 +31,17 @@ export class ProfileComponent implements OnInit {
 
   locations: [{key:string, value: string}];
   titles: [{key:string, value: string}];
-  loadedProfile: Observable<Profile>;
+  profile: Observable<Profile>;
 
   constructor(private fb: FormBuilder, private router: Router, private cacheService: CacheService) {
     const db = firebase.firestore();
     this.profilesummary = cacheService.getArticle("profilesummary");
+        console.log("getting profile for "+firebase.auth().currentUser.uid);
+    this.profile = this.cacheService.getProfile(firebase.auth().currentUser.uid);
+   
   }
 
-  async ngOnInit() {
-    this.profile = await this.cacheService.getProfile(firebase.auth().currentUser.uid);
-    this.profile.creator = firebase.auth().currentUser.uid;
+  ngOnInit() {
     this.initForm();
   }
 

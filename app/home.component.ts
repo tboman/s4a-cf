@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     p5: string;
   } = {
     header: "Your Page",
-    p1: "",
+    p1: "Below you can see the full list of your offers and requests, along with any matches that has been made.  When you submit a new request or offer, you should receive an initial confirmation email immediately and a match confirmation within 2 business days if one exists.  If there is no match at the time of your submittal, you will receive a notification if one is made at a later time.",
     p2: "",
     p3: "",
     p4: "",

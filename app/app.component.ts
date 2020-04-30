@@ -51,6 +51,8 @@ export class AppComponent implements OnInit {
     var component = this;
     var cacheService = this.cacheService;
 
+        this.user = this.authService.getUserdetails();
+
     angularFireAuth.authState.subscribe(user => {
       console.log("user auth change");
       if (user) {
