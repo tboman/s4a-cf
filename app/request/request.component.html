@@ -23,20 +23,38 @@
 				<br/>
 
 
-				<mat-card-title>{{ requestsummary.p3 }}</mat-card-title>
-				<mat-form-field>
-					<mat-select name="interest" required [(ngModel)]="request.interest" placeholder="Interested In">
-						<mat-option *ngFor="let interest of interests" value="{{interest.key}}">{{interest.value}}
-						</mat-option>
-					</mat-select>
-					<mat-error>This is required.</mat-error>
-				</mat-form-field>
 
 				<mat-form-field>
 					<mat-select name="field" required [(ngModel)]="request.field" placeholder="Research Field">
 						<mat-option *ngFor="let field of fields" value="{{field.key}}">{{field.value}}</mat-option>
 					</mat-select>
 					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<input matInput placeholder="Subfield of Study" name="subfield" required [(ngModel)]="request.subfield">
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+				<br/>
+
+				<mat-card-title>{{ requestsummary.p3 }}</mat-card-title>
+				<mat-form-field>
+					<mat-select name="interest" required [(ngModel)]="request.interest" placeholder="1st Priority">
+						<mat-option *ngFor="let interest of interests" value="{{interest.key}}">{{interest.value}}
+						</mat-option>
+					</mat-select>
+					<mat-error>This is required.</mat-error>
+				</mat-form-field>
+        				<mat-form-field>
+					<mat-select name="interest"  [(ngModel)]="request.interest" placeholder="2nd Priority">
+						<mat-option *ngFor="let interest of interests" value="{{interest.key}}">{{interest.value}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+        				<mat-form-field>
+					<mat-select name="interest"  [(ngModel)]="request.interest" placeholder="3rd Priority">
+						<mat-option *ngFor="let interest of interests" value="{{interest.key}}">{{interest.value}}
+						</mat-option>
+					</mat-select>
 				</mat-form-field>
 
 				<mat-form-field>

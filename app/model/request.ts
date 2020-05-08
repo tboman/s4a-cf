@@ -7,6 +7,7 @@ export class Request extends Object {
   location: string;
   interest: string;
   field: string;
+  subfield: string;
   need: string;
   institution: string;
   created: Date;
