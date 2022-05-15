@@ -5,7 +5,7 @@
 @mixin material2-docs-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
-//  $background: map-get($theme, background);
+  $background: map-get($theme, background);
   .active-link {
     background-color: mat-color($background, status-bar) !important;
     color: mat-color($primary) !important;
